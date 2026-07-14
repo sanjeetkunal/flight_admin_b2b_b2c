@@ -12,8 +12,8 @@ const packages = [
   { id: "HOL08827", client: "Kavita Reddy", package: "Thailand Bangkok Pattaya", duration: "5N/6D", destination: "Thailand", category: "International", travel: "10 Jul 2026", return: "16 Jul 2026", pax: "2A", inclusions: ["Flight", "Hotel", "Visa", "Transfers", "Breakfast"], amount: "₹1,45,000", status: "Cancelled", agent: "StarTravel", markup: "₹14,500" },
 ]
 
-const statusColors: Record<string, string> = { Confirmed: "bg-emerald-100 text-emerald-700", Pending: "bg-amber-100 text-amber-700", Cancelled: "bg-red-100 text-red-700" }
-const categoryColors: Record<string, string> = { Beach: "bg-cyan-100 text-cyan-700", Nature: "bg-green-100 text-green-700", Adventure: "bg-orange-100 text-orange-700", Heritage: "bg-yellow-100 text-yellow-700", "Hill Station": "bg-blue-100 text-blue-700", International: "bg-violet-100 text-violet-700" }
+const statusColors: Record<string, string> = { Confirmed: "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400", Pending: "bg-amber-100 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400", Cancelled: "bg-red-100 text-red-700 dark:bg-red-500/10 dark:text-red-400" }
+const categoryColors: Record<string, string> = { Beach: "bg-cyan-100 text-cyan-700 dark:bg-cyan-500/10 dark:text-cyan-400", Nature: "bg-green-100 text-green-700 dark:bg-green-500/10 dark:text-green-400", Adventure: "bg-orange-100 text-orange-700 dark:bg-orange-500/10 dark:text-orange-400", Heritage: "bg-yellow-100 text-yellow-700 dark:bg-yellow-500/10 dark:text-yellow-400", "Hill Station": "bg-blue-100 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400", International: "bg-violet-100 text-violet-700 dark:bg-violet-500/10 dark:text-violet-400" }
 
 export default function HolidaysPage() {
   const [search, setSearch] = useState("")
@@ -46,18 +46,18 @@ export default function HolidaysPage() {
       </div>
 
       <div className="rounded-xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="flex flex-col gap-3 border-b border-slate-100 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 border-b border-slate-100 px-6 py-4 sm:flex-row sm:items-center sm:justify-between dark:border-slate-800">
           <div className="flex items-center gap-2">
             {["All", "Confirmed", "Pending", "Cancelled"].map((s) => (
-              <button key={s} onClick={() => setStatusFilter(s)} className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${statusFilter === s ? "bg-pink-500 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100"}`}>
+              <button key={s} onClick={() => setStatusFilter(s)} className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${statusFilter === s ? "bg-pink-500 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>
                 {s} <span className="ml-0.5 opacity-70">({counts[s as keyof typeof counts]})</span>
               </button>
             ))}
           </div>
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+            <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-800">
               <svg className="h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-              <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search package, client, dest..." className="bg-transparent text-xs text-slate-600 placeholder-slate-400 outline-none w-44" />
+              <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search package, client, dest..." className="bg-transparent text-xs text-slate-600 placeholder-slate-400 outline-none w-44 dark:text-slate-200" />
             </div>
             <button className="flex items-center gap-1.5 rounded-lg bg-pink-500 px-3 py-2 text-xs font-medium text-white hover:bg-pink-600 transition-colors">
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
@@ -88,32 +88,32 @@ export default function HolidaysPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {filtered.map((p) => (
                 <tr key={p.id} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-pink-600">{p.id}</td>
-                  <td className="px-6 py-3 font-medium text-slate-800">{p.client}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-pink-600 dark:text-pink-400">{p.id}</td>
+                  <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{p.client}</td>
                   <td className="px-6 py-3">
-                    <p className="font-medium text-slate-800">{p.package}</p>
+                    <p className="font-medium text-slate-800 dark:text-slate-100">{p.package}</p>
                   </td>
                   <td className="px-6 py-3">
-                    <span className={`rounded-md px-2 py-0.5 text-xs font-medium ${categoryColors[p.category] ?? "bg-slate-100 text-slate-700"}`}>{p.category}</span>
+                    <span className={`rounded-md px-2 py-0.5 text-xs font-medium ${categoryColors[p.category] ?? "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300"}`}>{p.category}</span>
                   </td>
-                  <td className="px-6 py-3 text-slate-600">{p.destination}</td>
+                  <td className="px-6 py-3 text-slate-600 dark:text-slate-300">{p.destination}</td>
                   <td className="px-6 py-3">
-                    <p className="text-slate-700">{p.travel}</p>
+                    <p className="text-slate-700 dark:text-slate-200">{p.travel}</p>
                     <p className="text-xs text-slate-400">Return: {p.return}</p>
                   </td>
-                  <td className="px-6 py-3 text-slate-600">{p.duration}</td>
-                  <td className="px-6 py-3 text-slate-600">{p.pax}</td>
+                  <td className="px-6 py-3 text-slate-600 dark:text-slate-300">{p.duration}</td>
+                  <td className="px-6 py-3 text-slate-600 dark:text-slate-300">{p.pax}</td>
                   <td className="px-6 py-3">
                     <div className="flex flex-wrap gap-1">
                       {p.inclusions.slice(0, 3).map((inc) => (
-                        <span key={inc} className="rounded bg-slate-100 px-1.5 py-0.5 text-xs text-slate-600">{inc}</span>
+                        <span key={inc} className="rounded bg-slate-100 px-1.5 py-0.5 text-xs text-slate-600 dark:bg-slate-800 dark:text-slate-300">{inc}</span>
                       ))}
-                      {p.inclusions.length > 3 && <span className="rounded bg-slate-100 px-1.5 py-0.5 text-xs text-slate-500">+{p.inclusions.length - 3}</span>}
+                      {p.inclusions.length > 3 && <span className="rounded bg-slate-100 px-1.5 py-0.5 text-xs text-slate-500 dark:bg-slate-800 dark:text-slate-400">+{p.inclusions.length - 3}</span>}
                     </div>
                   </td>
-                  <td className="px-6 py-3 font-semibold text-slate-800">{p.amount}</td>
-                  <td className="px-6 py-3 font-medium text-emerald-600">{p.markup}</td>
-                  <td className="px-6 py-3 text-slate-500">{p.agent}</td>
+                  <td className="px-6 py-3 font-semibold text-slate-800 dark:text-slate-100">{p.amount}</td>
+                  <td className="px-6 py-3 font-medium text-emerald-600 dark:text-emerald-400">{p.markup}</td>
+                  <td className="px-6 py-3 text-slate-500 dark:text-slate-400">{p.agent}</td>
                   <td className="px-6 py-3">
                     <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColors[p.status]}`}>{p.status}</span>
                   </td>
@@ -123,11 +123,11 @@ export default function HolidaysPage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4">
-          <p className="text-xs text-slate-500">Showing {filtered.length} of {packages.length} packages</p>
+        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
+          <p className="text-xs text-slate-500 dark:text-slate-400">Showing {filtered.length} of {packages.length} packages</p>
           <div className="flex items-center gap-1">
             {[1, 2, 3].map((p, i) => (
-              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-pink-500 text-white" : "text-slate-500 hover:bg-slate-100"}`}>{p}</button>
+              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-pink-500 text-white" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>{p}</button>
             ))}
           </div>
         </div>

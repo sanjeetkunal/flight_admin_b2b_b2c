@@ -38,15 +38,15 @@ export default function IssueTicketPage() {
   return (
     <div className="space-y-4">
       {/* Filter toolbar */}
-      <div className="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between dark:border-slate-800 dark:bg-slate-900">
         <div className="flex flex-wrap items-center gap-2">
           <button className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm">All <span className="ml-0.5 opacity-70">(5)</span></button>
-          <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100">Awaiting PNR <span className="ml-0.5 opacity-70">({pendingCount})</span></button>
-          <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100">Issued <span className="ml-0.5 opacity-70">({issuedCount})</span></button>
+          <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">Awaiting PNR <span className="ml-0.5 opacity-70">({pendingCount})</span></button>
+          <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">Issued <span className="ml-0.5 opacity-70">({issuedCount})</span></button>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-800">
           <svg className="h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-          <input placeholder="Search ref, passenger, agent..." className="w-40 bg-transparent text-xs text-slate-600 placeholder-slate-400 outline-none sm:w-56" />
+          <input placeholder="Search ref, passenger, agent..." className="w-40 bg-transparent text-xs text-slate-600 placeholder-slate-400 outline-none sm:w-56 dark:text-slate-200" />
         </div>
       </div>
 
@@ -76,7 +76,7 @@ export default function IssueTicketPage() {
 
       {/* Issue ticket table */}
       <div className="rounded-xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="border-b border-slate-100 px-6 py-4">
+        <div className="border-b border-slate-100 px-6 py-4 dark:border-slate-800">
           <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Issue Ticket</h2>
           <p className="text-xs text-slate-400">Enter the confirmed PNR for a pending request to generate its ticket</p>
         </div>
@@ -98,15 +98,15 @@ export default function IssueTicketPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {/* REQ-10231 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60 align-top">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700">REQ-10231</td>
-                <td className="px-6 py-3 font-medium text-slate-800">Rajesh Kumar</td>
-                <td className="px-6 py-3 text-slate-600">IndiGo</td>
-                <td className="px-6 py-3"><span className="font-semibold text-slate-800">DEL</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">BOM</span></td>
-                <td className="px-6 py-3 text-slate-700">12 Jul 2026</td>
-                <td className="px-6 py-3 text-slate-500">TravelBox</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">REQ-10231</td>
+                <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Rajesh Kumar</td>
+                <td className="px-6 py-3 text-slate-600 dark:text-slate-300">IndiGo</td>
+                <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">DEL</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">BOM</span></td>
+                <td className="px-6 py-3 text-slate-700 dark:text-slate-200">12 Jul 2026</td>
+                <td className="px-6 py-3 text-slate-500 dark:text-slate-400">TravelBox</td>
                 <td className="px-6 py-3">
                   {issued1 ? (
-                    <span className="font-mono text-xs font-semibold text-emerald-700">{issued1.pnr}</span>
+                    <span className="font-mono text-xs font-semibold text-emerald-700 dark:text-emerald-400">{issued1.pnr}</span>
                   ) : (
                     <>
                       <input
@@ -122,7 +122,7 @@ export default function IssueTicketPage() {
                 </td>
                 <td className="px-6 py-3">
                   {issued1 ? (
-                    <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700">Confirmed</span>
+                    <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">Confirmed</span>
                   ) : (
                     <button
                       onClick={() => { isValidPnr(pnr1) ? setIssued1({ pnr: pnr1.trim().toUpperCase(), issuedAt: "Just now" }) : setError1("Enter a valid PNR (5-8 alphanumeric characters)") }}
@@ -136,15 +136,15 @@ export default function IssueTicketPage() {
 
               {/* REQ-10232 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60 align-top">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700">REQ-10232</td>
-                <td className="px-6 py-3 font-medium text-slate-800">Priya Sharma</td>
-                <td className="px-6 py-3 text-slate-600">Air India</td>
-                <td className="px-6 py-3"><span className="font-semibold text-slate-800">BOM</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">DEL</span></td>
-                <td className="px-6 py-3 text-slate-700">13 Jul 2026</td>
-                <td className="px-6 py-3 text-slate-500">FlyDeal</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">REQ-10232</td>
+                <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Priya Sharma</td>
+                <td className="px-6 py-3 text-slate-600 dark:text-slate-300">Air India</td>
+                <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">BOM</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">DEL</span></td>
+                <td className="px-6 py-3 text-slate-700 dark:text-slate-200">13 Jul 2026</td>
+                <td className="px-6 py-3 text-slate-500 dark:text-slate-400">FlyDeal</td>
                 <td className="px-6 py-3">
                   {issued2 ? (
-                    <span className="font-mono text-xs font-semibold text-emerald-700">{issued2.pnr}</span>
+                    <span className="font-mono text-xs font-semibold text-emerald-700 dark:text-emerald-400">{issued2.pnr}</span>
                   ) : (
                     <>
                       <input
@@ -160,7 +160,7 @@ export default function IssueTicketPage() {
                 </td>
                 <td className="px-6 py-3">
                   {issued2 ? (
-                    <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700">Confirmed</span>
+                    <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">Confirmed</span>
                   ) : (
                     <button
                       onClick={() => { isValidPnr(pnr2) ? setIssued2({ pnr: pnr2.trim().toUpperCase(), issuedAt: "Just now" }) : setError2("Enter a valid PNR (5-8 alphanumeric characters)") }}
@@ -174,15 +174,15 @@ export default function IssueTicketPage() {
 
               {/* REQ-10233 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60 align-top">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700">REQ-10233</td>
-                <td className="px-6 py-3 font-medium text-slate-800">Amit Singh</td>
-                <td className="px-6 py-3 text-slate-600">SpiceJet</td>
-                <td className="px-6 py-3"><span className="font-semibold text-slate-800">BOM</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">GOI</span></td>
-                <td className="px-6 py-3 text-slate-700">14 Jul 2026</td>
-                <td className="px-6 py-3 text-slate-500">StarTravel</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">REQ-10233</td>
+                <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Amit Singh</td>
+                <td className="px-6 py-3 text-slate-600 dark:text-slate-300">SpiceJet</td>
+                <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">BOM</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">GOI</span></td>
+                <td className="px-6 py-3 text-slate-700 dark:text-slate-200">14 Jul 2026</td>
+                <td className="px-6 py-3 text-slate-500 dark:text-slate-400">StarTravel</td>
                 <td className="px-6 py-3">
                   {issued3 ? (
-                    <span className="font-mono text-xs font-semibold text-emerald-700">{issued3.pnr}</span>
+                    <span className="font-mono text-xs font-semibold text-emerald-700 dark:text-emerald-400">{issued3.pnr}</span>
                   ) : (
                     <>
                       <input
@@ -198,7 +198,7 @@ export default function IssueTicketPage() {
                 </td>
                 <td className="px-6 py-3">
                   {issued3 ? (
-                    <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700">Confirmed</span>
+                    <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">Confirmed</span>
                   ) : (
                     <button
                       onClick={() => { isValidPnr(pnr3) ? setIssued3({ pnr: pnr3.trim().toUpperCase(), issuedAt: "Just now" }) : setError3("Enter a valid PNR (5-8 alphanumeric characters)") }}
@@ -212,15 +212,15 @@ export default function IssueTicketPage() {
 
               {/* REQ-10234 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60 align-top">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700">REQ-10234</td>
-                <td className="px-6 py-3 font-medium text-slate-800">Sneha Patel</td>
-                <td className="px-6 py-3 text-slate-600">Vistara</td>
-                <td className="px-6 py-3"><span className="font-semibold text-slate-800">DEL</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">BLR</span></td>
-                <td className="px-6 py-3 text-slate-700">15 Jul 2026</td>
-                <td className="px-6 py-3 text-slate-500">TravelBox</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">REQ-10234</td>
+                <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Sneha Patel</td>
+                <td className="px-6 py-3 text-slate-600 dark:text-slate-300">Vistara</td>
+                <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">DEL</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">BLR</span></td>
+                <td className="px-6 py-3 text-slate-700 dark:text-slate-200">15 Jul 2026</td>
+                <td className="px-6 py-3 text-slate-500 dark:text-slate-400">TravelBox</td>
                 <td className="px-6 py-3">
                   {issued4 ? (
-                    <span className="font-mono text-xs font-semibold text-emerald-700">{issued4.pnr}</span>
+                    <span className="font-mono text-xs font-semibold text-emerald-700 dark:text-emerald-400">{issued4.pnr}</span>
                   ) : (
                     <>
                       <input
@@ -236,7 +236,7 @@ export default function IssueTicketPage() {
                 </td>
                 <td className="px-6 py-3">
                   {issued4 ? (
-                    <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700">Confirmed</span>
+                    <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">Confirmed</span>
                   ) : (
                     <button
                       onClick={() => { isValidPnr(pnr4) ? setIssued4({ pnr: pnr4.trim().toUpperCase(), issuedAt: "Just now" }) : setError4("Enter a valid PNR (5-8 alphanumeric characters)") }}
@@ -250,15 +250,15 @@ export default function IssueTicketPage() {
 
               {/* REQ-10235 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60 align-top">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700">REQ-10235</td>
-                <td className="px-6 py-3 font-medium text-slate-800">Deepa Menon</td>
-                <td className="px-6 py-3 text-slate-600">Air Asia</td>
-                <td className="px-6 py-3"><span className="font-semibold text-slate-800">COK</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">DEL</span></td>
-                <td className="px-6 py-3 text-slate-700">16 Jul 2026</td>
-                <td className="px-6 py-3 text-slate-500">QuickBook</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">REQ-10235</td>
+                <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Deepa Menon</td>
+                <td className="px-6 py-3 text-slate-600 dark:text-slate-300">Air Asia</td>
+                <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">COK</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">DEL</span></td>
+                <td className="px-6 py-3 text-slate-700 dark:text-slate-200">16 Jul 2026</td>
+                <td className="px-6 py-3 text-slate-500 dark:text-slate-400">QuickBook</td>
                 <td className="px-6 py-3">
                   {issued5 ? (
-                    <span className="font-mono text-xs font-semibold text-emerald-700">{issued5.pnr}</span>
+                    <span className="font-mono text-xs font-semibold text-emerald-700 dark:text-emerald-400">{issued5.pnr}</span>
                   ) : (
                     <>
                       <input
@@ -274,7 +274,7 @@ export default function IssueTicketPage() {
                 </td>
                 <td className="px-6 py-3">
                   {issued5 ? (
-                    <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700">Confirmed</span>
+                    <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">Confirmed</span>
                   ) : (
                     <button
                       onClick={() => { isValidPnr(pnr5) ? setIssued5({ pnr: pnr5.trim().toUpperCase(), issuedAt: "Just now" }) : setError5("Enter a valid PNR (5-8 alphanumeric characters)") }}
@@ -292,9 +292,9 @@ export default function IssueTicketPage() {
 
       {/* Recently issued tickets */}
       <div className="rounded-xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4">
+        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
           <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Recently Issued Tickets</h2>
-          <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700">{issuedCount} issued</span>
+          <span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">{issuedCount} issued</span>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
@@ -312,57 +312,57 @@ export default function IssueTicketPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {issued1 && (
                 <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700">{issued1.pnr}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{issued1.pnr}</td>
                   <td className="px-6 py-3 text-xs text-slate-400">REQ-10231</td>
-                  <td className="px-6 py-3 font-medium text-slate-800">Rajesh Kumar</td>
-                  <td className="px-6 py-3"><span className="font-semibold text-slate-800">DEL</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">BOM</span></td>
-                  <td className="px-6 py-3 text-slate-500">TravelBox</td>
+                  <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Rajesh Kumar</td>
+                  <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">DEL</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">BOM</span></td>
+                  <td className="px-6 py-3 text-slate-500 dark:text-slate-400">TravelBox</td>
                   <td className="px-6 py-3 text-xs text-slate-400">{issued1.issuedAt}</td>
-                  <td className="px-6 py-3"><span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700">Confirmed</span></td>
+                  <td className="px-6 py-3"><span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">Confirmed</span></td>
                 </tr>
               )}
               {issued2 && (
                 <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700">{issued2.pnr}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{issued2.pnr}</td>
                   <td className="px-6 py-3 text-xs text-slate-400">REQ-10232</td>
-                  <td className="px-6 py-3 font-medium text-slate-800">Priya Sharma</td>
-                  <td className="px-6 py-3"><span className="font-semibold text-slate-800">BOM</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">DEL</span></td>
-                  <td className="px-6 py-3 text-slate-500">FlyDeal</td>
+                  <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Priya Sharma</td>
+                  <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">BOM</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">DEL</span></td>
+                  <td className="px-6 py-3 text-slate-500 dark:text-slate-400">FlyDeal</td>
                   <td className="px-6 py-3 text-xs text-slate-400">{issued2.issuedAt}</td>
-                  <td className="px-6 py-3"><span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700">Confirmed</span></td>
+                  <td className="px-6 py-3"><span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">Confirmed</span></td>
                 </tr>
               )}
               {issued3 && (
                 <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700">{issued3.pnr}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{issued3.pnr}</td>
                   <td className="px-6 py-3 text-xs text-slate-400">REQ-10233</td>
-                  <td className="px-6 py-3 font-medium text-slate-800">Amit Singh</td>
-                  <td className="px-6 py-3"><span className="font-semibold text-slate-800">BOM</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">GOI</span></td>
-                  <td className="px-6 py-3 text-slate-500">StarTravel</td>
+                  <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Amit Singh</td>
+                  <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">BOM</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">GOI</span></td>
+                  <td className="px-6 py-3 text-slate-500 dark:text-slate-400">StarTravel</td>
                   <td className="px-6 py-3 text-xs text-slate-400">{issued3.issuedAt}</td>
-                  <td className="px-6 py-3"><span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700">Confirmed</span></td>
+                  <td className="px-6 py-3"><span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">Confirmed</span></td>
                 </tr>
               )}
               {issued4 && (
                 <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700">{issued4.pnr}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{issued4.pnr}</td>
                   <td className="px-6 py-3 text-xs text-slate-400">REQ-10234</td>
-                  <td className="px-6 py-3 font-medium text-slate-800">Sneha Patel</td>
-                  <td className="px-6 py-3"><span className="font-semibold text-slate-800">DEL</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">BLR</span></td>
-                  <td className="px-6 py-3 text-slate-500">TravelBox</td>
+                  <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Sneha Patel</td>
+                  <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">DEL</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">BLR</span></td>
+                  <td className="px-6 py-3 text-slate-500 dark:text-slate-400">TravelBox</td>
                   <td className="px-6 py-3 text-xs text-slate-400">{issued4.issuedAt}</td>
-                  <td className="px-6 py-3"><span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700">Confirmed</span></td>
+                  <td className="px-6 py-3"><span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">Confirmed</span></td>
                 </tr>
               )}
               {issued5 && (
                 <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700">{issued5.pnr}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{issued5.pnr}</td>
                   <td className="px-6 py-3 text-xs text-slate-400">REQ-10235</td>
-                  <td className="px-6 py-3 font-medium text-slate-800">Deepa Menon</td>
-                  <td className="px-6 py-3"><span className="font-semibold text-slate-800">COK</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">DEL</span></td>
-                  <td className="px-6 py-3 text-slate-500">QuickBook</td>
+                  <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Deepa Menon</td>
+                  <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">COK</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">DEL</span></td>
+                  <td className="px-6 py-3 text-slate-500 dark:text-slate-400">QuickBook</td>
                   <td className="px-6 py-3 text-xs text-slate-400">{issued5.issuedAt}</td>
-                  <td className="px-6 py-3"><span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700">Confirmed</span></td>
+                  <td className="px-6 py-3"><span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">Confirmed</span></td>
                 </tr>
               )}
               {issuedCount === 0 && (

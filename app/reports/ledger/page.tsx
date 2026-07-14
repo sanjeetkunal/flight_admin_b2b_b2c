@@ -138,11 +138,11 @@ export default function LedgerReportPage() {
   return (
     <div className="space-y-4">
       {/* Filter toolbar */}
-      <div className="rounded-xl border border-slate-100 bg-white p-4 shadow-sm">
+      <div className="rounded-xl border border-slate-100 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
           <div>
-            <label className="mb-1.5 block text-xs font-medium text-slate-500">Agent</label>
-            <select value={agentFilter} onChange={(e) => setAgentFilter(e.target.value)} className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300">
+            <label className="mb-1.5 block text-xs font-medium text-slate-500 dark:text-slate-400">Agent</label>
+            <select value={agentFilter} onChange={(e) => setAgentFilter(e.target.value)} className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200">
               <option value="All">All Agents</option>
               {Object.entries(agentNames).map(([id, name]) => (
                 <option key={id} value={id}>{name}</option>
@@ -150,72 +150,72 @@ export default function LedgerReportPage() {
             </select>
           </div>
           <div>
-            <label className="mb-1.5 block text-xs font-medium text-slate-500">Type</label>
-            <select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value as "All" | "Debit" | "Credit")} className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300">
+            <label className="mb-1.5 block text-xs font-medium text-slate-500 dark:text-slate-400">Type</label>
+            <select value={typeFilter} onChange={(e) => setTypeFilter(e.target.value as "All" | "Debit" | "Credit")} className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200">
               <option value="All">All</option>
               <option value="Debit">Debit</option>
               <option value="Credit">Credit</option>
             </select>
           </div>
           <div>
-            <label className="mb-1.5 block text-xs font-medium text-slate-500">From Date</label>
-            <input type="date" value={dateFrom} onChange={(e) => setDateFrom(e.target.value)} className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300" />
+            <label className="mb-1.5 block text-xs font-medium text-slate-500 dark:text-slate-400">From Date</label>
+            <input type="date" value={dateFrom} onChange={(e) => setDateFrom(e.target.value)} className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200" />
           </div>
           <div>
-            <label className="mb-1.5 block text-xs font-medium text-slate-500">To Date</label>
-            <input type="date" value={dateTo} onChange={(e) => setDateTo(e.target.value)} className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300" />
+            <label className="mb-1.5 block text-xs font-medium text-slate-500 dark:text-slate-400">To Date</label>
+            <input type="date" value={dateTo} onChange={(e) => setDateTo(e.target.value)} className="w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200" />
           </div>
           <div>
-            <label className="mb-1.5 block text-xs font-medium text-slate-500">Search</label>
-            <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+            <label className="mb-1.5 block text-xs font-medium text-slate-500 dark:text-slate-400">Search</label>
+            <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-800">
               <svg className="h-4 w-4 flex-shrink-0 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-              <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Ref, description..." className="w-full bg-transparent text-sm text-slate-600 placeholder-slate-400 outline-none" />
+              <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Ref, description..." className="w-full bg-transparent text-sm text-slate-600 placeholder-slate-400 outline-none dark:text-slate-200" />
             </div>
           </div>
         </div>
         <div className="mt-3 flex items-center justify-end gap-2">
-          <button onClick={resetFilters} className="rounded-lg border border-slate-200 px-4 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50">Reset Filters</button>
+          <button onClick={resetFilters} className="rounded-lg border border-slate-200 px-4 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800">Reset Filters</button>
           <button className="rounded-lg bg-blue-600 px-4 py-2 text-xs font-medium text-white hover:bg-blue-700 transition-colors">Export</button>
         </div>
       </div>
 
       {/* Stat chips */}
       <div className="flex flex-wrap items-center gap-3">
-        <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-800">
           <span className="h-2 w-2 rounded-full bg-slate-400" />
-          <span className="text-sm font-bold text-slate-700">{formatInr(openingForView)}</span>
-          <span className="text-xs text-slate-500">Opening Balance</span>
+          <span className="text-sm font-bold text-slate-700 dark:text-slate-200">{formatInr(openingForView)}</span>
+          <span className="text-xs text-slate-500 dark:text-slate-400">Opening Balance</span>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-red-100 bg-red-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-red-100 bg-red-50 px-3 py-2 dark:border-red-500/20 dark:bg-red-500/10">
           <span className="h-2 w-2 rounded-full bg-red-500" />
-          <span className="text-sm font-bold text-red-600">{formatInr(totalDebit)}</span>
-          <span className="text-xs text-red-600/70">Total Debit</span>
+          <span className="text-sm font-bold text-red-600 dark:text-red-400">{formatInr(totalDebit)}</span>
+          <span className="text-xs text-red-600/70 dark:text-red-400/70">Total Debit</span>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2 dark:border-emerald-500/20 dark:bg-emerald-500/10">
           <span className="h-2 w-2 rounded-full bg-emerald-500" />
-          <span className="text-sm font-bold text-emerald-600">{formatInr(totalCredit)}</span>
-          <span className="text-xs text-emerald-600/70">Total Credit</span>
+          <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400">{formatInr(totalCredit)}</span>
+          <span className="text-xs text-emerald-600/70 dark:text-emerald-400/70">Total Credit</span>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-blue-100 bg-blue-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 dark:border-blue-500/20 dark:bg-blue-500/10">
           <span className="h-2 w-2 rounded-full bg-blue-500" />
-          <span className="text-sm font-bold text-blue-600">{formatInr(closingForView)}</span>
-          <span className="text-xs text-blue-600/70">Closing Balance</span>
+          <span className="text-sm font-bold text-blue-600 dark:text-blue-400">{formatInr(closingForView)}</span>
+          <span className="text-xs text-blue-600/70 dark:text-blue-400/70">Closing Balance</span>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-violet-100 bg-violet-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-violet-100 bg-violet-50 px-3 py-2 dark:border-violet-500/20 dark:bg-violet-500/10">
           <span className="h-2 w-2 rounded-full bg-violet-500" />
-          <span className="text-sm font-bold text-violet-600">{filtered.length}</span>
-          <span className="text-xs text-violet-600/70">Entries</span>
+          <span className="text-sm font-bold text-violet-600 dark:text-violet-400">{filtered.length}</span>
+          <span className="text-xs text-violet-600/70 dark:text-violet-400/70">Entries</span>
         </div>
       </div>
 
       {/* Ledger table */}
       <div className="rounded-xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4">
+        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
           <div>
             <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Agent Ledger Report</h2>
             <p className="text-xs text-slate-400">Debit / credit transactions and running balance per agent</p>
           </div>
-          <span className="rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-700">{filtered.length} entries</span>
+          <span className="rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-500/10 dark:text-blue-400">{filtered.length} entries</span>
         </div>
 
         <div className="overflow-x-auto">
@@ -235,16 +235,16 @@ export default function LedgerReportPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {filtered.map((e) => (
                 <tr key={e.id} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 text-xs text-slate-500 whitespace-nowrap">{formatDisplayDate(e.date)}</td>
-                  <td className="px-6 py-3 font-medium text-slate-800 whitespace-nowrap">{e.agentName}</td>
-                  <td className="px-6 py-3 font-mono text-xs text-blue-700 whitespace-nowrap">{e.ref}</td>
-                  <td className="px-6 py-3 text-slate-600">{e.description}</td>
+                  <td className="px-6 py-3 text-xs text-slate-500 whitespace-nowrap dark:text-slate-400">{formatDisplayDate(e.date)}</td>
+                  <td className="px-6 py-3 font-medium text-slate-800 whitespace-nowrap dark:text-slate-100">{e.agentName}</td>
+                  <td className="px-6 py-3 font-mono text-xs text-blue-700 whitespace-nowrap dark:text-blue-400">{e.ref}</td>
+                  <td className="px-6 py-3 text-slate-600 dark:text-slate-300">{e.description}</td>
                   <td className="px-6 py-3">
-                    <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${e.type === "Debit" ? "bg-red-100 text-red-700" : "bg-emerald-100 text-emerald-700"}`}>{e.type}</span>
+                    <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${e.type === "Debit" ? "bg-red-100 text-red-700 dark:bg-red-500/10 dark:text-red-400" : "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400"}`}>{e.type}</span>
                   </td>
-                  <td className="px-6 py-3 text-right font-medium text-red-600">{e.type === "Debit" ? formatInr(e.amount) : "-"}</td>
-                  <td className="px-6 py-3 text-right font-medium text-emerald-600">{e.type === "Credit" ? formatInr(e.amount) : "-"}</td>
-                  <td className="px-6 py-3 text-right font-semibold text-slate-800 whitespace-nowrap">{formatInr(e.balance)}</td>
+                  <td className="px-6 py-3 text-right font-medium text-red-600 dark:text-red-400">{e.type === "Debit" ? formatInr(e.amount) : "-"}</td>
+                  <td className="px-6 py-3 text-right font-medium text-emerald-600 dark:text-emerald-400">{e.type === "Credit" ? formatInr(e.amount) : "-"}</td>
+                  <td className="px-6 py-3 text-right font-semibold text-slate-800 whitespace-nowrap dark:text-slate-100">{formatInr(e.balance)}</td>
                 </tr>
               ))}
               {filtered.length === 0 && (
@@ -256,8 +256,8 @@ export default function LedgerReportPage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4">
-          <p className="text-xs text-slate-500">Showing {filtered.length} of {ledgerWithBalance.length} entries</p>
+        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
+          <p className="text-xs text-slate-500 dark:text-slate-400">Showing {filtered.length} of {ledgerWithBalance.length} entries</p>
         </div>
       </div>
     </div>

@@ -9,53 +9,53 @@ export default function RailwaysPendingPnrPage() {
   return (
     <div className="space-y-4">
       {/* Filter toolbar */}
-      <div className="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between dark:border-slate-800 dark:bg-slate-900">
         <div className="flex flex-wrap items-center gap-2">
           <button className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm">All <span className="ml-0.5 opacity-70">(7)</span></button>
-          <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100">SL <span className="ml-0.5 opacity-70">(4)</span></button>
-          <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100">3A <span className="ml-0.5 opacity-70">(2)</span></button>
-          <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100">2A <span className="ml-0.5 opacity-70">(1)</span></button>
-          <span className="mx-1 h-4 w-px bg-slate-200" />
-          <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100">Oldest First</button>
+          <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">SL <span className="ml-0.5 opacity-70">(4)</span></button>
+          <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">3A <span className="ml-0.5 opacity-70">(2)</span></button>
+          <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">2A <span className="ml-0.5 opacity-70">(1)</span></button>
+          <span className="mx-1 h-4 w-px bg-slate-200 dark:bg-slate-700" />
+          <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">Oldest First</button>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-800">
           <svg className="h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-          <input placeholder="Search PNR ref, passenger, agent..." className="w-40 bg-transparent text-xs text-slate-600 placeholder-slate-400 outline-none sm:w-56" />
+          <input placeholder="Search PNR ref, passenger, agent..." className="w-40 bg-transparent text-xs text-slate-600 placeholder-slate-400 outline-none sm:w-56 dark:text-slate-200" />
         </div>
       </div>
 
       {/* Compact stat chips */}
       <div className="flex flex-wrap items-center gap-3">
-        <div className="flex items-center gap-2 rounded-lg border border-amber-100 bg-amber-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-amber-100 bg-amber-50 px-3 py-2 dark:border-amber-500/20 dark:bg-amber-500/10">
           <span className="h-2 w-2 rounded-full bg-amber-500" />
-          <span className="text-sm font-bold text-amber-600">7</span>
-          <span className="text-xs text-amber-600/70">Pending</span>
+          <span className="text-sm font-bold text-amber-600 dark:text-amber-400">7</span>
+          <span className="text-xs text-amber-600/70 dark:text-amber-400/70">Pending</span>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-green-100 bg-green-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-green-100 bg-green-50 px-3 py-2 dark:border-green-500/20 dark:bg-green-500/10">
           <span className="h-2 w-2 rounded-full bg-green-500" />
-          <span className="text-sm font-bold text-green-600">15</span>
-          <span className="text-xs text-green-600/70">Total Pax</span>
+          <span className="text-sm font-bold text-green-600 dark:text-green-400">15</span>
+          <span className="text-xs text-green-600/70 dark:text-green-400/70">Total Pax</span>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-violet-100 bg-violet-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-violet-100 bg-violet-50 px-3 py-2 dark:border-violet-500/20 dark:bg-violet-500/10">
           <span className="h-2 w-2 rounded-full bg-violet-500" />
-          <span className="text-sm font-bold text-violet-600">2 days</span>
-          <span className="text-xs text-violet-600/70">Oldest</span>
+          <span className="text-sm font-bold text-violet-600 dark:text-violet-400">2 days</span>
+          <span className="text-xs text-violet-600/70 dark:text-violet-400/70">Oldest</span>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2 dark:border-emerald-500/20 dark:bg-emerald-500/10">
           <span className="h-2 w-2 rounded-full bg-emerald-500" />
-          <span className="text-sm font-bold text-emerald-600">5</span>
-          <span className="text-xs text-emerald-600/70">Agents</span>
+          <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400">5</span>
+          <span className="text-xs text-emerald-600/70 dark:text-emerald-400/70">Agents</span>
         </div>
       </div>
 
       {/* Table card */}
       <div className="rounded-xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4">
+        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
           <div>
             <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Pending PNR Requests</h2>
             <p className="text-xs text-slate-400">Bookings raised by agents that are yet to be issued a confirmed PNR</p>
           </div>
-          <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700">7 pending</span>
+          <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-500/10 dark:text-amber-400">7 pending</span>
         </div>
 
         <div className="overflow-x-auto">
@@ -78,16 +78,16 @@ export default function RailwaysPendingPnrPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {/* RRQ-2031 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700">RRQ-2031</td>
-                <td className="px-6 py-3 font-medium text-slate-800">Rajesh Kumar</td>
-                <td className="px-6 py-3"><p className="font-semibold text-slate-800">12951</p><p className="text-xs text-slate-400">Mumbai Rajdhani</p></td>
-                <td className="px-6 py-3"><span className="font-semibold text-slate-800">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">MMCT</span></td>
-                <td className="px-6 py-3 text-slate-700">12 Jul 2026</td>
-                <td className="px-6 py-3 text-xs text-slate-600">3A</td>
-                <td className="px-6 py-3 text-center text-slate-700">2</td>
-                <td className="px-6 py-3 text-slate-500">TravelBox</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RRQ-2031</td>
+                <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Rajesh Kumar</td>
+                <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12951</p><p className="text-xs text-slate-400">Mumbai Rajdhani</p></td>
+                <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">MMCT</span></td>
+                <td className="px-6 py-3 text-slate-700 dark:text-slate-200">12 Jul 2026</td>
+                <td className="px-6 py-3 text-xs text-slate-600 dark:text-slate-300">3A</td>
+                <td className="px-6 py-3 text-center text-slate-700 dark:text-slate-200">2</td>
+                <td className="px-6 py-3 text-slate-500 dark:text-slate-400">TravelBox</td>
                 <td className="px-6 py-3 text-xs text-slate-400">09 Jul, 10:12</td>
-                <td className="px-6 py-3"><span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700">Pending</span></td>
+                <td className="px-6 py-3"><span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-500/10 dark:text-amber-400">Pending</span></td>
                 <td className="px-6 py-3">
                   <div className="flex items-center gap-2">
                     <button
@@ -142,7 +142,7 @@ export default function RailwaysPendingPnrPage() {
                           { label: "Status", value: "Pending" },
                         ],
                       })}
-                      className="text-xs text-slate-400 hover:text-slate-600"
+                      className="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
                     >
                       View
                     </button>
@@ -152,16 +152,16 @@ export default function RailwaysPendingPnrPage() {
 
               {/* RRQ-2032 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700">RRQ-2032</td>
-                <td className="px-6 py-3 font-medium text-slate-800">Priya Sharma</td>
-                <td className="px-6 py-3"><p className="font-semibold text-slate-800">12301</p><p className="text-xs text-slate-400">Howrah Rajdhani</p></td>
-                <td className="px-6 py-3"><span className="font-semibold text-slate-800">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">HWH</span></td>
-                <td className="px-6 py-3 text-slate-700">13 Jul 2026</td>
-                <td className="px-6 py-3 text-xs text-slate-600">2A</td>
-                <td className="px-6 py-3 text-center text-slate-700">1</td>
-                <td className="px-6 py-3 text-slate-500">FlyDeal</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RRQ-2032</td>
+                <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Priya Sharma</td>
+                <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12301</p><p className="text-xs text-slate-400">Howrah Rajdhani</p></td>
+                <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">HWH</span></td>
+                <td className="px-6 py-3 text-slate-700 dark:text-slate-200">13 Jul 2026</td>
+                <td className="px-6 py-3 text-xs text-slate-600 dark:text-slate-300">2A</td>
+                <td className="px-6 py-3 text-center text-slate-700 dark:text-slate-200">1</td>
+                <td className="px-6 py-3 text-slate-500 dark:text-slate-400">FlyDeal</td>
                 <td className="px-6 py-3 text-xs text-slate-400">09 Jul, 09:48</td>
-                <td className="px-6 py-3"><span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700">Pending</span></td>
+                <td className="px-6 py-3"><span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-500/10 dark:text-amber-400">Pending</span></td>
                 <td className="px-6 py-3">
                   <div className="flex items-center gap-2">
                     <button
@@ -216,7 +216,7 @@ export default function RailwaysPendingPnrPage() {
                           { label: "Status", value: "Pending" },
                         ],
                       })}
-                      className="text-xs text-slate-400 hover:text-slate-600"
+                      className="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
                     >
                       View
                     </button>
@@ -226,16 +226,16 @@ export default function RailwaysPendingPnrPage() {
 
               {/* RRQ-2033 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700">RRQ-2033</td>
-                <td className="px-6 py-3 font-medium text-slate-800">Amit Singh</td>
-                <td className="px-6 py-3"><p className="font-semibold text-slate-800">12002</p><p className="text-xs text-slate-400">Bhopal Shatabdi</p></td>
-                <td className="px-6 py-3"><span className="font-semibold text-slate-800">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">BPL</span></td>
-                <td className="px-6 py-3 text-slate-700">14 Jul 2026</td>
-                <td className="px-6 py-3 text-xs text-slate-600">SL</td>
-                <td className="px-6 py-3 text-center text-slate-700">4</td>
-                <td className="px-6 py-3 text-slate-500">StarTravel</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RRQ-2033</td>
+                <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Amit Singh</td>
+                <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12002</p><p className="text-xs text-slate-400">Bhopal Shatabdi</p></td>
+                <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">BPL</span></td>
+                <td className="px-6 py-3 text-slate-700 dark:text-slate-200">14 Jul 2026</td>
+                <td className="px-6 py-3 text-xs text-slate-600 dark:text-slate-300">SL</td>
+                <td className="px-6 py-3 text-center text-slate-700 dark:text-slate-200">4</td>
+                <td className="px-6 py-3 text-slate-500 dark:text-slate-400">StarTravel</td>
                 <td className="px-6 py-3 text-xs text-slate-400">08 Jul, 22:05</td>
-                <td className="px-6 py-3"><span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700">Pending</span></td>
+                <td className="px-6 py-3"><span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-500/10 dark:text-amber-400">Pending</span></td>
                 <td className="px-6 py-3">
                   <div className="flex items-center gap-2">
                     <button
@@ -290,7 +290,7 @@ export default function RailwaysPendingPnrPage() {
                           { label: "Status", value: "Pending" },
                         ],
                       })}
-                      className="text-xs text-slate-400 hover:text-slate-600"
+                      className="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
                     >
                       View
                     </button>
@@ -300,16 +300,16 @@ export default function RailwaysPendingPnrPage() {
 
               {/* RRQ-2034 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700">RRQ-2034</td>
-                <td className="px-6 py-3 font-medium text-slate-800">Sneha Patel</td>
-                <td className="px-6 py-3"><p className="font-semibold text-slate-800">12009</p><p className="text-xs text-slate-400">Mumbai Shatabdi</p></td>
-                <td className="px-6 py-3"><span className="font-semibold text-slate-800">MMCT</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">PUNE</span></td>
-                <td className="px-6 py-3 text-slate-700">15 Jul 2026</td>
-                <td className="px-6 py-3 text-xs text-slate-600">SL</td>
-                <td className="px-6 py-3 text-center text-slate-700">2</td>
-                <td className="px-6 py-3 text-slate-500">TravelBox</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RRQ-2034</td>
+                <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Sneha Patel</td>
+                <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12009</p><p className="text-xs text-slate-400">Mumbai Shatabdi</p></td>
+                <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">MMCT</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">PUNE</span></td>
+                <td className="px-6 py-3 text-slate-700 dark:text-slate-200">15 Jul 2026</td>
+                <td className="px-6 py-3 text-xs text-slate-600 dark:text-slate-300">SL</td>
+                <td className="px-6 py-3 text-center text-slate-700 dark:text-slate-200">2</td>
+                <td className="px-6 py-3 text-slate-500 dark:text-slate-400">TravelBox</td>
                 <td className="px-6 py-3 text-xs text-slate-400">08 Jul, 18:30</td>
-                <td className="px-6 py-3"><span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700">Pending</span></td>
+                <td className="px-6 py-3"><span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-500/10 dark:text-amber-400">Pending</span></td>
                 <td className="px-6 py-3">
                   <div className="flex items-center gap-2">
                     <button
@@ -364,7 +364,7 @@ export default function RailwaysPendingPnrPage() {
                           { label: "Status", value: "Pending" },
                         ],
                       })}
-                      className="text-xs text-slate-400 hover:text-slate-600"
+                      className="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
                     >
                       View
                     </button>
@@ -374,16 +374,16 @@ export default function RailwaysPendingPnrPage() {
 
               {/* RRQ-2035 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700">RRQ-2035</td>
-                <td className="px-6 py-3 font-medium text-slate-800">Deepa Menon</td>
-                <td className="px-6 py-3"><p className="font-semibold text-slate-800">12625</p><p className="text-xs text-slate-400">Kerala Express</p></td>
-                <td className="px-6 py-3"><span className="font-semibold text-slate-800">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">TVC</span></td>
-                <td className="px-6 py-3 text-slate-700">16 Jul 2026</td>
-                <td className="px-6 py-3 text-xs text-slate-600">SL</td>
-                <td className="px-6 py-3 text-center text-slate-700">1</td>
-                <td className="px-6 py-3 text-slate-500">QuickBook</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RRQ-2035</td>
+                <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Deepa Menon</td>
+                <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12625</p><p className="text-xs text-slate-400">Kerala Express</p></td>
+                <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">TVC</span></td>
+                <td className="px-6 py-3 text-slate-700 dark:text-slate-200">16 Jul 2026</td>
+                <td className="px-6 py-3 text-xs text-slate-600 dark:text-slate-300">SL</td>
+                <td className="px-6 py-3 text-center text-slate-700 dark:text-slate-200">1</td>
+                <td className="px-6 py-3 text-slate-500 dark:text-slate-400">QuickBook</td>
                 <td className="px-6 py-3 text-xs text-slate-400">08 Jul, 15:20</td>
-                <td className="px-6 py-3"><span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700">Pending</span></td>
+                <td className="px-6 py-3"><span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-500/10 dark:text-amber-400">Pending</span></td>
                 <td className="px-6 py-3">
                   <div className="flex items-center gap-2">
                     <button
@@ -438,7 +438,7 @@ export default function RailwaysPendingPnrPage() {
                           { label: "Status", value: "Pending" },
                         ],
                       })}
-                      className="text-xs text-slate-400 hover:text-slate-600"
+                      className="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
                     >
                       View
                     </button>
@@ -448,16 +448,16 @@ export default function RailwaysPendingPnrPage() {
 
               {/* RRQ-2036 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700">RRQ-2036</td>
-                <td className="px-6 py-3 font-medium text-slate-800">Vikram Nair</td>
-                <td className="px-6 py-3"><p className="font-semibold text-slate-800">22120</p><p className="text-xs text-slate-400">Tejas Express</p></td>
-                <td className="px-6 py-3"><span className="font-semibold text-slate-800">CSMT</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">KYNR</span></td>
-                <td className="px-6 py-3 text-slate-700">17 Jul 2026</td>
-                <td className="px-6 py-3 text-xs text-slate-600">3A</td>
-                <td className="px-6 py-3 text-center text-slate-700">3</td>
-                <td className="px-6 py-3 text-slate-500">Royal Wings</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RRQ-2036</td>
+                <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Vikram Nair</td>
+                <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">22120</p><p className="text-xs text-slate-400">Tejas Express</p></td>
+                <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">CSMT</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">KYNR</span></td>
+                <td className="px-6 py-3 text-slate-700 dark:text-slate-200">17 Jul 2026</td>
+                <td className="px-6 py-3 text-xs text-slate-600 dark:text-slate-300">3A</td>
+                <td className="px-6 py-3 text-center text-slate-700 dark:text-slate-200">3</td>
+                <td className="px-6 py-3 text-slate-500 dark:text-slate-400">Royal Wings</td>
                 <td className="px-6 py-3 text-xs text-slate-400">07 Jul, 11:40</td>
-                <td className="px-6 py-3"><span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700">Pending</span></td>
+                <td className="px-6 py-3"><span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-500/10 dark:text-amber-400">Pending</span></td>
                 <td className="px-6 py-3">
                   <div className="flex items-center gap-2">
                     <button
@@ -512,7 +512,7 @@ export default function RailwaysPendingPnrPage() {
                           { label: "Status", value: "Pending" },
                         ],
                       })}
-                      className="text-xs text-slate-400 hover:text-slate-600"
+                      className="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
                     >
                       View
                     </button>
@@ -522,16 +522,16 @@ export default function RailwaysPendingPnrPage() {
 
               {/* RRQ-2037 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700">RRQ-2037</td>
-                <td className="px-6 py-3 font-medium text-slate-800">Ravi Gupta</td>
-                <td className="px-6 py-3"><p className="font-semibold text-slate-800">12953</p><p className="text-xs text-slate-400">August Kranti Raj</p></td>
-                <td className="px-6 py-3"><span className="font-semibold text-slate-800">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">MMCT</span></td>
-                <td className="px-6 py-3 text-slate-700">18 Jul 2026</td>
-                <td className="px-6 py-3 text-xs text-slate-600">SL</td>
-                <td className="px-6 py-3 text-center text-slate-700">2</td>
-                <td className="px-6 py-3 text-slate-500">StarTravel</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RRQ-2037</td>
+                <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Ravi Gupta</td>
+                <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12953</p><p className="text-xs text-slate-400">August Kranti Raj</p></td>
+                <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">MMCT</span></td>
+                <td className="px-6 py-3 text-slate-700 dark:text-slate-200">18 Jul 2026</td>
+                <td className="px-6 py-3 text-xs text-slate-600 dark:text-slate-300">SL</td>
+                <td className="px-6 py-3 text-center text-slate-700 dark:text-slate-200">2</td>
+                <td className="px-6 py-3 text-slate-500 dark:text-slate-400">StarTravel</td>
                 <td className="px-6 py-3 text-xs text-slate-400">07 Jul, 09:15</td>
-                <td className="px-6 py-3"><span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700">Pending</span></td>
+                <td className="px-6 py-3"><span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-500/10 dark:text-amber-400">Pending</span></td>
                 <td className="px-6 py-3">
                   <div className="flex items-center gap-2">
                     <button
@@ -586,7 +586,7 @@ export default function RailwaysPendingPnrPage() {
                           { label: "Status", value: "Pending" },
                         ],
                       })}
-                      className="text-xs text-slate-400 hover:text-slate-600"
+                      className="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
                     >
                       View
                     </button>
@@ -597,8 +597,8 @@ export default function RailwaysPendingPnrPage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4">
-          <p className="text-xs text-slate-500">Showing 7 of 7 pending requests</p>
+        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
+          <p className="text-xs text-slate-500 dark:text-slate-400">Showing 7 of 7 pending requests</p>
           <div className="flex items-center gap-1">
             <button className="h-7 min-w-7 rounded-md bg-green-600 px-2 text-xs font-medium text-white">1</button>
           </div>

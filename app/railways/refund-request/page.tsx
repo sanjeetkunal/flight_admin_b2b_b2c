@@ -9,53 +9,53 @@ export default function RailwaysRefundRequestPage() {
   return (
     <div className="space-y-4">
       {/* Filter toolbar */}
-      <div className="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between dark:border-slate-800 dark:bg-slate-900">
         <div className="flex flex-wrap items-center gap-2">
           <button className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm">All <span className="ml-0.5 opacity-70">(5)</span></button>
-          <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100">New Request <span className="ml-0.5 opacity-70">(3)</span></button>
-          <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100">Approved <span className="ml-0.5 opacity-70">(1)</span></button>
-          <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100">Rejected <span className="ml-0.5 opacity-70">(1)</span></button>
-          <span className="mx-1 h-4 w-px bg-slate-200" />
-          <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100">Oldest First</button>
+          <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">New Request <span className="ml-0.5 opacity-70">(3)</span></button>
+          <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">Approved <span className="ml-0.5 opacity-70">(1)</span></button>
+          <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">Rejected <span className="ml-0.5 opacity-70">(1)</span></button>
+          <span className="mx-1 h-4 w-px bg-slate-200 dark:bg-slate-700" />
+          <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">Oldest First</button>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-800">
           <svg className="h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-          <input placeholder="Search PNR, passenger, agent..." className="w-40 bg-transparent text-xs text-slate-600 placeholder-slate-400 outline-none sm:w-56" />
+          <input placeholder="Search PNR, passenger, agent..." className="w-40 bg-transparent text-xs text-slate-600 placeholder-slate-400 outline-none sm:w-56 dark:text-slate-200" />
         </div>
       </div>
 
       {/* Compact stat chips */}
       <div className="flex flex-wrap items-center gap-3">
-        <div className="flex items-center gap-2 rounded-lg border border-amber-100 bg-amber-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-amber-100 bg-amber-50 px-3 py-2 dark:border-amber-500/20 dark:bg-amber-500/10">
           <span className="h-2 w-2 rounded-full bg-amber-500" />
-          <span className="text-sm font-bold text-amber-600">3</span>
-          <span className="text-xs text-amber-600/70">New Requests</span>
+          <span className="text-sm font-bold text-amber-600 dark:text-amber-400">3</span>
+          <span className="text-xs text-amber-600/70 dark:text-amber-400/70">New Requests</span>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-green-100 bg-green-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-green-100 bg-green-50 px-3 py-2 dark:border-green-500/20 dark:bg-green-500/10">
           <span className="h-2 w-2 rounded-full bg-green-500" />
-          <span className="text-sm font-bold text-green-600">₹5,500</span>
-          <span className="text-xs text-green-600/70">Requested Value</span>
+          <span className="text-sm font-bold text-green-600 dark:text-green-400">₹5,500</span>
+          <span className="text-xs text-green-600/70 dark:text-green-400/70">Requested Value</span>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2 dark:border-emerald-500/20 dark:bg-emerald-500/10">
           <span className="h-2 w-2 rounded-full bg-emerald-500" />
-          <span className="text-sm font-bold text-emerald-600">1</span>
-          <span className="text-xs text-emerald-600/70">Approved Today</span>
+          <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400">1</span>
+          <span className="text-xs text-emerald-600/70 dark:text-emerald-400/70">Approved Today</span>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-red-100 bg-red-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-red-100 bg-red-50 px-3 py-2 dark:border-red-500/20 dark:bg-red-500/10">
           <span className="h-2 w-2 rounded-full bg-red-500" />
-          <span className="text-sm font-bold text-red-600">1</span>
-          <span className="text-xs text-red-600/70">Rejected</span>
+          <span className="text-sm font-bold text-red-600 dark:text-red-400">1</span>
+          <span className="text-xs text-red-600/70 dark:text-red-400/70">Rejected</span>
         </div>
       </div>
 
       {/* Table card */}
       <div className="rounded-xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4">
+        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
           <div>
             <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Refund Requests</h2>
             <p className="text-xs text-slate-400">Refund requests raised by agents on cancelled train bookings, awaiting admin approval</p>
           </div>
-          <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700">3 new</span>
+          <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-500/10 dark:text-amber-400">3 new</span>
         </div>
 
         <div className="overflow-x-auto">
@@ -78,16 +78,16 @@ export default function RailwaysRefundRequestPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {/* TRF-6001 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700">TRF-6001</td>
-                <td className="px-6 py-3 font-mono text-xs text-slate-500">4567890123</td>
-                <td className="px-6 py-3 font-medium text-slate-800">Deepa Menon</td>
-                <td className="px-6 py-3 text-slate-600">12625 Kerala Express</td>
-                <td className="px-6 py-3"><span className="font-semibold text-slate-800">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">TVC</span></td>
-                <td className="px-6 py-3 font-semibold text-slate-800">₹850</td>
-                <td className="px-6 py-3 text-xs text-slate-600">Passenger request</td>
-                <td className="px-6 py-3 text-slate-500">QuickBook</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">TRF-6001</td>
+                <td className="px-6 py-3 font-mono text-xs text-slate-500 dark:text-slate-400">4567890123</td>
+                <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Deepa Menon</td>
+                <td className="px-6 py-3 text-slate-600 dark:text-slate-300">12625 Kerala Express</td>
+                <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">TVC</span></td>
+                <td className="px-6 py-3 font-semibold text-slate-800 dark:text-slate-100">₹850</td>
+                <td className="px-6 py-3 text-xs text-slate-600 dark:text-slate-300">Passenger request</td>
+                <td className="px-6 py-3 text-slate-500 dark:text-slate-400">QuickBook</td>
                 <td className="px-6 py-3 text-xs text-slate-400">09 Jul, 11:20</td>
-                <td className="px-6 py-3"><span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700">New Request</span></td>
+                <td className="px-6 py-3"><span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-500/10 dark:text-amber-400">New Request</span></td>
                 <td className="px-6 py-3">
                   <div className="flex items-center gap-2">
                     <button
@@ -142,7 +142,7 @@ export default function RailwaysRefundRequestPage() {
                           { label: "Status", value: "New Request" },
                         ],
                       })}
-                      className="text-xs text-slate-400 hover:text-slate-600"
+                      className="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
                     >
                       View
                     </button>
@@ -152,16 +152,16 @@ export default function RailwaysRefundRequestPage() {
 
               {/* TRF-6002 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700">TRF-6002</td>
-                <td className="px-6 py-3 font-mono text-xs text-slate-500">5678901234</td>
-                <td className="px-6 py-3 font-medium text-slate-800">Ravi Gupta</td>
-                <td className="px-6 py-3 text-slate-600">12953 August Kranti Raj</td>
-                <td className="px-6 py-3"><span className="font-semibold text-slate-800">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">MMCT</span></td>
-                <td className="px-6 py-3 font-semibold text-slate-800">₹1,450</td>
-                <td className="px-6 py-3 text-xs text-slate-600">Train rescheduled</td>
-                <td className="px-6 py-3 text-slate-500">StarTravel</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">TRF-6002</td>
+                <td className="px-6 py-3 font-mono text-xs text-slate-500 dark:text-slate-400">5678901234</td>
+                <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Ravi Gupta</td>
+                <td className="px-6 py-3 text-slate-600 dark:text-slate-300">12953 August Kranti Raj</td>
+                <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">MMCT</span></td>
+                <td className="px-6 py-3 font-semibold text-slate-800 dark:text-slate-100">₹1,450</td>
+                <td className="px-6 py-3 text-xs text-slate-600 dark:text-slate-300">Train rescheduled</td>
+                <td className="px-6 py-3 text-slate-500 dark:text-slate-400">StarTravel</td>
                 <td className="px-6 py-3 text-xs text-slate-400">09 Jul, 09:05</td>
-                <td className="px-6 py-3"><span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700">New Request</span></td>
+                <td className="px-6 py-3"><span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-500/10 dark:text-amber-400">New Request</span></td>
                 <td className="px-6 py-3">
                   <div className="flex items-center gap-2">
                     <button
@@ -216,7 +216,7 @@ export default function RailwaysRefundRequestPage() {
                           { label: "Status", value: "New Request" },
                         ],
                       })}
-                      className="text-xs text-slate-400 hover:text-slate-600"
+                      className="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
                     >
                       View
                     </button>
@@ -226,16 +226,16 @@ export default function RailwaysRefundRequestPage() {
 
               {/* TRF-6003 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700">TRF-6003</td>
-                <td className="px-6 py-3 font-mono text-xs text-slate-500">6789012345</td>
-                <td className="px-6 py-3 font-medium text-slate-800">Meera Iyer</td>
-                <td className="px-6 py-3 text-slate-600">22120 Tejas Express</td>
-                <td className="px-6 py-3"><span className="font-semibold text-slate-800">CSMT</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">KYNR</span></td>
-                <td className="px-6 py-3 font-semibold text-slate-800">₹3,200</td>
-                <td className="px-6 py-3 text-xs text-slate-600">Duplicate booking</td>
-                <td className="px-6 py-3 text-slate-500">FlyDeal</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">TRF-6003</td>
+                <td className="px-6 py-3 font-mono text-xs text-slate-500 dark:text-slate-400">6789012345</td>
+                <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Meera Iyer</td>
+                <td className="px-6 py-3 text-slate-600 dark:text-slate-300">22120 Tejas Express</td>
+                <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">CSMT</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">KYNR</span></td>
+                <td className="px-6 py-3 font-semibold text-slate-800 dark:text-slate-100">₹3,200</td>
+                <td className="px-6 py-3 text-xs text-slate-600 dark:text-slate-300">Duplicate booking</td>
+                <td className="px-6 py-3 text-slate-500 dark:text-slate-400">FlyDeal</td>
                 <td className="px-6 py-3 text-xs text-slate-400">08 Jul, 20:40</td>
-                <td className="px-6 py-3"><span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700">New Request</span></td>
+                <td className="px-6 py-3"><span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-500/10 dark:text-amber-400">New Request</span></td>
                 <td className="px-6 py-3">
                   <div className="flex items-center gap-2">
                     <button
@@ -290,7 +290,7 @@ export default function RailwaysRefundRequestPage() {
                           { label: "Status", value: "New Request" },
                         ],
                       })}
-                      className="text-xs text-slate-400 hover:text-slate-600"
+                      className="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
                     >
                       View
                     </button>
@@ -300,16 +300,16 @@ export default function RailwaysRefundRequestPage() {
 
               {/* TRF-5998 — already approved, view only */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700">TRF-5998</td>
-                <td className="px-6 py-3 font-mono text-xs text-slate-500">7890123456</td>
-                <td className="px-6 py-3 font-medium text-slate-800">Priya Sharma</td>
-                <td className="px-6 py-3 text-slate-600">12301 Howrah Rajdhani</td>
-                <td className="px-6 py-3"><span className="font-semibold text-slate-800">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">HWH</span></td>
-                <td className="px-6 py-3 font-semibold text-slate-800">₹2,890</td>
-                <td className="px-6 py-3 text-xs text-slate-600">Railways cancelled train</td>
-                <td className="px-6 py-3 text-slate-500">TravelBox</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">TRF-5998</td>
+                <td className="px-6 py-3 font-mono text-xs text-slate-500 dark:text-slate-400">7890123456</td>
+                <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Priya Sharma</td>
+                <td className="px-6 py-3 text-slate-600 dark:text-slate-300">12301 Howrah Rajdhani</td>
+                <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">HWH</span></td>
+                <td className="px-6 py-3 font-semibold text-slate-800 dark:text-slate-100">₹2,890</td>
+                <td className="px-6 py-3 text-xs text-slate-600 dark:text-slate-300">Railways cancelled train</td>
+                <td className="px-6 py-3 text-slate-500 dark:text-slate-400">TravelBox</td>
                 <td className="px-6 py-3 text-xs text-slate-400">07 Jul, 14:12</td>
-                <td className="px-6 py-3"><span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700">Approved</span></td>
+                <td className="px-6 py-3"><span className="rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">Approved</span></td>
                 <td className="px-6 py-3">
                   <div className="flex items-center gap-2">
                     <span className="text-xs text-slate-300">—</span>
@@ -331,7 +331,7 @@ export default function RailwaysRefundRequestPage() {
                           { label: "Status", value: "Approved" },
                         ],
                       })}
-                      className="text-xs text-slate-400 hover:text-slate-600"
+                      className="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
                     >
                       View
                     </button>
@@ -341,16 +341,16 @@ export default function RailwaysRefundRequestPage() {
 
               {/* TRF-5991 — already rejected, view only */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700">TRF-5991</td>
-                <td className="px-6 py-3 font-mono text-xs text-slate-500">8901234567</td>
-                <td className="px-6 py-3 font-medium text-slate-800">Anuj Rawat</td>
-                <td className="px-6 py-3 text-slate-600">12565 Bihar Sampark Kranti</td>
-                <td className="px-6 py-3"><span className="font-semibold text-slate-800">ANVT</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800">BGP</span></td>
-                <td className="px-6 py-3 font-semibold text-slate-800">₹1,225</td>
-                <td className="px-6 py-3 text-xs text-slate-600">Ticket already used</td>
-                <td className="px-6 py-3 text-slate-500">QuickBook</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">TRF-5991</td>
+                <td className="px-6 py-3 font-mono text-xs text-slate-500 dark:text-slate-400">8901234567</td>
+                <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Anuj Rawat</td>
+                <td className="px-6 py-3 text-slate-600 dark:text-slate-300">12565 Bihar Sampark Kranti</td>
+                <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">ANVT</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">BGP</span></td>
+                <td className="px-6 py-3 font-semibold text-slate-800 dark:text-slate-100">₹1,225</td>
+                <td className="px-6 py-3 text-xs text-slate-600 dark:text-slate-300">Ticket already used</td>
+                <td className="px-6 py-3 text-slate-500 dark:text-slate-400">QuickBook</td>
                 <td className="px-6 py-3 text-xs text-slate-400">06 Jul, 10:50</td>
-                <td className="px-6 py-3"><span className="rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-700">Rejected</span></td>
+                <td className="px-6 py-3"><span className="rounded-full bg-red-100 px-2.5 py-0.5 text-xs font-medium text-red-700 dark:bg-red-500/10 dark:text-red-400">Rejected</span></td>
                 <td className="px-6 py-3">
                   <div className="flex items-center gap-2">
                     <span className="text-xs text-slate-300">—</span>
@@ -372,7 +372,7 @@ export default function RailwaysRefundRequestPage() {
                           { label: "Status", value: "Rejected" },
                         ],
                       })}
-                      className="text-xs text-slate-400 hover:text-slate-600"
+                      className="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
                     >
                       View
                     </button>
@@ -383,8 +383,8 @@ export default function RailwaysRefundRequestPage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4">
-          <p className="text-xs text-slate-500">Showing 5 of 5 refund requests</p>
+        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
+          <p className="text-xs text-slate-500 dark:text-slate-400">Showing 5 of 5 refund requests</p>
           <div className="flex items-center gap-1">
             <button className="h-7 min-w-7 rounded-md bg-green-600 px-2 text-xs font-medium text-white">1</button>
           </div>

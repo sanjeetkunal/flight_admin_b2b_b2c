@@ -13,7 +13,7 @@ const allBookings = [
   { id: "HTL00226", guest: "Anuj Rawat", hotel: "Ibis Styles", city: "Pune", stars: 3, rooms: 3, checkin: "07 Jul 2026", checkout: "09 Jul 2026", nights: 2, type: "Standard Room", pax: "6A", amount: "₹14,400", status: "Pending", agent: "TravelBox", mealPlan: "CP" },
 ]
 
-const statusColors: Record<string, string> = { Confirmed: "bg-emerald-100 text-emerald-700", Pending: "bg-amber-100 text-amber-700", Cancelled: "bg-red-100 text-red-700" }
+const statusColors: Record<string, string> = { Confirmed: "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400", Pending: "bg-amber-100 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400", Cancelled: "bg-red-100 text-red-700 dark:bg-red-500/10 dark:text-red-400" }
 
 function StarRating({ count }: { count: number }) {
   return (
@@ -55,18 +55,18 @@ export default function HotelsPage() {
       </div>
 
       <div className="rounded-xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="flex flex-col gap-3 border-b border-slate-100 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 border-b border-slate-100 px-6 py-4 sm:flex-row sm:items-center sm:justify-between dark:border-slate-800">
           <div className="flex items-center gap-2">
             {["All", "Confirmed", "Pending", "Cancelled"].map((s) => (
-              <button key={s} onClick={() => setStatusFilter(s)} className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${statusFilter === s ? "bg-purple-600 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100"}`}>
+              <button key={s} onClick={() => setStatusFilter(s)} className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${statusFilter === s ? "bg-purple-600 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>
                 {s} <span className="ml-0.5 opacity-70">({counts[s as keyof typeof counts]})</span>
               </button>
             ))}
           </div>
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+            <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-800">
               <svg className="h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-              <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search hotel, city, guest..." className="bg-transparent text-xs text-slate-600 placeholder-slate-400 outline-none w-44" />
+              <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search hotel, city, guest..." className="bg-transparent text-xs text-slate-600 placeholder-slate-400 outline-none w-44 dark:text-slate-200" />
             </div>
             <button className="flex items-center gap-1.5 rounded-lg bg-purple-600 px-3 py-2 text-xs font-medium text-white hover:bg-purple-700 transition-colors">
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
@@ -97,23 +97,23 @@ export default function HotelsPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {filtered.map((b) => (
                 <tr key={b.id} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-purple-700">{b.id}</td>
-                  <td className="px-6 py-3 font-medium text-slate-800">{b.guest}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-purple-700 dark:text-purple-400">{b.id}</td>
+                  <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{b.guest}</td>
                   <td className="px-6 py-3">
-                    <p className="font-medium text-slate-800">{b.hotel}</p>
+                    <p className="font-medium text-slate-800 dark:text-slate-100">{b.hotel}</p>
                     <StarRating count={b.stars} />
                   </td>
-                  <td className="px-6 py-3 text-slate-600">{b.city}</td>
-                  <td className="px-6 py-3 text-slate-700">{b.checkin}</td>
-                  <td className="px-6 py-3 text-slate-700">{b.checkout}</td>
-                  <td className="px-6 py-3 text-center font-semibold text-slate-700">{b.nights}</td>
-                  <td className="px-6 py-3 text-xs text-slate-600">{b.type}</td>
+                  <td className="px-6 py-3 text-slate-600 dark:text-slate-300">{b.city}</td>
+                  <td className="px-6 py-3 text-slate-700 dark:text-slate-200">{b.checkin}</td>
+                  <td className="px-6 py-3 text-slate-700 dark:text-slate-200">{b.checkout}</td>
+                  <td className="px-6 py-3 text-center font-semibold text-slate-700 dark:text-slate-200">{b.nights}</td>
+                  <td className="px-6 py-3 text-xs text-slate-600 dark:text-slate-300">{b.type}</td>
                   <td className="px-6 py-3">
-                    <span className="rounded-md bg-slate-100 px-1.5 py-0.5 text-xs font-medium text-slate-700">{b.mealPlan}</span>
+                    <span className="rounded-md bg-slate-100 px-1.5 py-0.5 text-xs font-medium text-slate-700 dark:bg-slate-800 dark:text-slate-300">{b.mealPlan}</span>
                   </td>
-                  <td className="px-6 py-3 text-xs text-slate-600">{b.pax}</td>
-                  <td className="px-6 py-3 font-semibold text-slate-800">{b.amount}</td>
-                  <td className="px-6 py-3 text-slate-500">{b.agent}</td>
+                  <td className="px-6 py-3 text-xs text-slate-600 dark:text-slate-300">{b.pax}</td>
+                  <td className="px-6 py-3 font-semibold text-slate-800 dark:text-slate-100">{b.amount}</td>
+                  <td className="px-6 py-3 text-slate-500 dark:text-slate-400">{b.agent}</td>
                   <td className="px-6 py-3">
                     <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColors[b.status]}`}>{b.status}</span>
                   </td>
@@ -123,11 +123,11 @@ export default function HotelsPage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4">
-          <p className="text-xs text-slate-500">Showing {filtered.length} of {allBookings.length} bookings</p>
+        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
+          <p className="text-xs text-slate-500 dark:text-slate-400">Showing {filtered.length} of {allBookings.length} bookings</p>
           <div className="flex items-center gap-1">
             {[1, 2, 3, "...", 9].map((p, i) => (
-              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-purple-600 text-white" : "text-slate-500 hover:bg-slate-100"}`}>{p}</button>
+              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-purple-600 text-white" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>{p}</button>
             ))}
           </div>
         </div>

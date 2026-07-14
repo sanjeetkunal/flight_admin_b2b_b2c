@@ -14,18 +14,18 @@ const allBookings = [
 ]
 
 const statusColors: Record<string, string> = {
-  Confirmed: "bg-emerald-100 text-emerald-700",
-  Pending: "bg-amber-100 text-amber-700",
-  Cancelled: "bg-red-100 text-red-700",
+  Confirmed: "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400",
+  Pending: "bg-amber-100 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400",
+  Cancelled: "bg-red-100 text-red-700 dark:bg-red-500/10 dark:text-red-400",
 }
 
 const classColors: Record<string, string> = {
-  "1A": "bg-yellow-100 text-yellow-800",
-  "2A": "bg-blue-100 text-blue-800",
-  "3A": "bg-indigo-100 text-indigo-800",
-  "SL": "bg-slate-100 text-slate-700",
-  "CC": "bg-purple-100 text-purple-800",
-  "EC": "bg-pink-100 text-pink-800",
+  "1A": "bg-yellow-100 text-yellow-800 dark:bg-yellow-500/10 dark:text-yellow-400",
+  "2A": "bg-blue-100 text-blue-800 dark:bg-blue-500/10 dark:text-blue-400",
+  "3A": "bg-indigo-100 text-indigo-800 dark:bg-indigo-500/10 dark:text-indigo-400",
+  "SL": "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300",
+  "CC": "bg-purple-100 text-purple-800 dark:bg-purple-500/10 dark:text-purple-400",
+  "EC": "bg-pink-100 text-pink-800 dark:bg-pink-500/10 dark:text-pink-400",
 }
 
 export default function RailwaysPage() {
@@ -58,18 +58,18 @@ export default function RailwaysPage() {
       </div>
 
       <div className="rounded-xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="flex flex-col gap-3 border-b border-slate-100 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 border-b border-slate-100 px-6 py-4 sm:flex-row sm:items-center sm:justify-between dark:border-slate-800">
           <div className="flex items-center gap-2">
             {["All", "Confirmed", "Pending", "Cancelled"].map((s) => (
-              <button key={s} onClick={() => setStatusFilter(s)} className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${statusFilter === s ? "bg-green-600 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100"}`}>
+              <button key={s} onClick={() => setStatusFilter(s)} className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${statusFilter === s ? "bg-green-600 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>
                 {s} <span className="ml-0.5 opacity-70">({counts[s as keyof typeof counts]})</span>
               </button>
             ))}
           </div>
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+            <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-800">
               <svg className="h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-              <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search PNR, train, passenger..." className="bg-transparent text-xs text-slate-600 placeholder-slate-400 outline-none w-48" />
+              <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search PNR, train, passenger..." className="bg-transparent text-xs text-slate-600 placeholder-slate-400 outline-none w-48 dark:text-slate-200" />
             </div>
             <button className="flex items-center gap-1.5 rounded-lg bg-green-600 px-3 py-2 text-xs font-medium text-white hover:bg-green-700 transition-colors">
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
@@ -99,35 +99,35 @@ export default function RailwaysPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {filtered.map((b) => (
                 <tr key={b.pnr} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700">{b.pnr}</td>
-                  <td className="px-6 py-3 font-medium text-slate-800">{b.passenger}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">{b.pnr}</td>
+                  <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{b.passenger}</td>
                   <td className="px-6 py-3">
-                    <p className="font-semibold text-slate-800">{b.train}</p>
+                    <p className="font-semibold text-slate-800 dark:text-slate-100">{b.train}</p>
                     <p className="text-xs text-slate-400">{b.trainName}</p>
                   </td>
                   <td className="px-6 py-3">
-                    <span className="font-semibold text-slate-800">{b.from}</span>
+                    <span className="font-semibold text-slate-800 dark:text-slate-100">{b.from}</span>
                     <span className="mx-1 text-slate-400">→</span>
-                    <span className="font-semibold text-slate-800">{b.to}</span>
+                    <span className="font-semibold text-slate-800 dark:text-slate-100">{b.to}</span>
                   </td>
                   <td className="px-6 py-3">
-                    <p className="text-slate-700">{b.date}</p>
+                    <p className="text-slate-700 dark:text-slate-200">{b.date}</p>
                     <p className="text-xs text-slate-400">{b.depart} – {b.arrive}</p>
                   </td>
                   <td className="px-6 py-3">
-                    <span className={`rounded-md px-2 py-0.5 text-xs font-semibold ${classColors[b.class] ?? "bg-slate-100 text-slate-700"}`}>{b.class}</span>
+                    <span className={`rounded-md px-2 py-0.5 text-xs font-semibold ${classColors[b.class] ?? "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300"}`}>{b.class}</span>
                   </td>
-                  <td className="px-6 py-3 text-xs text-slate-600">{b.quota}</td>
-                  <td className="px-6 py-3 text-center text-slate-700">{b.pax}</td>
-                  <td className="px-6 py-3 font-semibold text-slate-800">{b.amount}</td>
-                  <td className="px-6 py-3 text-slate-500">{b.agent}</td>
+                  <td className="px-6 py-3 text-xs text-slate-600 dark:text-slate-300">{b.quota}</td>
+                  <td className="px-6 py-3 text-center text-slate-700 dark:text-slate-200">{b.pax}</td>
+                  <td className="px-6 py-3 font-semibold text-slate-800 dark:text-slate-100">{b.amount}</td>
+                  <td className="px-6 py-3 text-slate-500 dark:text-slate-400">{b.agent}</td>
                   <td className="px-6 py-3">
                     <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColors[b.status]}`}>{b.status}</span>
                   </td>
                   <td className="px-6 py-3">
                     <div className="flex items-center gap-2">
                       <button className="text-xs text-indigo-600 hover:text-indigo-800 font-medium">View</button>
-                      <button className="text-xs text-slate-400 hover:text-slate-600">Cancel</button>
+                      <button className="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">Cancel</button>
                     </div>
                   </td>
                 </tr>
@@ -136,11 +136,11 @@ export default function RailwaysPage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4">
-          <p className="text-xs text-slate-500">Showing {filtered.length} of {allBookings.length} bookings</p>
+        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
+          <p className="text-xs text-slate-500 dark:text-slate-400">Showing {filtered.length} of {allBookings.length} bookings</p>
           <div className="flex items-center gap-1">
             {[1, 2, 3, "...", 18].map((p, i) => (
-              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-green-600 text-white" : "text-slate-500 hover:bg-slate-100"}`}>{p}</button>
+              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-green-600 text-white" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>{p}</button>
             ))}
           </div>
         </div>

@@ -133,6 +133,8 @@ export default function TopNav() {
   const [notifOpen, setNotifOpen] = useState(false)
   const [profileOpen, setProfileOpen] = useState(false)
   const [isDark, setIsDark] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mobileSubmenu, setMobileSubmenu] = useState<string | null>(null)
   const navRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -152,13 +154,18 @@ export default function TopNav() {
         setOpenMenu(null)
         setNotifOpen(false)
         setProfileOpen(false)
+        setMobileMenuOpen(false)
       }
     }
     document.addEventListener("mousedown", onClickOutside)
     return () => document.removeEventListener("mousedown", onClickOutside)
   }, [])
 
-  useEffect(() => setOpenMenu(null), [pathname])
+  useEffect(() => {
+    setOpenMenu(null)
+    setMobileMenuOpen(false)
+    setMobileSubmenu(null)
+  }, [pathname])
 
   const isActive = (item: NavItem) => {
     if (item.href === "/") return pathname === "/"
@@ -175,7 +182,24 @@ export default function TopNav() {
   return (
     <div ref={navRef} className="sticky top-0 z-30 border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
       {/* Utility bar */}
-      <div className="flex h-14 items-center gap-4 px-6">
+      <div className="flex h-14 items-center gap-2 px-3 sm:gap-4 sm:px-6">
+        <button
+          onClick={() => setMobileMenuOpen((v) => !v)}
+          aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileMenuOpen}
+          className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg text-slate-500 hover:bg-slate-100 hover:text-slate-700 transition-colors dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-200 md:hidden"
+        >
+          {mobileMenuOpen ? (
+            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          ) : (
+            <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="3" y1="6" x2="21" y2="6" /><line x1="3" y1="12" x2="21" y2="12" /><line x1="3" y1="18" x2="21" y2="18" />
+            </svg>
+          )}
+        </button>
+
         <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600">
             <svg className="h-4 w-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -287,8 +311,8 @@ export default function TopNav() {
         </div>
       </div>
 
-      {/* Menu bar */}
-      <nav className="flex items-center gap-1 border-t border-slate-100 px-6 dark:border-slate-800">
+      {/* Menu bar (desktop) */}
+      <nav className="hidden md:flex items-center gap-1 border-t border-slate-100 px-6 dark:border-slate-800">
         {navItems.map((item) => {
           const active = isActive(item)
           const hasChildren = !!item.children?.length
@@ -333,6 +357,59 @@ export default function TopNav() {
           )
         })}
       </nav>
+
+      {/* Menu bar (mobile) */}
+      {mobileMenuOpen && (
+        <nav className="md:hidden max-h-[calc(100vh-3.5rem)] overflow-y-auto border-t border-slate-100 dark:border-slate-800">
+          {navItems.map((item) => {
+            const active = isActive(item)
+            const hasChildren = !!item.children?.length
+            const submenuOpen = mobileSubmenu === item.href
+            return (
+              <div key={item.href} className="border-b border-slate-100 last:border-0 dark:border-slate-800">
+                <div className="flex items-center">
+                  <Link
+                    href={item.href}
+                    className={`flex flex-1 items-center gap-2.5 px-4 py-3 text-sm font-medium transition-colors ${
+                      active ? "text-indigo-600 dark:text-indigo-400" : "text-slate-600 dark:text-slate-300"
+                    }`}
+                  >
+                    <NavIcon type={item.icon} />
+                    {item.label}
+                  </Link>
+                  {hasChildren && (
+                    <button
+                      onClick={() => setMobileSubmenu((cur) => (cur === item.href ? null : item.href))}
+                      aria-label={`Toggle ${item.label} submenu`}
+                      className="flex h-11 w-11 flex-shrink-0 items-center justify-center text-slate-400"
+                    >
+                      <svg className={`h-4 w-4 transition-transform ${submenuOpen ? "rotate-180" : ""}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <polyline points="6 9 12 15 18 9" />
+                      </svg>
+                    </button>
+                  )}
+                </div>
+
+                {hasChildren && submenuOpen && (
+                  <div className="bg-slate-50 pb-2 dark:bg-slate-800/50">
+                    {item.children!.map((child) => (
+                      <Link
+                        key={child.href}
+                        href={child.href}
+                        className={`block py-2 pl-12 pr-4 text-sm transition-colors ${
+                          pathname === child.href ? "font-medium text-indigo-600 dark:text-indigo-400" : "text-slate-600 dark:text-slate-300"
+                        }`}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )
+          })}
+        </nav>
+      )}
     </div>
   )
 }

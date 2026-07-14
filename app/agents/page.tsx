@@ -34,23 +34,23 @@ const initialAgents: Agent[] = [
 ]
 
 const tierColors: Record<string, string> = {
-  Platinum: "bg-violet-100 text-violet-700 border border-violet-200",
-  Gold: "bg-yellow-100 text-yellow-700 border border-yellow-200",
-  Silver: "bg-slate-100 text-slate-600 border border-slate-200",
-  Bronze: "bg-orange-100 text-orange-700 border border-orange-200",
+  Platinum: "bg-violet-100 text-violet-700 border border-violet-200 dark:bg-violet-500/10 dark:text-violet-400 dark:border-violet-500/20",
+  Gold: "bg-yellow-100 text-yellow-700 border border-yellow-200 dark:bg-yellow-500/10 dark:text-yellow-400 dark:border-yellow-500/20",
+  Silver: "bg-slate-100 text-slate-600 border border-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700",
+  Bronze: "bg-orange-100 text-orange-700 border border-orange-200 dark:bg-orange-500/10 dark:text-orange-400 dark:border-orange-500/20",
 }
 const statusColors: Record<string, string> = {
-  Active: "bg-emerald-100 text-emerald-700",
-  Warning: "bg-amber-100 text-amber-700",
-  Suspended: "bg-red-100 text-red-700",
+  Active: "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400",
+  Warning: "bg-amber-100 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400",
+  Suspended: "bg-red-100 text-red-700 dark:bg-red-500/10 dark:text-red-400",
 }
 const moduleColors: Record<string, string> = {
-  Flight: "bg-blue-100 text-blue-700",
-  Railway: "bg-green-100 text-green-700",
-  Bus: "bg-orange-100 text-orange-700",
-  Hotel: "bg-purple-100 text-purple-700",
-  Holiday: "bg-pink-100 text-pink-700",
-  Utility: "bg-teal-100 text-teal-700",
+  Flight: "bg-blue-100 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400",
+  Railway: "bg-green-100 text-green-700 dark:bg-green-500/10 dark:text-green-400",
+  Bus: "bg-orange-100 text-orange-700 dark:bg-orange-500/10 dark:text-orange-400",
+  Hotel: "bg-purple-100 text-purple-700 dark:bg-purple-500/10 dark:text-purple-400",
+  Holiday: "bg-pink-100 text-pink-700 dark:bg-pink-500/10 dark:text-pink-400",
+  Utility: "bg-teal-100 text-teal-700 dark:bg-teal-500/10 dark:text-teal-400",
 }
 const allModules = ["Flight", "Railway", "Bus", "Hotel", "Holiday", "Utility"]
 
@@ -116,8 +116,8 @@ export default function AgentsPage() {
     })
   }
 
-  const inputCls = "w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-violet-100 focus:border-violet-300"
-  const labelCls = "mb-1.5 block text-xs font-medium text-slate-500"
+  const inputCls = "w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-violet-100 focus:border-violet-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+  const labelCls = "mb-1.5 block text-xs font-medium text-slate-500 dark:text-slate-400"
 
   return (
     <div className="space-y-5">
@@ -137,24 +137,24 @@ export default function AgentsPage() {
       </div>
 
       <div className="rounded-xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="flex flex-col gap-3 border-b border-slate-100 px-6 py-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex flex-col gap-3 border-b border-slate-100 px-6 py-4 sm:flex-row sm:items-center sm:justify-between dark:border-slate-800">
           <div className="flex flex-wrap items-center gap-2">
             <div className="flex items-center gap-1">
               {["All", "Active", "Warning", "Suspended"].map((s) => (
-                <button key={s} onClick={() => setStatusFilter(s)} className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${statusFilter === s ? "bg-violet-600 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100"}`}>{s}</button>
+                <button key={s} onClick={() => setStatusFilter(s)} className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${statusFilter === s ? "bg-violet-600 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>{s}</button>
               ))}
             </div>
-            <div className="h-4 w-px bg-slate-200" />
+            <div className="h-4 w-px bg-slate-200 dark:bg-slate-700" />
             <div className="flex items-center gap-1">
               {["All", "Platinum", "Gold", "Silver", "Bronze"].map((t) => (
-                <button key={t} onClick={() => setTierFilter(t)} className={`rounded-lg px-2.5 py-1 text-xs font-medium transition-all ${tierFilter === t ? "bg-slate-700 text-white" : "text-slate-500 hover:bg-slate-100"}`}>{t}</button>
+                <button key={t} onClick={() => setTierFilter(t)} className={`rounded-lg px-2.5 py-1 text-xs font-medium transition-all ${tierFilter === t ? "bg-slate-700 text-white" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>{t}</button>
               ))}
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+            <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-800">
               <svg className="h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-              <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search agent, city, ID..." className="bg-transparent text-xs text-slate-600 placeholder-slate-400 outline-none w-40" />
+              <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search agent, city, ID..." className="bg-transparent text-xs text-slate-600 placeholder-slate-400 outline-none w-40 dark:text-slate-200" />
             </div>
             <button className="flex items-center gap-1.5 rounded-lg bg-violet-600 px-3 py-2 text-xs font-medium text-white hover:bg-violet-700 transition-colors">
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
@@ -184,17 +184,17 @@ export default function AgentsPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {filtered.map((a) => (
                 <tr key={a.id} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-violet-700">{a.id}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-violet-700 dark:text-violet-400">{a.id}</td>
                   <td className="px-6 py-3">
-                    <p className="font-medium text-slate-800">{a.name}</p>
+                    <p className="font-medium text-slate-800 dark:text-slate-100">{a.name}</p>
                     <p className="text-xs text-slate-400">{a.email}</p>
                   </td>
                   <td className="px-6 py-3">
-                    <p className="text-slate-700">{a.contact}</p>
+                    <p className="text-slate-700 dark:text-slate-200">{a.contact}</p>
                     <p className="font-mono text-xs text-slate-400">{a.mobile}</p>
                   </td>
                   <td className="px-6 py-3">
-                    <p className="text-slate-700">{a.city}</p>
+                    <p className="text-slate-700 dark:text-slate-200">{a.city}</p>
                     <p className="text-xs text-slate-400">{a.state}</p>
                   </td>
                   <td className="px-6 py-3">
@@ -207,12 +207,12 @@ export default function AgentsPage() {
                       ))}
                     </div>
                   </td>
-                  <td className="px-6 py-3 font-medium text-slate-700">{a.credit}</td>
+                  <td className="px-6 py-3 font-medium text-slate-700 dark:text-slate-200">{a.credit}</td>
                   <td className="px-6 py-3">
-                    <p className={`font-semibold ${parseInt(a.balance.replace(/[^0-9]/g, "")) < 50000 ? "text-red-600" : "text-emerald-600"}`}>{a.balance}</p>
+                    <p className={`font-semibold ${parseInt(a.balance.replace(/[^0-9]/g, "")) < 50000 ? "text-red-600 dark:text-red-400" : "text-emerald-600 dark:text-emerald-400"}`}>{a.balance}</p>
                   </td>
-                  <td className="px-6 py-3 font-semibold text-slate-700">{a.bookings.toLocaleString()}</td>
-                  <td className="px-6 py-3 text-xs text-slate-500">{a.joined}</td>
+                  <td className="px-6 py-3 font-semibold text-slate-700 dark:text-slate-200">{a.bookings.toLocaleString()}</td>
+                  <td className="px-6 py-3 text-xs text-slate-500 dark:text-slate-400">{a.joined}</td>
                   <td className="px-6 py-3">
                     <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColors[a.status]}`}>{a.status}</span>
                   </td>
@@ -228,11 +228,11 @@ export default function AgentsPage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4">
-          <p className="text-xs text-slate-500">Showing {filtered.length} of {agents.length} agents</p>
+        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
+          <p className="text-xs text-slate-500 dark:text-slate-400">Showing {filtered.length} of {agents.length} agents</p>
           <div className="flex items-center gap-1">
             {[1, 2, 3, "...", 21].map((p, i) => (
-              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-violet-600 text-white" : "text-slate-500 hover:bg-slate-100"}`}>{p}</button>
+              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-violet-600 text-white" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>{p}</button>
             ))}
           </div>
         </div>
@@ -243,13 +243,13 @@ export default function AgentsPage() {
       {/* Edit Agent modal */}
       {editingAgent && editForm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 px-4" onClick={closeEdit}>
-          <div className="w-full max-w-2xl rounded-xl bg-white shadow-xl" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-start justify-between border-b border-slate-100 px-6 py-4">
+          <div className="w-full max-w-2xl rounded-xl bg-white shadow-xl dark:bg-slate-900" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-start justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
               <div>
                 <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Edit Agent · {editingAgent.id}</h3>
                 <p className="text-xs text-slate-400">Update agency details, tier, status and module access</p>
               </div>
-              <button onClick={closeEdit} className="text-slate-400 hover:text-slate-600">
+              <button onClick={closeEdit} className="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
                 <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
               </button>
             </div>
@@ -311,7 +311,7 @@ export default function AgentsPage() {
                     <button
                       key={m}
                       onClick={() => toggleModule(m)}
-                      className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-all ${editForm.modules.includes(m) ? "border-violet-200 bg-violet-50 text-violet-700" : "border-slate-200 text-slate-500 hover:bg-slate-50"}`}
+                      className={`rounded-lg border px-3 py-1.5 text-xs font-medium transition-all ${editForm.modules.includes(m) ? "border-violet-200 bg-violet-50 text-violet-700 dark:border-violet-500/30 dark:bg-violet-500/10 dark:text-violet-400" : "border-slate-200 text-slate-500 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800"}`}
                     >
                       {m}
                     </button>
@@ -320,8 +320,8 @@ export default function AgentsPage() {
               </div>
             </div>
 
-            <div className="flex items-center justify-end gap-2 border-t border-slate-100 px-6 py-4">
-              <button onClick={closeEdit} className="rounded-lg border border-slate-200 px-3.5 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50">Cancel</button>
+            <div className="flex items-center justify-end gap-2 border-t border-slate-100 px-6 py-4 dark:border-slate-800">
+              <button onClick={closeEdit} className="rounded-lg border border-slate-200 px-3.5 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800">Cancel</button>
               <button onClick={saveEdit} className="rounded-lg bg-violet-600 px-3.5 py-2 text-xs font-medium text-white hover:bg-violet-700 transition-colors">Save Changes</button>
             </div>
           </div>

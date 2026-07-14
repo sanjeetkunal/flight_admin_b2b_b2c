@@ -138,8 +138,8 @@ export default function RailwaysMiscServiceChargePage() {
 
   const removeRow = (id: number) => setRows((prev) => prev.filter((r) => r.id !== id))
 
-  const labelCls = "mb-1.5 block text-xs font-medium text-slate-500"
-  const inputCls = "w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-green-100 focus:border-green-300"
+  const labelCls = "mb-1.5 block text-xs font-medium text-slate-500 dark:text-slate-400"
+  const inputCls = "w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-green-100 focus:border-green-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
   const selectCls = inputCls + " bg-white"
 
   return (
@@ -234,32 +234,32 @@ export default function RailwaysMiscServiceChargePage() {
           </div>
         </div>
 
-        <div className="flex items-center gap-2 border-t border-slate-100 px-6 py-4">
+        <div className="flex items-center gap-2 border-t border-slate-100 px-6 py-4 dark:border-slate-800">
           <button onClick={handleSave} className="rounded-lg bg-green-600 px-4 py-2 text-xs font-medium text-white hover:bg-green-700 transition-colors">
             {editingId !== null ? "Update" : "Save"}
           </button>
           {editingId !== null && (
-            <button onClick={resetForm} className="rounded-lg border border-slate-200 px-4 py-2 text-xs font-medium text-slate-500 hover:bg-slate-50">Cancel Edit</button>
+            <button onClick={resetForm} className="rounded-lg border border-slate-200 px-4 py-2 text-xs font-medium text-slate-500 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-800">Cancel Edit</button>
           )}
         </div>
       </div>
 
       {/* Compact stat chips */}
       <div className="flex flex-wrap items-center gap-3">
-        <div className="flex items-center gap-2 rounded-lg border border-green-100 bg-green-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-green-100 bg-green-50 px-3 py-2 dark:border-green-500/20 dark:bg-green-500/10">
           <span className="h-2 w-2 rounded-full bg-green-500" />
-          <span className="text-sm font-bold text-green-600">{rows.length}</span>
-          <span className="text-xs text-green-600/70">Service Charges</span>
+          <span className="text-sm font-bold text-green-600 dark:text-green-400">{rows.length}</span>
+          <span className="text-xs text-green-600/70 dark:text-green-400/70">Service Charges</span>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2 dark:border-emerald-500/20 dark:bg-emerald-500/10">
           <span className="h-2 w-2 rounded-full bg-emerald-500" />
-          <span className="text-sm font-bold text-emerald-600">{rows.filter((r) => r.trip === "M").length}</span>
-          <span className="text-xs text-emerald-600/70">Mail/Express</span>
+          <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400">{rows.filter((r) => r.trip === "M").length}</span>
+          <span className="text-xs text-emerald-600/70 dark:text-emerald-400/70">Mail/Express</span>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-violet-100 bg-violet-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-violet-100 bg-violet-50 px-3 py-2 dark:border-violet-500/20 dark:bg-violet-500/10">
           <span className="h-2 w-2 rounded-full bg-violet-500" />
-          <span className="text-sm font-bold text-violet-600">{rows.filter((r) => r.trip === "P").length}</span>
-          <span className="text-xs text-violet-600/70">Premium</span>
+          <span className="text-sm font-bold text-violet-600 dark:text-violet-400">{rows.filter((r) => r.trip === "P").length}</span>
+          <span className="text-xs text-violet-600/70 dark:text-violet-400/70">Premium</span>
         </div>
       </div>
 
@@ -290,25 +290,25 @@ export default function RailwaysMiscServiceChargePage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {rows.map((r) => (
                 <tr key={r.id} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-4 py-3 whitespace-nowrap font-medium text-slate-800">{r.trip}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-slate-700">{r.trainClass}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-slate-600">{r.fareType}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-slate-600">{r.groupType}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-slate-600">{r.agentId}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-slate-600">{r.origin}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-slate-600">{r.destination}</td>
-                  <td className="px-4 py-3 whitespace-nowrap font-mono text-xs text-green-700">{r.markupType}</td>
-                  <td className="px-4 py-3 whitespace-nowrap font-semibold text-slate-800">{r.amount}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-slate-600">{r.markupBasic}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-slate-600">{r.markupSC}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-slate-600">{r.markupBasicSC}</td>
+                  <td className="px-4 py-3 whitespace-nowrap font-medium text-slate-800 dark:text-slate-100">{r.trip}</td>
+                  <td className="px-4 py-3 whitespace-nowrap text-slate-700 dark:text-slate-200">{r.trainClass}</td>
+                  <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.fareType}</td>
+                  <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.groupType}</td>
+                  <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.agentId}</td>
+                  <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.origin}</td>
+                  <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.destination}</td>
+                  <td className="px-4 py-3 whitespace-nowrap font-mono text-xs text-green-700 dark:text-green-400">{r.markupType}</td>
+                  <td className="px-4 py-3 whitespace-nowrap font-semibold text-slate-800 dark:text-slate-100">{r.amount}</td>
+                  <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.markupBasic}</td>
+                  <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.markupSC}</td>
+                  <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.markupBasicSC}</td>
                   <td className="px-4 py-3 whitespace-nowrap text-xs text-slate-400">{r.createdDate}</td>
                   <td className="px-4 py-3 whitespace-nowrap text-xs text-slate-400">{r.updatedDate}</td>
                   <td className="px-4 py-3 whitespace-nowrap">
-                    <button onClick={() => editRow(r)} className="rounded-md border border-slate-200 px-2.5 py-1 text-xs font-medium text-slate-600 hover:bg-slate-50">Edit</button>
+                    <button onClick={() => editRow(r)} className="rounded-md border border-slate-200 px-2.5 py-1 text-xs font-medium text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800">Edit</button>
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap">
-                    <button onClick={() => removeRow(r.id)} className="rounded-md border border-red-200 px-2.5 py-1 text-xs font-medium text-red-600 hover:bg-red-50">Delete</button>
+                    <button onClick={() => removeRow(r.id)} className="rounded-md border border-red-200 px-2.5 py-1 text-xs font-medium text-red-600 hover:bg-red-50 dark:border-red-500/30 dark:text-red-400 dark:hover:bg-red-500/10">Delete</button>
                   </td>
                 </tr>
               ))}

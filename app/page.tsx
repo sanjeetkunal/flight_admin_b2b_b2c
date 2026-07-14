@@ -163,13 +163,13 @@ function AreaSparkline({
           <TooltipBox>
             <div className="flex items-center gap-1.5">
               <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: color }} />
-              <span className="text-slate-500">This period</span>
+              <span className="text-slate-500 dark:text-slate-400">This period</span>
               <span className="ml-auto font-semibold text-slate-800 dark:text-slate-100">{formatValue ? formatValue(points[hover]) : points[hover]}</span>
             </div>
             {comparePoints && (
               <div className="flex items-center gap-1.5">
                 <span className="h-1.5 w-1.5 rounded-full border border-slate-400 border-dashed" />
-                <span className="text-slate-500">Last period</span>
+                <span className="text-slate-500 dark:text-slate-400">Last period</span>
                 <span className="ml-auto font-semibold text-slate-800 dark:text-slate-100">{compareFormatValue ? compareFormatValue(comparePoints[hover]) : comparePoints[hover]}</span>
               </div>
             )}
@@ -249,7 +249,7 @@ function DonutRing({
               {breakdown.map((b) => (
                 <div key={b.label} className="flex items-center gap-2">
                   <span className={`h-2 w-2 rounded-full ${b.color}`} />
-                  <span className="text-slate-500">{b.label}</span>
+                  <span className="text-slate-500 dark:text-slate-400">{b.label}</span>
                   <span className="ml-3 font-semibold text-slate-800 dark:text-slate-100">{b.value}</span>
                 </div>
               ))}
@@ -356,7 +356,7 @@ const invoiceStatusColors: Record<string, string> = {
   Paid: "bg-emerald-100 text-emerald-700",
   Pending: "bg-amber-100 text-amber-700",
   Overdue: "bg-red-100 text-red-700",
-  "Due in 2 days": "bg-slate-100 text-slate-600",
+  "Due in 2 days": "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300",
 }
 
 export default function DashboardPage() {
@@ -593,9 +593,9 @@ export default function DashboardPage() {
                     >
                       <TooltipBox>
                         <p className="mb-1 font-semibold text-slate-800 dark:text-slate-100">{d.day}</p>
-                        <div className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-blue-600" /><span className="text-slate-500">Flights</span><span className="ml-auto font-semibold text-slate-800 dark:text-slate-100">{d.flights}</span></div>
-                        <div className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-violet-400" /><span className="text-slate-500">Other</span><span className="ml-auto font-semibold text-slate-800 dark:text-slate-100">{d.other}</span></div>
-                        <div className="mt-1 border-t border-slate-100 pt-1 text-slate-500 dark:border-slate-700">Total <span className="font-semibold text-slate-800 dark:text-slate-100">{d.flights + d.other}</span></div>
+                        <div className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-blue-600" /><span className="text-slate-500 dark:text-slate-400">Flights</span><span className="ml-auto font-semibold text-slate-800 dark:text-slate-100">{d.flights}</span></div>
+                        <div className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-violet-400" /><span className="text-slate-500 dark:text-slate-400">Other</span><span className="ml-auto font-semibold text-slate-800 dark:text-slate-100">{d.other}</span></div>
+                        <div className="mt-1 border-t border-slate-100 pt-1 text-slate-500 dark:border-slate-700 dark:text-slate-400">Total <span className="font-semibold text-slate-800 dark:text-slate-100">{d.flights + d.other}</span></div>
                       </TooltipBox>
                     </div>
                   )}
@@ -665,7 +665,7 @@ export default function DashboardPage() {
           <div className="mt-3 space-y-1.5">
             {creditSegments.map((b) => (
               <div key={b.label} className="flex items-center justify-between text-xs">
-                <span className="flex items-center gap-1.5 text-slate-600"><span className={`h-2 w-2 rounded-full ${b.color}`} />{b.label}</span>
+                <span className="flex items-center gap-1.5 text-slate-600 dark:text-slate-300"><span className={`h-2 w-2 rounded-full ${b.color}`} />{b.label}</span>
                 <span className="font-medium text-slate-700 dark:text-slate-300">{b.value}%</span>
               </div>
             ))}
@@ -731,7 +731,7 @@ export default function DashboardPage() {
                 onMouseEnter={() => setHoverChannel(i)}
                 onMouseLeave={() => setHoverChannel(null)}
               >
-                <span className="w-24 flex-shrink-0 text-xs text-slate-600">{c.label}</span>
+                <span className="w-24 flex-shrink-0 text-xs text-slate-600 dark:text-slate-300">{c.label}</span>
                 <div className="h-2 flex-1 cursor-pointer overflow-hidden rounded-full bg-slate-100 dark:bg-slate-700">
                   <div className={`h-full rounded-full transition-opacity ${c.color} ${hoverChannel !== null && hoverChannel !== i ? "opacity-50" : "opacity-100"}`} style={{ width: `${c.pct}%` }} />
                 </div>
@@ -757,9 +757,9 @@ export default function DashboardPage() {
                 <span className={`flex h-4 w-4 flex-shrink-0 items-center justify-center rounded border ${t.done ? "border-emerald-500 bg-emerald-500" : "border-slate-300"}`}>
                   {t.done && <svg className="h-2.5 w-2.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12" /></svg>}
                 </span>
-                <span className={`flex-1 truncate text-xs ${t.done ? "text-slate-400 line-through" : "text-slate-700"}`}>{t.label}</span>
+                <span className={`flex-1 truncate text-xs ${t.done ? "text-slate-400 line-through" : "text-slate-700 dark:text-slate-200"}`}>{t.label}</span>
                 <span className="flex-shrink-0 text-[11px] text-slate-400 dark:text-slate-500">{t.due}</span>
-                <span className="flex-shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-500 dark:text-slate-400">{t.progress}</span>
+                <span className="flex-shrink-0 rounded-full bg-slate-100 px-2 py-0.5 text-[11px] font-medium text-slate-500 dark:bg-slate-800 dark:text-slate-400">{t.progress}</span>
               </div>
             ))}
           </div>
@@ -768,7 +768,7 @@ export default function DashboardPage() {
 
       {/* Row 8 — recent invoices */}
       <div className="rounded-2xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4">
+        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
           <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Recent Agent Invoices</h3>
           <Link href="/agents/credit" className="flex items-center gap-1 text-xs font-medium text-indigo-600 hover:text-indigo-700">
             View all
@@ -803,11 +803,11 @@ export default function DashboardPage() {
             </tbody>
           </table>
         </div>
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4">
+        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
           <p className="text-xs text-slate-500 dark:text-slate-400">Showing 1 to {invoices.length} of 16 entries</p>
           <div className="flex items-center gap-1">
             {[1, 2, 3, "...", 5].map((p, i) => (
-              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-blue-600 text-white" : "text-slate-500 hover:bg-slate-100"}`}>{p}</button>
+              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-blue-600 text-white" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>{p}</button>
             ))}
           </div>
         </div>

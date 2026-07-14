@@ -28,10 +28,10 @@ const initialRequests: CreditRequest[] = [
 ]
 
 const statusColors: Record<RequestStatus, string> = {
-  "New Request": "bg-amber-100 text-amber-700",
-  Verified: "bg-sky-100 text-sky-700",
-  Approved: "bg-emerald-100 text-emerald-700",
-  Rejected: "bg-red-100 text-red-700",
+  "New Request": "bg-amber-100 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400",
+  Verified: "bg-sky-100 text-sky-700 dark:bg-sky-500/10 dark:text-sky-400",
+  Approved: "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400",
+  Rejected: "bg-red-100 text-red-700 dark:bg-red-500/10 dark:text-red-400",
 }
 
 export default function CreditUploadPage() {
@@ -128,21 +128,21 @@ export default function CreditUploadPage() {
   return (
     <div className="space-y-4">
       {/* Filter toolbar */}
-      <div className="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between dark:border-slate-800 dark:bg-slate-900">
         <div className="flex flex-wrap items-center gap-2">
           {(["All", "New Request", "Verified", "Approved", "Rejected"] as const).map((s) => (
             <button
               key={s}
               onClick={() => setStatusFilter(s)}
-              className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${statusFilter === s ? "bg-violet-600 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100"}`}
+              className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${statusFilter === s ? "bg-violet-600 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}
             >
               {s} <span className="ml-0.5 opacity-70">({counts[s]})</span>
             </button>
           ))}
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-800">
           <svg className="h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-          <input placeholder="Search agent, request ID..." className="w-40 bg-transparent text-xs text-slate-600 placeholder-slate-400 outline-none sm:w-56" />
+          <input placeholder="Search agent, request ID..." className="w-40 bg-transparent text-xs text-slate-600 placeholder-slate-400 outline-none sm:w-56 dark:text-slate-200" />
         </div>
       </div>
 
@@ -172,12 +172,12 @@ export default function CreditUploadPage() {
 
       {/* Table card */}
       <div className="rounded-xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4">
+        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
           <div>
             <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Agent Credit Upload Requests</h2>
             <p className="text-xs text-slate-400">Verify agent-submitted credit limit requests before approving or rejecting</p>
           </div>
-          <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700">{counts["New Request"]} new</span>
+          <span className="rounded-full bg-amber-100 px-2.5 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-500/10 dark:text-amber-400">{counts["New Request"]} new</span>
         </div>
 
         <div className="overflow-x-auto">
@@ -197,14 +197,14 @@ export default function CreditUploadPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {filtered.map((r) => (
                 <tr key={r.id} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-violet-700">{r.requestId}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-violet-700 dark:text-violet-400">{r.requestId}</td>
                   <td className="px-6 py-3">
-                    <p className="font-medium text-slate-800">{r.agentName}</p>
+                    <p className="font-medium text-slate-800 dark:text-slate-100">{r.agentName}</p>
                     <p className="font-mono text-xs text-slate-400">{r.agentId}</p>
                   </td>
-                  <td className="px-6 py-3 text-slate-600">{r.currentLimit}</td>
-                  <td className="px-6 py-3 font-semibold text-slate-800">{r.requestedLimit}</td>
-                  <td className="px-6 py-3 max-w-xs truncate text-xs text-slate-600">{r.reason}</td>
+                  <td className="px-6 py-3 text-slate-600 dark:text-slate-300">{r.currentLimit}</td>
+                  <td className="px-6 py-3 font-semibold text-slate-800 dark:text-slate-100">{r.requestedLimit}</td>
+                  <td className="px-6 py-3 max-w-xs truncate text-xs text-slate-600 dark:text-slate-300">{r.reason}</td>
                   <td className="px-6 py-3 text-xs text-slate-400">{r.requestedOn}</td>
                   <td className="px-6 py-3">
                     <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColors[r.status]}`}>{r.status}</span>
@@ -237,8 +237,8 @@ export default function CreditUploadPage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4">
-          <p className="text-xs text-slate-500">Showing {filtered.length} of {requests.length} requests</p>
+        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
+          <p className="text-xs text-slate-500 dark:text-slate-400">Showing {filtered.length} of {requests.length} requests</p>
           <div className="flex items-center gap-1">
             <button className="h-7 min-w-7 rounded-md bg-violet-600 px-2 text-xs font-medium text-white">1</button>
           </div>

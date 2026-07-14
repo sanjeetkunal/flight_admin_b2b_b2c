@@ -155,15 +155,15 @@ export default function RailwaysCommissionMasterPage() {
 
   const removeRow = (id: number) => setRows((prev) => prev.filter((r) => r.id !== id))
 
-  const labelCls = "mb-1.5 block text-xs font-medium text-slate-500"
-  const inputCls = "w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-green-100 focus:border-green-300"
+  const labelCls = "mb-1.5 block text-xs font-medium text-slate-500 dark:text-slate-400"
+  const inputCls = "w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-green-100 focus:border-green-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
   const selectCls = inputCls + " bg-white"
 
   return (
     <div className="space-y-4">
       {/* Filter / Add form */}
       <div className="rounded-xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="border-b border-slate-100 px-6 py-4">
+        <div className="border-b border-slate-100 px-6 py-4 dark:border-slate-800">
           <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Commission Master</h2>
           <p className="text-xs text-slate-400">Set commission for all trains, or override it for a specific class / fare type</p>
         </div>
@@ -318,13 +318,13 @@ export default function RailwaysCommissionMasterPage() {
           )}
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4">
+        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
           <button onClick={() => setShowMoreFilters((v) => !v)} className="text-xs font-medium text-green-600 hover:text-green-800 underline underline-offset-2">
             {showMoreFilters ? "Hide extra filters" : "Click here for more filter show/hide"}
           </button>
           <div className="flex items-center gap-2">
-            <button className="rounded-lg border border-slate-200 px-4 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50">Export</button>
-            <button className="rounded-lg border border-slate-200 px-4 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50">Search</button>
+            <button className="rounded-lg border border-slate-200 px-4 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800">Export</button>
+            <button className="rounded-lg border border-slate-200 px-4 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800">Search</button>
             <button onClick={handleSubmit} className="rounded-lg bg-green-600 px-4 py-2 text-xs font-medium text-white hover:bg-green-700 transition-colors">Submit</button>
           </div>
         </div>
@@ -332,28 +332,28 @@ export default function RailwaysCommissionMasterPage() {
 
       {/* Compact stat chips */}
       <div className="flex flex-wrap items-center gap-3">
-        <div className="flex items-center gap-2 rounded-lg border border-green-100 bg-green-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-green-100 bg-green-50 px-3 py-2 dark:border-green-500/20 dark:bg-green-500/10">
           <span className="h-2 w-2 rounded-full bg-green-500" />
-          <span className="text-sm font-bold text-green-600">{rows.length}</span>
-          <span className="text-xs text-green-600/70">Commission Rules</span>
+          <span className="text-sm font-bold text-green-600 dark:text-green-400">{rows.length}</span>
+          <span className="text-xs text-green-600/70 dark:text-green-400/70">Commission Rules</span>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2 dark:border-emerald-500/20 dark:bg-emerald-500/10">
           <span className="h-2 w-2 rounded-full bg-emerald-500" />
-          <span className="text-sm font-bold text-emerald-600">{rows.filter((r) => r.trainClass === "ALL").length}</span>
-          <span className="text-xs text-emerald-600/70">Global Rules</span>
+          <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400">{rows.filter((r) => r.trainClass === "ALL").length}</span>
+          <span className="text-xs text-emerald-600/70 dark:text-emerald-400/70">Global Rules</span>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-violet-100 bg-violet-50 px-3 py-2">
+        <div className="flex items-center gap-2 rounded-lg border border-violet-100 bg-violet-50 px-3 py-2 dark:border-violet-500/20 dark:bg-violet-500/10">
           <span className="h-2 w-2 rounded-full bg-violet-500" />
-          <span className="text-sm font-bold text-violet-600">{rows.filter((r) => r.trainClass !== "ALL").length}</span>
-          <span className="text-xs text-violet-600/70">Class Overrides</span>
+          <span className="text-sm font-bold text-violet-600 dark:text-violet-400">{rows.filter((r) => r.trainClass !== "ALL").length}</span>
+          <span className="text-xs text-violet-600/70 dark:text-violet-400/70">Class Overrides</span>
         </div>
       </div>
 
       {/* Results table */}
       <div className="rounded-xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4">
+        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
           <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Commission Rules</h2>
-          <span className="rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-700">{rows.length} rules</span>
+          <span className="rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-700 dark:bg-green-500/10 dark:text-green-400">{rows.length} rules</span>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
@@ -380,24 +380,24 @@ export default function RailwaysCommissionMasterPage() {
               {rows.map((r) => (
                 <tr key={r.id} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
                   <td className="px-4 py-3 whitespace-nowrap">
-                    <button onClick={() => viewRow(r)} className="font-medium text-green-700 hover:text-green-900 hover:underline">{r.groupType}</button>
+                    <button onClick={() => viewRow(r)} className="font-medium text-green-700 hover:text-green-900 hover:underline dark:text-green-400">{r.groupType}</button>
                   </td>
-                  <td className="px-4 py-3 whitespace-nowrap text-slate-700">{r.trainClass}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-slate-600">{r.trainType}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-slate-600">{r.fareType}</td>
-                  <td className="px-4 py-3 whitespace-nowrap font-semibold text-slate-800">{r.commBasic}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-slate-600">{r.commSC}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-slate-600">{r.commBasicSC}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-slate-600">{r.plbBasic}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-slate-600">{r.plbBasicSC}</td>
-                  <td className="px-4 py-3 whitespace-nowrap text-slate-600">{r.cashback}</td>
+                  <td className="px-4 py-3 whitespace-nowrap text-slate-700 dark:text-slate-200">{r.trainClass}</td>
+                  <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.trainType}</td>
+                  <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.fareType}</td>
+                  <td className="px-4 py-3 whitespace-nowrap font-semibold text-slate-800 dark:text-slate-100">{r.commBasic}</td>
+                  <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.commSC}</td>
+                  <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.commBasicSC}</td>
+                  <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.plbBasic}</td>
+                  <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.plbBasicSC}</td>
+                  <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.cashback}</td>
                   <td className="px-4 py-3 whitespace-nowrap text-slate-400">{r.bookingFrom}</td>
                   <td className="px-4 py-3 whitespace-nowrap text-slate-400">{r.bookingTo}</td>
                   <td className="px-4 py-3 whitespace-nowrap text-slate-400">{r.onwardFrom}</td>
                   <td className="px-4 py-3 whitespace-nowrap text-slate-400">{r.onwardTo}</td>
                   <td className="px-4 py-3 whitespace-nowrap">
                     <div className="flex items-center gap-2">
-                      <button onClick={() => viewRow(r)} className="text-xs text-slate-400 hover:text-slate-600">View</button>
+                      <button onClick={() => viewRow(r)} className="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">View</button>
                       <button onClick={() => removeRow(r.id)} className="text-xs text-red-500 hover:text-red-700 font-medium">Delete</button>
                     </div>
                   </td>

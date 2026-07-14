@@ -157,7 +157,7 @@ export default function EmulateAgentPage() {
 
       {/* Fetch agent card */}
       <div className="rounded-xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="border-b border-slate-100 px-6 py-4">
+        <div className="border-b border-slate-100 px-6 py-4 dark:border-slate-800">
           <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Emulate Agent</h2>
           <p className="text-xs text-slate-400">Enter an agent ID to fetch their account and log in as them for support / troubleshooting</p>
         </div>
@@ -165,12 +165,12 @@ export default function EmulateAgentPage() {
         <div className="px-6 py-5">
           <div className="flex flex-wrap items-end gap-3">
             <div>
-              <label className="mb-1.5 block text-xs font-medium text-slate-500">Agent ID</label>
+              <label className="mb-1.5 block text-xs font-medium text-slate-500 dark:text-slate-400">Agent ID</label>
               <input
                 value={agentIdInput}
                 onChange={(e) => { setAgentIdInput(e.target.value.toUpperCase()); setFetchError("") }}
                 placeholder="e.g. AG001"
-                className="w-48 rounded-lg border border-slate-200 px-3 py-2 text-sm font-mono uppercase text-slate-700 outline-none focus:ring-2 focus:ring-violet-100 focus:border-violet-300"
+                className="w-48 rounded-lg border border-slate-200 px-3 py-2 text-sm font-mono uppercase text-slate-700 outline-none focus:ring-2 focus:ring-violet-100 focus:border-violet-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
               />
             </div>
             <button onClick={handleFetch} className="rounded-lg bg-violet-600 px-4 py-2 text-xs font-medium text-white hover:bg-violet-700 transition-colors">
@@ -181,41 +181,41 @@ export default function EmulateAgentPage() {
 
           {fetchedAgent && (
             <div className="mt-4 space-y-4">
-              <div className="grid grid-cols-2 gap-x-6 gap-y-3 rounded-lg border border-slate-100 bg-slate-50 px-4 py-4 sm:grid-cols-3">
+              <div className="grid grid-cols-2 gap-x-6 gap-y-3 rounded-lg border border-slate-100 bg-slate-50 px-4 py-4 sm:grid-cols-3 dark:border-slate-800 dark:bg-slate-800">
                 <div>
                   <p className="text-[10px] uppercase tracking-wide text-slate-400">Agency Name</p>
                   <p className="text-sm font-semibold text-slate-800 dark:text-slate-100">{fetchedAgent.name}</p>
                 </div>
                 <div>
                   <p className="text-[10px] uppercase tracking-wide text-slate-400">Contact Person</p>
-                  <p className="text-sm font-medium text-slate-700">{fetchedAgent.contact}</p>
+                  <p className="text-sm font-medium text-slate-700 dark:text-slate-200">{fetchedAgent.contact}</p>
                 </div>
                 <div>
                   <p className="text-[10px] uppercase tracking-wide text-slate-400">Email</p>
-                  <p className="text-sm font-medium text-slate-700">{fetchedAgent.email}</p>
+                  <p className="text-sm font-medium text-slate-700 dark:text-slate-200">{fetchedAgent.email}</p>
                 </div>
                 <div>
                   <p className="text-[10px] uppercase tracking-wide text-slate-400">Tier</p>
-                  <p className="text-sm font-medium text-slate-700">{fetchedAgent.tier}</p>
+                  <p className="text-sm font-medium text-slate-700 dark:text-slate-200">{fetchedAgent.tier}</p>
                 </div>
                 <div>
                   <p className="text-[10px] uppercase tracking-wide text-slate-400">Status</p>
-                  <p className="text-sm font-medium text-slate-700">{fetchedAgent.status}</p>
+                  <p className="text-sm font-medium text-slate-700 dark:text-slate-200">{fetchedAgent.status}</p>
                 </div>
                 <div>
                   <p className="text-[10px] uppercase tracking-wide text-slate-400">Balance</p>
-                  <p className="text-sm font-semibold text-emerald-600">{fetchedAgent.balance}</p>
+                  <p className="text-sm font-semibold text-emerald-600 dark:text-emerald-400">{fetchedAgent.balance}</p>
                 </div>
               </div>
 
               <div>
-                <label className="mb-1.5 block text-xs font-medium text-slate-500">Remarks <span className="text-red-500">*</span></label>
+                <label className="mb-1.5 block text-xs font-medium text-slate-500 dark:text-slate-400">Remarks <span className="text-red-500">*</span></label>
                 <textarea
                   value={remarks}
                   onChange={(e) => { setRemarks(e.target.value); setRemarksError("") }}
                   placeholder="Reason for emulating this agent..."
                   rows={3}
-                  className={`w-full rounded-lg border px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 ${remarksError ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-violet-100 focus:border-violet-300"}`}
+                  className={`w-full rounded-lg border px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 dark:text-slate-200 ${remarksError ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-violet-100 focus:border-violet-300 dark:border-slate-700 dark:bg-slate-800"}`}
                 />
                 {remarksError && <p className="mt-1 text-xs text-red-500">{remarksError}</p>}
               </div>
@@ -253,12 +253,12 @@ export default function EmulateAgentPage() {
 
       {/* Emulate history */}
       <div className="rounded-xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4">
+        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
           <div>
             <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Emulate History</h2>
             <p className="text-xs text-slate-400">Audit trail of all agent emulation sessions with remarks</p>
           </div>
-          <span className="rounded-full bg-violet-100 px-2.5 py-0.5 text-xs font-medium text-violet-700">{history.length} sessions</span>
+          <span className="rounded-full bg-violet-100 px-2.5 py-0.5 text-xs font-medium text-violet-700 dark:bg-violet-500/10 dark:text-violet-400">{history.length} sessions</span>
         </div>
 
         <div className="overflow-x-auto">
@@ -278,14 +278,14 @@ export default function EmulateAgentPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {history.map((h) => (
                 <tr key={h.id} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-violet-700">{h.agentId}</td>
-                  <td className="px-6 py-3 font-medium text-slate-800">{h.agentName}</td>
-                  <td className="px-6 py-3 text-slate-500">{h.emulatedBy}</td>
-                  <td className="px-6 py-3 max-w-xs truncate text-xs text-slate-600">{h.remarks}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-violet-700 dark:text-violet-400">{h.agentId}</td>
+                  <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{h.agentName}</td>
+                  <td className="px-6 py-3 text-slate-500 dark:text-slate-400">{h.emulatedBy}</td>
+                  <td className="px-6 py-3 max-w-xs truncate text-xs text-slate-600 dark:text-slate-300">{h.remarks}</td>
                   <td className="px-6 py-3 text-xs text-slate-400">{h.startedAt}</td>
                   <td className="px-6 py-3 text-xs text-slate-400">{h.endedAt}</td>
                   <td className="px-6 py-3">
-                    <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${h.status === "Active" ? "bg-amber-100 text-amber-700" : "bg-slate-100 text-slate-600"}`}>{h.status}</span>
+                    <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${h.status === "Active" ? "bg-amber-100 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400" : "bg-slate-100 text-slate-600 dark:bg-slate-800 dark:text-slate-300"}`}>{h.status}</span>
                   </td>
                   <td className="px-6 py-3">
                     <button onClick={() => viewHistoryEntry(h)} className="text-xs text-slate-400 hover:text-slate-600">View</button>
