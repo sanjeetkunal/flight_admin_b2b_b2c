@@ -1,5 +1,7 @@
 "use client"
 
+import { useEffect, useState } from "react"
+
 export type DialogMode = "approve" | "reject" | "confirm" | "view"
 
 export type DialogField = { label: string; value: string }
@@ -13,7 +15,7 @@ export type DialogState = {
   confirmLabel?: string
 } | null
 
-const modeStyles: Record<DialogMode, { icon: React.ReactNode; ring: string; badge: string; button: string; heading: string }> = {
+const modeStyles: Record<DialogMode, { icon: React.ReactNode; ring: string; badge: string; button: string; heading: string; textareaRing: string }> = {
   approve: {
     icon: (
       <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5" /></svg>
@@ -22,6 +24,7 @@ const modeStyles: Record<DialogMode, { icon: React.ReactNode; ring: string; badg
     badge: "bg-emerald-100 text-emerald-700",
     button: "bg-emerald-600 hover:bg-emerald-700",
     heading: "Approve this request?",
+    textareaRing: "focus:ring-emerald-100 focus:border-emerald-300",
   },
   reject: {
     icon: (
@@ -31,6 +34,7 @@ const modeStyles: Record<DialogMode, { icon: React.ReactNode; ring: string; badg
     badge: "bg-red-100 text-red-700",
     button: "bg-red-600 hover:bg-red-700",
     heading: "Reject this request?",
+    textareaRing: "focus:ring-red-100 focus:border-red-300",
   },
   confirm: {
     icon: (
@@ -40,6 +44,7 @@ const modeStyles: Record<DialogMode, { icon: React.ReactNode; ring: string; badg
     badge: "bg-blue-100 text-blue-700",
     button: "bg-blue-600 hover:bg-blue-700",
     heading: "Confirm this action?",
+    textareaRing: "focus:ring-blue-100 focus:border-blue-300",
   },
   view: {
     icon: (
@@ -49,6 +54,7 @@ const modeStyles: Record<DialogMode, { icon: React.ReactNode; ring: string; badg
     badge: "bg-slate-100 text-slate-600",
     button: "bg-slate-800 hover:bg-slate-900",
     heading: "Booking Details",
+    textareaRing: "focus:ring-slate-100 focus:border-slate-300",
   },
 }
 
@@ -59,11 +65,18 @@ export default function RecordDialog({
 }: {
   state: DialogState
   onClose: () => void
-  onConfirm?: () => void
+  onConfirm?: (remarks: string) => void
 }) {
+  const [remarks, setRemarks] = useState("")
+
+  useEffect(() => {
+    setRemarks("")
+  }, [state?.title, state?.mode])
+
   if (!state) return null
   const style = modeStyles[state.mode]
   const isView = state.mode === "view"
+  const showRemarks = state.mode === "approve" || state.mode === "reject"
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 px-4 dark:bg-black/60" onClick={onClose}>
@@ -98,6 +111,21 @@ export default function RecordDialog({
             </div>
           )}
 
+          {showRemarks && (
+            <div className="mt-3">
+              <label className="mb-1.5 block text-xs font-medium text-slate-500 dark:text-slate-400">
+                Remarks <span className="font-normal text-slate-400 dark:text-slate-500">(optional)</span>
+              </label>
+              <textarea
+                value={remarks}
+                onChange={(e) => setRemarks(e.target.value)}
+                rows={3}
+                placeholder={state.mode === "approve" ? "Add a note for this approval..." : "Reason for rejection..."}
+                className={`w-full resize-none rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200 ${style.textareaRing}`}
+              />
+            </div>
+          )}
+
           {isView && (
             <div className="grid grid-cols-2 gap-x-4 gap-y-3">
               {state.details.map((f) => (
@@ -116,7 +144,7 @@ export default function RecordDialog({
             {isView ? "Close" : "Cancel"}
           </button>
           {!isView && (
-            <button onClick={onConfirm} className={`rounded-lg px-3.5 py-2 text-xs font-medium text-white transition-colors ${style.button}`}>
+            <button onClick={() => onConfirm?.(remarks)} className={`rounded-lg px-3.5 py-2 text-xs font-medium text-white transition-colors ${style.button}`}>
               {state.confirmLabel || (state.mode === "approve" ? "Approve" : state.mode === "reject" ? "Reject" : "Confirm")}
             </button>
           )}

@@ -62,13 +62,13 @@ export default function FlightsRefundRequestPage() {
       <div className="flex items-center gap-2 rounded-xl border border-slate-100 bg-white p-1.5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
         <button
           onClick={() => setTab("new")}
-          className={`flex-1 rounded-lg px-4 py-2 text-xs font-medium transition-colors sm:flex-none ${tab === "new" ? "bg-blue-600 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}
+          className={`flex-1 rounded-lg px-4 py-2 text-xs font-bold whitespace-nowrap transition-colors sm:flex-none ${tab === "new" ? "bg-blue-600 text-white shadow-sm" : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"}`}
         >
           New Requests <span className="ml-0.5 opacity-70">({newCount})</span>
         </button>
         <button
           onClick={() => setTab("process")}
-          className={`flex-1 rounded-lg px-4 py-2 text-xs font-medium transition-colors sm:flex-none ${tab === "process" ? "bg-blue-600 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}
+          className={`flex-1 rounded-lg px-4 py-2 text-xs font-bold whitespace-nowrap transition-colors sm:flex-none ${tab === "process" ? "bg-blue-600 text-white shadow-sm" : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"}`}
         >
           In Process <span className="ml-0.5 opacity-70">({processCount})</span>
         </button>

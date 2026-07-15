@@ -123,15 +123,36 @@ export default function AgentsPage() {
     <div className="space-y-5">
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {[
-          { label: "Total Agents", value: String(agents.length), sub: "registered", color: "text-blue-600 bg-blue-50 border-blue-100" },
-          { label: "Active Agents", value: String(agents.filter((a) => a.status === "Active").length), sub: "this month", color: "text-emerald-600 bg-emerald-50 border-emerald-100" },
-          { label: "Total Credit Issued", value: "₹2.8 Cr", sub: "outstanding", color: "text-violet-600 bg-violet-50 border-violet-100" },
-          { label: "Pending Approvals", value: "6", sub: "new registrations", color: "text-amber-600 bg-amber-50 border-amber-100" },
+          {
+            label: "Total Agents", value: String(agents.length), sub: "registered",
+            iconBg: "bg-blue-50 text-blue-600 dark:bg-blue-500/10 dark:text-blue-400",
+            icon: <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" />,
+          },
+          {
+            label: "Active Agents", value: String(agents.filter((a) => a.status === "Active").length), sub: "this month",
+            iconBg: "bg-emerald-50 text-emerald-600 dark:bg-emerald-500/10 dark:text-emerald-400",
+            icon: <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />,
+          },
+          {
+            label: "Total Credit Issued", value: "₹2.8 Cr", sub: "outstanding",
+            iconBg: "bg-violet-50 text-violet-600 dark:bg-violet-500/10 dark:text-violet-400",
+            icon: <path d="M21 12V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2h14a2 2 0 002-2v-5zM16 12h4v4h-4a2 2 0 010-4z" />,
+          },
+          {
+            label: "Pending Approvals", value: "6", sub: "new registrations",
+            iconBg: "bg-amber-50 text-amber-600 dark:bg-amber-500/10 dark:text-amber-400",
+            icon: <path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />,
+          },
         ].map((c) => (
-          <div key={c.label} className={`rounded-xl border p-4 ${c.color}`}>
-            <p className="text-xs font-medium opacity-70">{c.label}</p>
-            <p className="mt-1 text-2xl font-bold">{c.value}</p>
-            <p className="text-xs opacity-60">{c.sub}</p>
+          <div key={c.label} className="group flex items-start gap-3 rounded-2xl border border-slate-100 bg-white p-4 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md dark:border-slate-800 dark:bg-slate-900">
+            <span className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg ${c.iconBg}`}>
+              <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round">{c.icon}</svg>
+            </span>
+            <div className="min-w-0">
+              <p className="text-xs font-medium text-slate-500 dark:text-slate-400">{c.label}</p>
+              <p className="mt-0.5 text-2xl font-bold text-slate-900 dark:text-slate-100">{c.value}</p>
+              <p className="text-xs text-slate-400 dark:text-slate-500">{c.sub}</p>
+            </div>
           </div>
         ))}
       </div>
@@ -141,13 +162,13 @@ export default function AgentsPage() {
           <div className="flex flex-wrap items-center gap-2">
             <div className="flex items-center gap-1">
               {["All", "Active", "Warning", "Suspended"].map((s) => (
-                <button key={s} onClick={() => setStatusFilter(s)} className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${statusFilter === s ? "bg-blue-600 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>{s}</button>
+                <button key={s} onClick={() => setStatusFilter(s)} className={`rounded-lg px-3 py-1.5 text-xs font-bold whitespace-nowrap transition-all ${statusFilter === s ? "bg-blue-600 text-white shadow-sm" : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"}`}>{s}</button>
               ))}
             </div>
             <div className="h-4 w-px bg-slate-200 dark:bg-slate-700" />
             <div className="flex items-center gap-1">
               {["All", "Platinum", "Gold", "Silver", "Bronze"].map((t) => (
-                <button key={t} onClick={() => setTierFilter(t)} className={`rounded-lg px-2.5 py-1 text-xs font-medium transition-all ${tierFilter === t ? "bg-slate-700 text-white" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>{t}</button>
+                <button key={t} onClick={() => setTierFilter(t)} className={`rounded-lg px-2.5 py-1 text-xs font-bold whitespace-nowrap transition-all ${tierFilter === t ? "bg-slate-700 text-white" : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"}`}>{t}</button>
               ))}
             </div>
           </div>
@@ -232,7 +253,7 @@ export default function AgentsPage() {
           <p className="text-xs text-slate-500 dark:text-slate-400">Showing {filtered.length} of {agents.length} agents</p>
           <div className="flex items-center gap-1">
             {[1, 2, 3, "...", 21].map((p, i) => (
-              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-blue-600 text-white" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>{p}</button>
+              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-blue-600 text-white" : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"}`}>{p}</button>
             ))}
           </div>
         </div>

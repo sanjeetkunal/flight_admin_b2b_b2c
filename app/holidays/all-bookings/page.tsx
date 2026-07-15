@@ -81,7 +81,7 @@ export default function HolidaysAllBookingsPage() {
               <button
                 key={s}
                 onClick={() => setStatusFilter(s)}
-                className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${statusFilter === s ? "bg-blue-500 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}
+                className={`rounded-lg px-3 py-1.5 text-xs font-bold whitespace-nowrap transition-all ${statusFilter === s ? "bg-blue-500 text-white shadow-sm" : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"}`}
               >
                 {s} <span className="ml-0.5 opacity-70">({counts[s as keyof typeof counts]})</span>
               </button>
@@ -212,7 +212,7 @@ export default function HolidaysAllBookingsPage() {
           <p className="text-xs text-slate-500 dark:text-slate-400">Showing {filtered.length} of {allBookings.length} packages</p>
           <div className="flex items-center gap-1">
             {[1, 2, 3, "...", 14].map((p, i) => (
-              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-blue-500 text-white" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>{p}</button>
+              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-blue-500 text-white" : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"}`}>{p}</button>
             ))}
           </div>
         </div>
