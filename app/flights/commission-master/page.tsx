@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import RecordDialog, { DialogState } from "../../components/RecordDialog"
+import FormDialog from "../../components/FormDialog"
 
 type CommissionRow = {
   id: number
@@ -68,6 +69,7 @@ const emptyForm = {
 export default function CommissionMasterPage() {
   const [rows, setRows] = useState<CommissionRow[]>(initialRows)
   const [showMoreFilters, setShowMoreFilters] = useState(false)
+  const [formOpen, setFormOpen] = useState(false)
   const [dialog, setDialog] = useState<DialogState>(null)
   const [confirmAction, setConfirmAction] = useState<(() => void) | null>(null)
   const [form, setForm] = useState(emptyForm)
@@ -79,6 +81,7 @@ export default function CommissionMasterPage() {
 
   const handleSubmit = () => {
     if (!form.groupType || !form.airline) return
+    setFormOpen(false)
     setDialog({
       mode: "confirm",
       title: "Add Commission Rule",
@@ -162,14 +165,35 @@ export default function CommissionMasterPage() {
 
   return (
     <div className="space-y-4">
-      {/* Filter / Add form */}
-      <div className="rounded-xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        <div className="border-b border-slate-100 px-6 py-4 dark:border-slate-800">
+      {/* Toolbar */}
+      <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-slate-100 bg-white px-6 py-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+        <div>
           <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Commission Master</h2>
           <p className="text-xs text-slate-400">Set commission for all flights, or override it for a specific airline / fare type</p>
         </div>
+        <div className="flex items-center gap-2">
+          <button className="rounded-lg border border-slate-200 px-4 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800">Export</button>
+          <button className="rounded-lg border border-slate-200 px-4 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800">Search</button>
+          <button onClick={() => setFormOpen(true)} className="flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-xs font-medium text-white hover:bg-blue-700 transition-colors">
+            <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
+            Add New
+          </button>
+        </div>
+      </div>
 
-        <div className="grid grid-cols-1 gap-x-6 gap-y-4 px-6 py-5 sm:grid-cols-2 lg:grid-cols-4">
+      <FormDialog
+        open={formOpen}
+        title="Add Commission Rule"
+        subtitle="Set commission for all flights, or override it for a specific airline / fare type"
+        onClose={() => setFormOpen(false)}
+        footer={
+          <>
+            <button onClick={() => setFormOpen(false)} className="rounded-lg border border-slate-200 px-4 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800">Cancel</button>
+            <button onClick={handleSubmit} className="rounded-lg bg-blue-600 px-4 py-2 text-xs font-medium text-white hover:bg-blue-700 transition-colors">Submit</button>
+          </>
+        }
+      >
+        <div className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-2 lg:grid-cols-3">
           <div>
             <label className={labelCls}>Group Type</label>
             <select value={form.groupType} onChange={(e) => update("groupType", e.target.value)} className={selectCls}>
@@ -322,17 +346,10 @@ export default function CommissionMasterPage() {
           )}
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
-          <button onClick={() => setShowMoreFilters((v) => !v)} className="text-xs font-medium text-blue-600 hover:text-blue-800 underline underline-offset-2">
-            {showMoreFilters ? "Hide extra filters" : "Click here for more filter show/hide"}
-          </button>
-          <div className="flex items-center gap-2">
-            <button className="rounded-lg border border-slate-200 px-4 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800">Export</button>
-            <button className="rounded-lg border border-slate-200 px-4 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800">Search</button>
-            <button onClick={handleSubmit} className="rounded-lg bg-blue-600 px-4 py-2 text-xs font-medium text-white hover:bg-blue-700 transition-colors">Submit</button>
-          </div>
-        </div>
-      </div>
+        <button onClick={() => setShowMoreFilters((v) => !v)} className="mt-4 text-xs font-medium text-blue-600 hover:text-blue-800 underline underline-offset-2">
+          {showMoreFilters ? "Hide extra filters" : "Click here for more filter show/hide"}
+        </button>
+      </FormDialog>
 
       {/* Compact stat chips */}
       <div className="flex flex-wrap items-center gap-3">

@@ -1,135 +1,12 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-
-type NavChild = { href: string; label: string }
-type NavItem = { href: string; label: string; icon: string; children?: NavChild[] }
-
-const navItems: NavItem[] = [
-  { href: "/", label: "Dashboard", icon: "dashboard" },
-  {
-    href: "/flights",
-    label: "Flights",
-    icon: "flight",
-    children: [
-      { href: "/flights", label: "All Bookings" },
-      { href: "/flights/pending-pnr", label: "Pending PNR Requests" },
-      { href: "/flights/issue-ticket", label: "Issue Ticket" },
-      { href: "/flights/pnr-update", label: "Flight PNR Update" },
-      { href: "/flights/reissue", label: "Reissue Request" },
-      { href: "/flights/reissue-in-process", label: "Reissue In Process" },
-      { href: "/flights/refund-request", label: "Refund Request" },
-      { href: "/flights/refund-in-process", label: "Refund In Process" },
-      { href: "/flights/commission-master", label: "Commission Master" },
-      { href: "/flights/misc-service-charge", label: "Misc Service Charge" },
-    ],
-  },
-  {
-    href: "/railways",
-    label: "Railways",
-    icon: "train",
-    children: [
-      { href: "/railways", label: "All Bookings" },
-      { href: "/railways/pending-pnr", label: "Pending PNR Requests" },
-      { href: "/railways/issue-ticket", label: "Issue Ticket" },
-      { href: "/railways/pnr-update", label: "Train PNR Update" },
-      { href: "/railways/reissue", label: "Reissue Request" },
-      { href: "/railways/reissue-in-process", label: "Reissue In Process" },
-      { href: "/railways/refund-request", label: "Refund Request" },
-      { href: "/railways/refund-in-process", label: "Refund In Process" },
-      { href: "/railways/commission-master", label: "Commission Master" },
-      { href: "/railways/misc-service-charge", label: "Misc Service Charge" },
-    ],
-  },
-  {
-    href: "/agents",
-    label: "B2B Agents",
-    icon: "agents",
-    children: [
-      { href: "/agents", label: "All Agents" },
-      { href: "/agents/emulate", label: "Emulate Agent" },
-      { href: "/agents/credit-upload", label: "Credit Upload" },
-      { href: "/agents/credit", label: "Credit Management" },
-    ],
-  },
-  {
-    href: "/reports/ledger",
-    label: "Reports",
-    icon: "reports",
-    children: [
-      { href: "/reports/ledger", label: "Ledger Report" },
-    ],
-  },
-  {
-    href: "/tools/email",
-    label: "Tools",
-    icon: "tools",
-    children: [
-      { href: "/tools/email", label: "Email" },
-      { href: "/tools/chat", label: "Chat" },
-    ],
-  },
-  {
-    href: "/settings",
-    label: "Settings",
-    icon: "settings",
-    children: [
-      { href: "/settings", label: "General" },
-      { href: "/settings/api", label: "API & Integrations" },
-      { href: "/settings/markup", label: "Markup & Pricing" },
-      { href: "/settings/notifications", label: "Notifications" },
-      { href: "/settings/users", label: "Users & Roles" },
-      { href: "/settings/billing", label: "Billing" },
-    ],
-  },
-]
-
-function NavIcon({ type }: { type: string }) {
-  const cls = "w-4 h-4 flex-shrink-0"
-  const base = { fill: "none", stroke: "currentColor", strokeWidth: 1.75, strokeLinecap: "round" as const, strokeLinejoin: "round" as const }
-  const icons: Record<string, React.ReactElement> = {
-    dashboard: (
-      <svg className={cls} viewBox="0 0 24 24" {...base}>
-        <rect x="3" y="3" width="7" height="7" rx="1" /><rect x="14" y="3" width="7" height="7" rx="1" />
-        <rect x="3" y="14" width="7" height="7" rx="1" /><rect x="14" y="14" width="7" height="7" rx="1" />
-      </svg>
-    ),
-    flight: (<svg className={cls} viewBox="0 0 24 24" {...base}><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" /></svg>),
-    train: (
-      <svg className={cls} viewBox="0 0 24 24" {...base}>
-        <rect x="4" y="3" width="16" height="13" rx="4" />
-        <path d="M4 11h16" /><path d="M8 3v8" /><path d="M16 3v8" />
-        <circle cx="8.5" cy="14.5" r="0.6" fill="currentColor" /><circle cx="15.5" cy="14.5" r="0.6" fill="currentColor" />
-        <path d="M7 16l-2 5M17 16l2 5" />
-      </svg>
-    ),
-    agents: (
-      <svg className={cls} viewBox="0 0 24 24" {...base}>
-        <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2" /><circle cx="9" cy="7" r="4" />
-        <path d="M23 21v-2a4 4 0 00-3-3.87" /><path d="M16 3.13a4 4 0 010 7.75" />
-      </svg>
-    ),
-    tools: (<svg className={cls} viewBox="0 0 24 24" {...base}><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z" /></svg>),
-    reports: (
-      <svg className={cls} viewBox="0 0 24 24" {...base}>
-        <line x1="18" y1="20" x2="18" y2="10" /><line x1="12" y1="20" x2="12" y2="4" /><line x1="6" y1="20" x2="6" y2="14" /><line x1="2" y1="20" x2="22" y2="20" />
-      </svg>
-    ),
-    settings: (
-      <svg className={cls} viewBox="0 0 24 24" {...base}>
-        <circle cx="12" cy="12" r="3" />
-        <path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06A1.65 1.65 0 004.68 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06A1.65 1.65 0 009 4.68a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z" />
-      </svg>
-    ),
-  }
-  return icons[type] ?? null
-}
+import { navItems, NavIcon, type NavItem } from "../lib/navConfig"
 
 export default function TopNav() {
   const pathname = usePathname()
-  const [openMenu, setOpenMenu] = useState<string | null>(null)
   const [notifOpen, setNotifOpen] = useState(false)
   const [profileOpen, setProfileOpen] = useState(false)
   const [isDark, setIsDark] = useState(false)
@@ -151,7 +28,6 @@ export default function TopNav() {
   useEffect(() => {
     const onClickOutside = (e: MouseEvent) => {
       if (navRef.current && !navRef.current.contains(e.target as Node)) {
-        setOpenMenu(null)
         setNotifOpen(false)
         setProfileOpen(false)
         setMobileMenuOpen(false)
@@ -162,7 +38,6 @@ export default function TopNav() {
   }, [])
 
   useEffect(() => {
-    setOpenMenu(null)
     setMobileMenuOpen(false)
     setMobileSubmenu(null)
   }, [pathname])
@@ -315,45 +190,17 @@ export default function TopNav() {
       <nav className="hidden md:flex items-center gap-1 border-t border-slate-100 px-6 dark:border-slate-800">
         {navItems.map((item) => {
           const active = isActive(item)
-          const hasChildren = !!item.children?.length
           return (
-            <div
+            <Link
               key={item.href}
-              className="relative flex-shrink-0"
-              onMouseEnter={() => hasChildren && setOpenMenu(item.href)}
-              onMouseLeave={() => hasChildren && setOpenMenu((cur) => (cur === item.href ? null : cur))}
+              href={item.href}
+              className={`flex flex-shrink-0 items-center gap-1.5 border-b-2 px-3 py-3 text-sm font-medium whitespace-nowrap transition-colors ${
+                active ? "border-indigo-600 text-indigo-600 dark:border-indigo-400 dark:text-indigo-400" : "border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100"
+              }`}
             >
-              <Link
-                href={item.href}
-                className={`flex items-center gap-1.5 border-b-2 px-3 py-3 text-sm font-medium whitespace-nowrap transition-colors ${
-                  active ? "border-indigo-600 text-indigo-600 dark:border-indigo-400 dark:text-indigo-400" : "border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100"
-                }`}
-              >
-                <NavIcon type={item.icon} />
-                {item.label}
-                {hasChildren && (
-                  <svg className={`h-3.5 w-3.5 transition-transform ${openMenu === item.href ? "rotate-180" : ""}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
-                )}
-              </Link>
-
-              {hasChildren && openMenu === item.href && (
-                <div className="absolute left-0 top-full z-40 w-64 rounded-xl border border-slate-200 bg-white py-1.5 shadow-lg shadow-slate-200/60 dark:border-slate-700 dark:bg-slate-800 dark:shadow-black/40">
-                  {item.children!.map((child) => (
-                    <Link
-                      key={child.href}
-                      href={child.href}
-                      className={`block px-4 py-2 text-sm transition-colors ${
-                        pathname === child.href ? "bg-indigo-50 font-medium text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400" : "text-slate-600 hover:bg-slate-50 hover:text-slate-900 dark:text-slate-300 dark:hover:bg-slate-700 dark:hover:text-slate-100"
-                      }`}
-                    >
-                      {child.label}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+              <NavIcon type={item.icon} />
+              {item.label}
+            </Link>
           )
         })}
       </nav>

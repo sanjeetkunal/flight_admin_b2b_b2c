@@ -1,18 +1,47 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
+import { DotLottieReact } from "@lottiefiles/dotlottie-react"
+import { edgeAlign, Sparkline, AreaSparkline, MiniBars, DonutRing, TooltipBox } from "../components/charts"
 
-const allBookings = [
-  { pnr: "6E2847", passenger: "Rajesh Kumar", airline: "IndiGo", from: "DEL", to: "BOM", date: "30 Jun 2026", depart: "06:20", arrive: "08:35", class: "Economy", pax: 2, amount: "₹8,450", status: "Confirmed", agent: "TravelBox", booked: "30 Jun, 09:14" },
-  { pnr: "AI1045", passenger: "Priya Sharma", airline: "Air India", from: "BOM", to: "DEL", date: "30 Jun 2026", depart: "13:40", arrive: "15:55", class: "Business", pax: 1, amount: "₹22,100", status: "Pending", agent: "FlyDeal", booked: "30 Jun, 08:52" },
-  { pnr: "SG301", passenger: "Amit Singh", airline: "SpiceJet", from: "BOM", to: "GOI", date: "01 Jul 2026", depart: "09:15", arrive: "10:20", class: "Economy", pax: 4, amount: "₹14,800", status: "Confirmed", agent: "StarTravel", booked: "29 Jun, 21:30" },
-  { pnr: "UK927", passenger: "Sneha Patel", airline: "Vistara", from: "DEL", to: "BLR", date: "01 Jul 2026", depart: "17:30", arrive: "20:05", class: "Premium Eco", pax: 2, amount: "₹18,600", status: "Confirmed", agent: "TravelBox", booked: "29 Jun, 18:45" },
-  { pnr: "IX234", passenger: "Deepa Menon", airline: "Air Asia", from: "COK", to: "DEL", date: "02 Jul 2026", depart: "05:45", arrive: "09:10", class: "Economy", pax: 1, amount: "₹5,200", status: "Cancelled", agent: "QuickBook", booked: "28 Jun, 14:20" },
-  { pnr: "G8502", passenger: "Vikram Nair", airline: "Go First", from: "BOM", to: "DEL", date: "02 Jul 2026", depart: "11:00", arrive: "13:15", class: "Economy", pax: 3, amount: "₹11,700", status: "Confirmed", agent: "FlyDeal", booked: "28 Jun, 11:05" },
-  { pnr: "6E4821", passenger: "Ravi Gupta", airline: "IndiGo", from: "DEL", to: "HYD", date: "03 Jul 2026", depart: "07:50", arrive: "10:05", class: "Economy", pax: 2, amount: "₹9,800", status: "Pending", agent: "StarTravel", booked: "27 Jun, 16:30" },
-  { pnr: "AI202", passenger: "Sunita Rao", airline: "Air India", from: "DEL", to: "LHR", date: "05 Jul 2026", depart: "02:30", arrive: "07:45", class: "Business", pax: 2, amount: "₹2,14,000", status: "Confirmed", agent: "TravelBox", booked: "25 Jun, 10:00" },
-  { pnr: "EK501", passenger: "Anuj Rawat", airline: "Emirates", from: "BOM", to: "DXB", date: "04 Jul 2026", depart: "23:55", arrive: "01:50+1", class: "Economy", pax: 5, amount: "₹1,12,500", status: "Confirmed", agent: "QuickBook", booked: "26 Jun, 08:15" },
-  { pnr: "SQ422", passenger: "Meera Iyer", airline: "Singapore Air", from: "DEL", to: "SIN", date: "06 Jul 2026", depart: "15:25", arrive: "01:20+1", class: "Premium Eco", pax: 2, amount: "₹98,000", status: "Pending", agent: "FlyDeal", booked: "24 Jun, 19:40" },
+const last8Days = ["07 Jul", "08 Jul", "09 Jul", "10 Jul", "11 Jul", "12 Jul", "13 Jul", "14 Jul"]
+const trafficDays = [
+  { day: "01 Jul", domestic: 34, intl: 10 }, { day: "02 Jul", domestic: 40, intl: 12 }, { day: "03 Jul", domestic: 30, intl: 8 },
+  { day: "04 Jul", domestic: 46, intl: 14 }, { day: "05 Jul", domestic: 52, intl: 16 }, { day: "06 Jul", domestic: 38, intl: 11 },
+  { day: "07 Jul", domestic: 58, intl: 20 }, { day: "08 Jul", domestic: 48, intl: 15 }, { day: "09 Jul", domestic: 62, intl: 22 },
+  { day: "10 Jul", domestic: 66, intl: 24 },
+]
+const trafficMax = 95
+
+const analyticsCards = [
+  { label: "Total Bookings", value: "487", change: "+9%", sparkline: [58, 62, 65, 60, 70, 75, 72, 80], color: "#2563eb", formatValue: (v: number) => `${v} bookings` },
+  { label: "Revenue", value: "₹8.23L", change: "+8%", sparkline: [62, 68, 64, 72, 78, 74, 82, 90], color: "#059669", formatValue: (v: number) => `₹${v}K` },
+  { label: "Avg. Ticket Price", value: "₹16,900", change: "+3%", sparkline: [162, 158, 165, 160, 168, 172, 166, 169], color: "#7c3aed", formatValue: (v: number) => `₹${v}00` },
+  { label: "Cancellations", value: "12", change: "-4%", bars: [3, 2, 4, 1, 3, 2, 1, 2], color: "bg-red-500", formatValue: (v: number) => `${v} cancelled` },
+]
+
+const miniStats = [
+  { label: "Pending PNR Requests", value: "18", href: "/flights/pending-pnr", color: "bg-amber-500", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
+  { label: "Issue Ticket", value: "24", href: "/flights/issue-ticket", color: "bg-emerald-600", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
+  { label: "Reissue Requests", value: "9", href: "/flights/reissue", color: "bg-blue-600", icon: "M4 4v6h6M20 20v-6h-6M4.5 15a8 8 0 0014.9 2.5M19.5 9A8 8 0 004.6 6.5" },
+  { label: "Refund Requests", value: "6", href: "/flights/refund-request", color: "bg-violet-600", icon: "M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6M12 1v22" },
+]
+
+const topAirlines = [
+  { name: "IndiGo", bookings: 168, pct: 100 },
+  { name: "Air India", bookings: 112, pct: 67 },
+  { name: "Vistara", bookings: 84, pct: 50 },
+  { name: "SpiceJet", bookings: 71, pct: 42 },
+  { name: "Emirates", bookings: 52, pct: 31 },
+]
+
+const recentBookings = [
+  { pnr: "6E2847", passenger: "Rajesh Kumar", from: "DEL", to: "BOM", amount: "₹8,450", status: "Confirmed" },
+  { pnr: "AI1045", passenger: "Priya Sharma", from: "BOM", to: "DEL", amount: "₹22,100", status: "Pending" },
+  { pnr: "SG301", passenger: "Amit Singh", from: "BOM", to: "GOI", amount: "₹14,800", status: "Confirmed" },
+  { pnr: "UK927", passenger: "Sneha Patel", from: "DEL", to: "BLR", amount: "₹18,600", status: "Confirmed" },
+  { pnr: "IX234", passenger: "Deepa Menon", from: "COK", to: "DEL", amount: "₹5,200", status: "Cancelled" },
 ]
 
 const statusColors: Record<string, string> = {
@@ -21,128 +50,222 @@ const statusColors: Record<string, string> = {
   Cancelled: "bg-red-100 text-red-700 dark:bg-red-500/10 dark:text-red-400",
 }
 
-export default function FlightsPage() {
-  const [search, setSearch] = useState("")
-  const [statusFilter, setStatusFilter] = useState("All")
-
-  const filtered = allBookings.filter((b) => {
-    const matchSearch = search === "" || b.passenger.toLowerCase().includes(search.toLowerCase()) || b.pnr.toLowerCase().includes(search.toLowerCase()) || b.agent.toLowerCase().includes(search.toLowerCase())
-    const matchStatus = statusFilter === "All" || b.status === statusFilter
-    return matchSearch && matchStatus
-  })
-
-  const counts = {
-    All: allBookings.length,
-    Confirmed: allBookings.filter((b) => b.status === "Confirmed").length,
-    Pending: allBookings.filter((b) => b.status === "Pending").length,
-    Cancelled: allBookings.filter((b) => b.status === "Cancelled").length,
-  }
+export default function FlightsDashboardPage() {
+  const [hoverDay, setHoverDay] = useState<number | null>(null)
+  const [hoverAirline, setHoverAirline] = useState<number | null>(null)
 
   return (
     <div className="space-y-5">
-      {/* Summary cards */}
-      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
-        {[
-          { label: "Total Bookings", value: "487", sub: "today", color: "text-blue-600 bg-blue-50 border-blue-100" },
-          { label: "Revenue", value: "₹8,23,400", sub: "today", color: "text-emerald-600 bg-emerald-50 border-emerald-100" },
-          { label: "Cancelled", value: "12", sub: "today", color: "text-red-600 bg-red-50 border-red-100" },
-          { label: "Avg. Ticket", value: "₹16,900", sub: "per booking", color: "text-violet-600 bg-violet-50 border-violet-100" },
-        ].map((c) => (
-          <div key={c.label} className={`rounded-xl border p-4 ${c.color}`}>
-            <p className="text-xs font-medium opacity-70">{c.label}</p>
-            <p className="mt-1 text-2xl font-bold">{c.value}</p>
-            <p className="text-xs opacity-60">{c.sub}</p>
+      {/* Row 1 — hero + revenue trend + confirmation rate */}
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
+        <div className="relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 lg:col-span-2">
+          {/* <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-blue-50 dark:bg-blue-500/10" />
+          <div className="absolute -right-2 top-10 h-16 w-16 rounded-full bg-indigo-50 dark:bg-indigo-500/10" /> */}
+          <div className="relative flex items-center gap-4">
+            <div className="min-w-0 flex-1">
+              <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Flights Overview</h2>
+              <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">487 bookings this month, 12 awaiting cancellation review.</p>
+              <div className="mt-6 flex items-center gap-8">
+                <div>
+                  <p className="text-xs text-slate-400 dark:text-slate-500">Today&apos;s Bookings</p>
+                  <p className="text-lg font-bold text-slate-900 dark:text-slate-100">42 <span className="text-xs font-semibold text-emerald-600">+9%</span></p>
+                  <div className="mt-1.5 h-1.5 w-28 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-700"><div className="h-full w-[72%] rounded-full bg-blue-600" /></div>
+                </div>
+                <div>
+                  <p className="text-xs text-slate-400 dark:text-slate-500">On-time Issuance</p>
+                  <p className="text-lg font-bold text-slate-900 dark:text-slate-100">91% <span className="text-xs font-semibold text-emerald-600">+2%</span></p>
+                  <div className="mt-1.5 h-1.5 w-28 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-700"><div className="h-full w-[91%] rounded-full bg-emerald-600" /></div>
+                </div>
+              </div>
+            </div>
+            <div className="hidden h-44 w-44 flex-shrink-0 sm:block">
+              <DotLottieReact
+                src="https://lottie.host/d9551fb5-c0b6-44df-a113-ec4df1843f9b/sR6Sh4J6jr.lottie"
+                loop
+                autoplay
+                width={352}
+                height={352}
+                style={{ width: "100%", height: "100%" }}
+              />
+            </div>
+          </div>
+        </div>
+
+        <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <div className="flex items-center justify-between">
+            <p className="text-xs font-medium text-slate-500 dark:text-slate-400">Revenue</p>
+            <span className="rounded-full bg-emerald-50 px-2 py-0.5 text-[11px] font-semibold text-emerald-600 dark:bg-emerald-500/10">+8%</span>
+          </div>
+          <p className="mt-1 text-2xl font-bold text-slate-900 dark:text-slate-100">₹8,23,400</p>
+          <p className="text-xs text-slate-400 dark:text-slate-500">across 487 bookings this month</p>
+          <div className="mt-3">
+            <AreaSparkline
+              points={[62, 68, 64, 72, 78, 74, 82, 90]}
+              comparePoints={[55, 60, 58, 64, 70, 66, 74, 80]}
+              color="#2563eb"
+              labels={last8Days}
+              formatValue={(v) => `₹${v}K`}
+              compareFormatValue={(v) => `₹${v}K`}
+            />
+            <div className="mt-2 flex items-center gap-3 text-[11px] text-slate-400 dark:text-slate-500">
+              <span className="flex items-center gap-1"><span className="h-0.5 w-3 rounded-full bg-blue-600" /> This period</span>
+              <span className="flex items-center gap-1"><span className="h-0.5 w-3 rounded-full border-t border-dashed border-slate-400" /> Last period</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex flex-col items-center justify-center rounded-2xl border border-slate-100 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <p className="mb-2 self-start text-xs font-medium text-slate-500 dark:text-slate-400">Confirmation Rate</p>
+          <DonutRing
+            pct={82}
+            color="#2563eb"
+            label="Confirmed"
+            breakdown={[
+              { label: "Confirmed", value: 399, color: "bg-blue-600" },
+              { label: "Pending", value: 76, color: "bg-amber-400" },
+              { label: "Cancelled", value: 12, color: "bg-red-400" },
+            ]}
+          />
+        </div>
+      </div>
+
+      {/* Row 2 — analytics cards */}
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+        {analyticsCards.map((c) => (
+          <div key={c.label} className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+            <div className="flex items-center justify-between">
+              <p className="text-xs font-medium text-slate-500 dark:text-slate-400">{c.label}</p>
+              <span className="text-[11px] text-slate-400 dark:text-slate-500">Last 8 days</span>
+            </div>
+            <div className="mt-1 flex items-center gap-2">
+              <p className="text-xl font-bold text-slate-900 dark:text-slate-100">{c.value}</p>
+              <span className={`flex items-center gap-0.5 text-[11px] font-semibold ${c.change.startsWith("-") ? "text-red-600" : "text-emerald-600"}`}>
+                <svg className={`h-3 w-3 ${c.change.startsWith("-") ? "rotate-180" : ""}`} viewBox="0 0 24 24" fill="currentColor"><path d="M12 4l8 10H4z" /></svg>
+                {c.change}
+              </span>
+            </div>
+            <div className="mt-2">
+              {c.sparkline ? (
+                <Sparkline points={c.sparkline} color={c.color!} labels={last8Days} formatValue={c.formatValue} />
+              ) : (
+                <MiniBars values={c.bars!} color={c.color!} labels={last8Days} formatValue={c.formatValue} />
+              )}
+            </div>
           </div>
         ))}
       </div>
 
-      {/* Table card */}
-      <div className="rounded-xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
-        {/* Toolbar */}
-        <div className="flex flex-col gap-3 border-b border-slate-100 px-6 py-4 sm:flex-row sm:items-center sm:justify-between dark:border-slate-800">
-          <div className="flex items-center gap-2">
-            {["All", "Confirmed", "Pending", "Cancelled"].map((s) => (
-              <button
-                key={s}
-                onClick={() => setStatusFilter(s)}
-                className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${statusFilter === s ? "bg-blue-600 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}
-              >
-                {s} <span className="ml-0.5 opacity-70">({counts[s as keyof typeof counts]})</span>
-              </button>
-            ))}
-          </div>
-          <div className="flex items-center gap-2">
-            <div className="flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 dark:border-slate-700 dark:bg-slate-800">
-              <svg className="h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
-              <input value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search PNR, passenger, agent..." className="bg-transparent text-xs text-slate-600 placeholder-slate-400 outline-none w-40 sm:w-52 dark:text-slate-200" />
+      {/* Row 3 — mini icon stats (link to workflow pages) */}
+      <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+        {miniStats.map((s) => (
+          <Link key={s.label} href={s.href} className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-white p-4 shadow-sm transition-colors hover:border-blue-200 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500/30">
+            <div className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg ${s.color}`}>
+              <svg className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d={s.icon} /></svg>
             </div>
-            <button className="flex items-center gap-1.5 rounded-lg bg-blue-600 px-3 py-2 text-xs font-medium text-white hover:bg-blue-700 transition-colors">
-              <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
-              New Booking
-            </button>
+            <div className="min-w-0">
+              <p className="text-sm font-bold text-slate-900 dark:text-slate-100">{s.value}</p>
+              <p className="truncate text-xs text-slate-500 dark:text-slate-400">{s.label}</p>
+            </div>
+          </Link>
+        ))}
+      </div>
+
+      {/* Row 4 — traffic chart + top airlines */}
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-3">
+        <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900 lg:col-span-2">
+          <div className="mb-4 flex items-center justify-between">
+            <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Booking Traffic</h3>
+            <div className="flex items-center gap-3 text-[11px] text-slate-500 dark:text-slate-400">
+              <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-sm bg-blue-600" /> Domestic</span>
+              <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-sm bg-sky-300" /> International</span>
+            </div>
+          </div>
+          <div className="relative flex h-40 items-end gap-2">
+            {trafficDays.map((d, i) => {
+              const totalPct = ((d.domestic + d.intl) / trafficMax) * 100
+              const dimmed = hoverDay !== null && hoverDay !== i
+              return (
+                <div key={d.day} className="flex h-full flex-1 flex-col items-center gap-1" onMouseEnter={() => setHoverDay(i)} onMouseLeave={() => setHoverDay(null)}>
+                  <div className={`flex w-full flex-1 cursor-pointer flex-col justify-end gap-0.5 transition-opacity ${dimmed ? "opacity-40" : "opacity-100"}`}>
+                    <div className="w-full rounded-t-sm bg-sky-300" style={{ height: `${(d.intl / trafficMax) * 100}%` }} />
+                    <div className="w-full rounded-t-sm bg-blue-600" style={{ height: `${(d.domestic / trafficMax) * 100}%` }} />
+                  </div>
+                  <span className="text-[10px] text-slate-400 dark:text-slate-500">{d.day}</span>
+                  {hoverDay === i && (
+                    <div className="pointer-events-none absolute z-20" style={{ ...edgeAlign(((i + 0.5) / trafficDays.length) * 100), bottom: `calc(${totalPct}% + 22px)` }}>
+                      <TooltipBox>
+                        <p className="mb-1 font-semibold text-slate-800 dark:text-slate-100">{d.day}</p>
+                        <div className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-blue-600" /><span className="text-slate-500 dark:text-slate-400">Domestic</span><span className="ml-auto font-semibold text-slate-800 dark:text-slate-100">{d.domestic}</span></div>
+                        <div className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-sky-300" /><span className="text-slate-500 dark:text-slate-400">International</span><span className="ml-auto font-semibold text-slate-800 dark:text-slate-100">{d.intl}</span></div>
+                      </TooltipBox>
+                    </div>
+                  )}
+                </div>
+              )
+            })}
           </div>
         </div>
 
-        {/* Table */}
+        <div className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900">
+          <h3 className="mb-4 text-sm font-semibold text-slate-800 dark:text-slate-100">Top Airlines</h3>
+          <div className="space-y-3">
+            {topAirlines.map((a, i) => (
+              <div key={a.name} className="relative" onMouseEnter={() => setHoverAirline(i)} onMouseLeave={() => setHoverAirline(null)}>
+                <div className="mb-1 flex items-center justify-between text-xs">
+                  <span className="font-medium text-slate-700 dark:text-slate-300">{a.name}</span>
+                  <span className="text-slate-400 dark:text-slate-500">{a.bookings}</span>
+                </div>
+                <div className="h-1.5 w-full cursor-pointer overflow-hidden rounded-full bg-slate-100 dark:bg-slate-700">
+                  <div className={`h-full rounded-full bg-blue-600 transition-opacity ${hoverAirline !== null && hoverAirline !== i ? "opacity-50" : "opacity-100"}`} style={{ width: `${a.pct}%` }} />
+                </div>
+                {hoverAirline === i && (
+                  <div className="pointer-events-none absolute z-20 bottom-full left-1/2 mb-1.5 -translate-x-1/2">
+                    <TooltipBox>
+                      <p className="font-semibold text-slate-800 dark:text-slate-100">Rank #{i + 1} · {a.bookings} bookings</p>
+                    </TooltipBox>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Row 5 — recent bookings */}
+      <div className="rounded-2xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
+        <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
+          <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Recent Bookings</h3>
+          <Link href="/flights/all-bookings" className="text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400">View all bookings →</Link>
+        </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-slate-100 text-xs text-slate-500 dark:border-slate-800 dark:text-slate-400">
                 <th className="px-6 py-3 text-left font-medium">PNR</th>
                 <th className="px-6 py-3 text-left font-medium">Passenger</th>
-                <th className="px-6 py-3 text-left font-medium">Airline</th>
                 <th className="px-6 py-3 text-left font-medium">Route</th>
-                <th className="px-6 py-3 text-left font-medium">Date & Time</th>
-                <th className="px-6 py-3 text-left font-medium">Class</th>
-                <th className="px-6 py-3 text-left font-medium">Pax</th>
                 <th className="px-6 py-3 text-left font-medium">Amount</th>
-                <th className="px-6 py-3 text-left font-medium">Agent</th>
                 <th className="px-6 py-3 text-left font-medium">Status</th>
-                <th className="px-6 py-3 text-left font-medium">Actions</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
-              {filtered.map((b) => (
+              {recentBookings.map((b) => (
                 <tr key={b.pnr} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
                   <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{b.pnr}</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{b.passenger}</td>
-                  <td className="px-6 py-3 text-slate-600 dark:text-slate-300">{b.airline}</td>
                   <td className="px-6 py-3">
                     <span className="font-semibold text-slate-800 dark:text-slate-100">{b.from}</span>
                     <span className="mx-1 text-slate-400">→</span>
                     <span className="font-semibold text-slate-800 dark:text-slate-100">{b.to}</span>
                   </td>
-                  <td className="px-6 py-3">
-                    <p className="text-slate-700 dark:text-slate-200">{b.date}</p>
-                    <p className="text-xs text-slate-400">{b.depart} – {b.arrive}</p>
-                  </td>
-                  <td className="px-6 py-3 text-xs text-slate-600 dark:text-slate-300">{b.class}</td>
-                  <td className="px-6 py-3 text-center text-slate-700 dark:text-slate-200">{b.pax}</td>
                   <td className="px-6 py-3 font-semibold text-slate-800 dark:text-slate-100">{b.amount}</td>
-                  <td className="px-6 py-3 text-slate-500 dark:text-slate-400">{b.agent}</td>
                   <td className="px-6 py-3">
                     <span className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${statusColors[b.status]}`}>{b.status}</span>
-                  </td>
-                  <td className="px-6 py-3">
-                    <div className="flex items-center gap-2">
-                      <button className="text-xs text-indigo-600 hover:text-indigo-800 font-medium">View</button>
-                      <button className="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">Cancel</button>
-                    </div>
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
-        </div>
-
-        {/* Pagination */}
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
-          <p className="text-xs text-slate-500 dark:text-slate-400">Showing {filtered.length} of {allBookings.length} bookings</p>
-          <div className="flex items-center gap-1">
-            {[1, 2, 3, "...", 24].map((p, i) => (
-              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-blue-600 text-white" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>{p}</button>
-            ))}
-          </div>
         </div>
       </div>
     </div>
