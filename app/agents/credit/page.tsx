@@ -24,7 +24,7 @@ const initialAgents: AgentCredit[] = [
 ]
 
 const tierColors: Record<string, string> = {
-  Platinum: "bg-violet-100 text-violet-700 border border-violet-200 dark:bg-violet-500/10 dark:text-violet-400 dark:border-violet-500/20",
+  Platinum: "bg-blue-100 text-blue-700 border border-blue-200 dark:bg-blue-500/10 dark:text-blue-400 dark:border-blue-500/20",
   Gold: "bg-yellow-100 text-yellow-700 border border-yellow-200 dark:bg-yellow-500/10 dark:text-yellow-400 dark:border-yellow-500/20",
   Silver: "bg-slate-100 text-slate-600 border border-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700",
   Bronze: "bg-orange-100 text-orange-700 border border-orange-200 dark:bg-orange-500/10 dark:text-orange-400 dark:border-orange-500/20",
@@ -121,15 +121,15 @@ export default function CreditManagementPage() {
 
       {/* Compact stat chips */}
       <div className="flex flex-wrap items-center gap-3">
-        <div className="flex items-center gap-2 rounded-lg border border-blue-100 bg-blue-50 px-3 py-2">
-          <span className="h-2 w-2 rounded-full bg-blue-500" />
-          <span className="text-sm font-bold text-blue-600">{formatInr(totalIssued)}</span>
-          <span className="text-xs text-blue-600/70">Total Credit Issued</span>
-        </div>
         <div className="flex items-center gap-2 rounded-lg border border-violet-100 bg-violet-50 px-3 py-2">
           <span className="h-2 w-2 rounded-full bg-violet-500" />
-          <span className="text-sm font-bold text-violet-600">{agents.length}</span>
-          <span className="text-xs text-violet-600/70">Agents</span>
+          <span className="text-sm font-bold text-violet-600">{formatInr(totalIssued)}</span>
+          <span className="text-xs text-violet-600/70">Total Credit Issued</span>
+        </div>
+        <div className="flex items-center gap-2 rounded-lg border border-blue-100 bg-blue-50 px-3 py-2">
+          <span className="h-2 w-2 rounded-full bg-blue-500" />
+          <span className="text-sm font-bold text-blue-600">{agents.length}</span>
+          <span className="text-xs text-blue-600/70">Agents</span>
         </div>
         <div className="flex items-center gap-2 rounded-lg border border-red-100 bg-red-50 px-3 py-2">
           <span className="h-2 w-2 rounded-full bg-red-500" />
@@ -180,7 +180,7 @@ export default function CreditManagementPage() {
                         value={drafts[a.id] || ""}
                         onChange={(e) => { setDrafts((prev) => ({ ...prev, [a.id]: e.target.value.replace(/[^0-9]/g, "") })); setErrors((prev) => ({ ...prev, [a.id]: "" })) }}
                         placeholder={String(a.currentLimit)}
-                        className="w-28 rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs outline-none focus:ring-2 focus:ring-violet-100 focus:border-violet-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                        className="w-28 rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
                       />
                     </td>
                     <td className="px-6 py-3">
@@ -188,13 +188,13 @@ export default function CreditManagementPage() {
                         value={reasonDrafts[a.id] || ""}
                         onChange={(e) => { setReasonDrafts((prev) => ({ ...prev, [a.id]: e.target.value })); setErrors((prev) => ({ ...prev, [a.id]: "" })) }}
                         placeholder="Reason for change"
-                        className="w-40 rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs outline-none focus:ring-2 focus:ring-violet-100 focus:border-violet-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                        className="w-40 rounded-lg border border-slate-200 px-2.5 py-1.5 text-xs outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
                       />
                       {errors[a.id] && <p className="mt-1 text-[11px] text-red-500">{errors[a.id]}</p>}
                     </td>
                     <td className="px-6 py-3">
                       <div className="flex items-center gap-2">
-                        <button onClick={() => handleSetLimit(a)} className="rounded-lg bg-violet-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-violet-700 transition-colors">Set Limit</button>
+                        <button onClick={() => handleSetLimit(a)} className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700 transition-colors">Set Limit</button>
                         <button onClick={() => viewAgent(a)} className="text-xs text-slate-400 hover:text-slate-600">View</button>
                       </div>
                     </td>

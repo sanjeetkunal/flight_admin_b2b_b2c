@@ -139,13 +139,13 @@ export default function HolidaysMiscServiceChargePage() {
   const removeRow = (id: number) => setRows((prev) => prev.filter((r) => r.id !== id))
 
   const labelCls = "mb-1.5 block text-xs font-medium text-slate-500 dark:text-slate-400"
-  const inputCls = "w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-pink-100 focus:border-pink-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+  const inputCls = "w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
   const selectCls = inputCls + " bg-white"
 
   return (
     <div className="space-y-4">
       {/* Header bar */}
-      <div className="rounded-xl bg-pink-500 px-6 py-3 shadow-sm">
+      <div className="rounded-xl bg-blue-500 px-6 py-3 shadow-sm">
         <p className="text-sm font-medium text-white">Holiday Setting <span className="opacity-70">&gt;</span> MISC SERVICE CHARGE</p>
       </div>
 
@@ -235,7 +235,7 @@ export default function HolidaysMiscServiceChargePage() {
         </div>
 
         <div className="flex items-center gap-2 border-t border-slate-100 px-6 py-4 dark:border-slate-800">
-          <button onClick={handleSave} className="rounded-lg bg-pink-500 px-4 py-2 text-xs font-medium text-white hover:bg-pink-600 transition-colors">
+          <button onClick={handleSave} className="rounded-lg bg-blue-500 px-4 py-2 text-xs font-medium text-white hover:bg-blue-600 transition-colors">
             {editingId !== null ? "Update" : "Save"}
           </button>
           {editingId !== null && (
@@ -246,10 +246,10 @@ export default function HolidaysMiscServiceChargePage() {
 
       {/* Compact stat chips */}
       <div className="flex flex-wrap items-center gap-3">
-        <div className="flex items-center gap-2 rounded-lg border border-pink-100 bg-pink-50 px-3 py-2">
-          <span className="h-2 w-2 rounded-full bg-pink-500" />
-          <span className="text-sm font-bold text-pink-600">{rows.length}</span>
-          <span className="text-xs text-pink-600/70">Service Charges</span>
+        <div className="flex items-center gap-2 rounded-lg border border-blue-100 bg-blue-50 px-3 py-2">
+          <span className="h-2 w-2 rounded-full bg-blue-500" />
+          <span className="text-sm font-bold text-blue-600">{rows.length}</span>
+          <span className="text-xs text-blue-600/70">Service Charges</span>
         </div>
         <div className="flex items-center gap-2 rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2">
           <span className="h-2 w-2 rounded-full bg-emerald-500" />
@@ -297,7 +297,7 @@ export default function HolidaysMiscServiceChargePage() {
                   <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.agentId}</td>
                   <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.origin}</td>
                   <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.destination}</td>
-                  <td className="px-4 py-3 whitespace-nowrap font-mono text-xs text-pink-700 dark:text-pink-400">{r.markupType}</td>
+                  <td className="px-4 py-3 whitespace-nowrap font-mono text-xs text-blue-700 dark:text-blue-400">{r.markupType}</td>
                   <td className="px-4 py-3 whitespace-nowrap font-semibold text-slate-800 dark:text-slate-100">{r.amount}</td>
                   <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.markupBasic}</td>
                   <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.markupTax}</td>

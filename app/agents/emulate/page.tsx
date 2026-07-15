@@ -170,10 +170,10 @@ export default function EmulateAgentPage() {
                 value={agentIdInput}
                 onChange={(e) => { setAgentIdInput(e.target.value.toUpperCase()); setFetchError("") }}
                 placeholder="e.g. AG001"
-                className="w-48 rounded-lg border border-slate-200 px-3 py-2 text-sm font-mono uppercase text-slate-700 outline-none focus:ring-2 focus:ring-violet-100 focus:border-violet-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                className="w-48 rounded-lg border border-slate-200 px-3 py-2 text-sm font-mono uppercase text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
               />
             </div>
-            <button onClick={handleFetch} className="rounded-lg bg-violet-600 px-4 py-2 text-xs font-medium text-white hover:bg-violet-700 transition-colors">
+            <button onClick={handleFetch} className="rounded-lg bg-blue-600 px-4 py-2 text-xs font-medium text-white hover:bg-blue-700 transition-colors">
               Fetch Agent
             </button>
           </div>
@@ -215,7 +215,7 @@ export default function EmulateAgentPage() {
                   onChange={(e) => { setRemarks(e.target.value); setRemarksError("") }}
                   placeholder="Reason for emulating this agent..."
                   rows={3}
-                  className={`w-full rounded-lg border px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 dark:text-slate-200 ${remarksError ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-violet-100 focus:border-violet-300 dark:border-slate-700 dark:bg-slate-800"}`}
+                  className={`w-full rounded-lg border px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 dark:text-slate-200 ${remarksError ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-blue-100 focus:border-blue-300 dark:border-slate-700 dark:bg-slate-800"}`}
                 />
                 {remarksError && <p className="mt-1 text-xs text-red-500">{remarksError}</p>}
               </div>
@@ -223,7 +223,7 @@ export default function EmulateAgentPage() {
               <button
                 onClick={handleStartEmulation}
                 disabled={!!activeEmulation}
-                className="rounded-lg bg-violet-600 px-4 py-2 text-xs font-medium text-white hover:bg-violet-700 transition-colors disabled:cursor-not-allowed disabled:opacity-50"
+                className="rounded-lg bg-blue-600 px-4 py-2 text-xs font-medium text-white hover:bg-blue-700 transition-colors disabled:cursor-not-allowed disabled:opacity-50"
               >
                 {activeEmulation ? "End current emulation first" : "Start Emulation"}
               </button>
@@ -234,10 +234,10 @@ export default function EmulateAgentPage() {
 
       {/* Compact stat chips */}
       <div className="flex flex-wrap items-center gap-3">
-        <div className="flex items-center gap-2 rounded-lg border border-violet-100 bg-violet-50 px-3 py-2">
-          <span className="h-2 w-2 rounded-full bg-violet-500" />
-          <span className="text-sm font-bold text-violet-600">{history.length}</span>
-          <span className="text-xs text-violet-600/70">Total Emulations</span>
+        <div className="flex items-center gap-2 rounded-lg border border-blue-100 bg-blue-50 px-3 py-2">
+          <span className="h-2 w-2 rounded-full bg-blue-500" />
+          <span className="text-sm font-bold text-blue-600">{history.length}</span>
+          <span className="text-xs text-blue-600/70">Total Emulations</span>
         </div>
         <div className="flex items-center gap-2 rounded-lg border border-amber-100 bg-amber-50 px-3 py-2">
           <span className="h-2 w-2 rounded-full bg-amber-500" />
@@ -258,7 +258,7 @@ export default function EmulateAgentPage() {
             <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Emulate History</h2>
             <p className="text-xs text-slate-400">Audit trail of all agent emulation sessions with remarks</p>
           </div>
-          <span className="rounded-full bg-violet-100 px-2.5 py-0.5 text-xs font-medium text-violet-700 dark:bg-violet-500/10 dark:text-violet-400">{history.length} sessions</span>
+          <span className="rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-500/10 dark:text-blue-400">{history.length} sessions</span>
         </div>
 
         <div className="overflow-x-auto">
@@ -278,7 +278,7 @@ export default function EmulateAgentPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {history.map((h) => (
                 <tr key={h.id} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-violet-700 dark:text-violet-400">{h.agentId}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{h.agentId}</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{h.agentName}</td>
                   <td className="px-6 py-3 text-slate-500 dark:text-slate-400">{h.emulatedBy}</td>
                   <td className="px-6 py-3 max-w-xs truncate text-xs text-slate-600 dark:text-slate-300">{h.remarks}</td>

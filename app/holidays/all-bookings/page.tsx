@@ -13,7 +13,7 @@ const allBookings = [
 ]
 
 const statusColors: Record<string, string> = { Confirmed: "bg-emerald-100 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400", Pending: "bg-amber-100 text-amber-700 dark:bg-amber-500/10 dark:text-amber-400", Cancelled: "bg-red-100 text-red-700 dark:bg-red-500/10 dark:text-red-400" }
-const categoryColors: Record<string, string> = { Beach: "bg-cyan-100 text-cyan-700 dark:bg-cyan-500/10 dark:text-cyan-400", Nature: "bg-green-100 text-green-700 dark:bg-green-500/10 dark:text-green-400", Adventure: "bg-orange-100 text-orange-700 dark:bg-orange-500/10 dark:text-orange-400", Heritage: "bg-yellow-100 text-yellow-700 dark:bg-yellow-500/10 dark:text-yellow-400", "Hill Station": "bg-blue-100 text-blue-700 dark:bg-blue-500/10 dark:text-blue-400", International: "bg-violet-100 text-violet-700 dark:bg-violet-500/10 dark:text-violet-400" }
+const categoryColors: Record<string, string> = { Beach: "bg-cyan-100 text-cyan-700 dark:bg-cyan-500/10 dark:text-cyan-400", Nature: "bg-green-100 text-green-700 dark:bg-green-500/10 dark:text-green-400", Adventure: "bg-orange-100 text-orange-700 dark:bg-orange-500/10 dark:text-orange-400", Heritage: "bg-yellow-100 text-yellow-700 dark:bg-yellow-500/10 dark:text-yellow-400", "Hill Station": "bg-teal-100 text-teal-700 dark:bg-teal-500/10 dark:text-teal-400", International: "bg-violet-100 text-violet-700 dark:bg-violet-500/10 dark:text-violet-400" }
 
 const categories = ["All", ...Array.from(new Set(allBookings.map((b) => b.category)))]
 const agents = ["All", ...Array.from(new Set(allBookings.map((b) => b.agent)))]
@@ -59,7 +59,7 @@ export default function HolidaysAllBookingsPage() {
       {/* Summary cards */}
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {[
-          { label: "Total Packages", value: "67", sub: "this month", color: "text-pink-600 bg-pink-50 border-pink-100" },
+          { label: "Total Packages", value: "67", sub: "this month", color: "text-blue-600 bg-blue-50 border-blue-100" },
           { label: "Revenue", value: "₹7,21,500", sub: "this month", color: "text-emerald-600 bg-emerald-50 border-emerald-100" },
           { label: "Cancelled", value: "4", sub: "this month", color: "text-red-600 bg-red-50 border-red-100" },
           { label: "Avg. Package Value", value: "₹1,07,600", sub: "per booking", color: "text-violet-600 bg-violet-50 border-violet-100" },
@@ -81,7 +81,7 @@ export default function HolidaysAllBookingsPage() {
               <button
                 key={s}
                 onClick={() => setStatusFilter(s)}
-                className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${statusFilter === s ? "bg-pink-500 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}
+                className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${statusFilter === s ? "bg-blue-500 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}
               >
                 {s} <span className="ml-0.5 opacity-70">({counts[s as keyof typeof counts]})</span>
               </button>
@@ -96,15 +96,15 @@ export default function HolidaysAllBookingsPage() {
               onClick={() => setShowFilters((v) => !v)}
               className={`flex items-center gap-1.5 rounded-lg border px-3 py-2 text-xs font-medium transition-colors ${
                 showFilters || activeFilterCount > 0
-                  ? "border-pink-200 bg-pink-50 text-pink-700 dark:border-pink-500/30 dark:bg-pink-500/10 dark:text-pink-400"
+                  ? "border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-500/30 dark:bg-blue-500/10 dark:text-blue-400"
                   : "border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
               }`}
             >
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" /></svg>
               Filters
-              {activeFilterCount > 0 && <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-pink-600 px-1 text-[10px] text-white">{activeFilterCount}</span>}
+              {activeFilterCount > 0 && <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-blue-600 px-1 text-[10px] text-white">{activeFilterCount}</span>}
             </button>
-            <button className="flex items-center gap-1.5 rounded-lg bg-pink-500 px-3 py-2 text-xs font-medium text-white hover:bg-pink-600 transition-colors">
+            <button className="flex items-center gap-1.5 rounded-lg bg-blue-500 px-3 py-2 text-xs font-medium text-white hover:bg-blue-600 transition-colors">
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
               New Package
             </button>
@@ -137,7 +137,7 @@ export default function HolidaysAllBookingsPage() {
               </div>
             </div>
             {activeFilterCount > 0 && (
-              <button onClick={clearFilters} className="mt-3 text-xs font-medium text-pink-600 hover:text-pink-700 dark:text-pink-400">Clear all filters</button>
+              <button onClick={clearFilters} className="mt-3 text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400">Clear all filters</button>
             )}
           </div>
         )}
@@ -166,7 +166,7 @@ export default function HolidaysAllBookingsPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {filtered.map((p) => (
                 <tr key={p.id} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-pink-600 dark:text-pink-400">{p.id}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-600 dark:text-blue-400">{p.id}</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{p.client}</td>
                   <td className="px-6 py-3">
                     <p className="font-medium text-slate-800 dark:text-slate-100">{p.package}</p>
@@ -197,7 +197,7 @@ export default function HolidaysAllBookingsPage() {
                   </td>
                   <td className="px-6 py-3">
                     <div className="flex items-center gap-2">
-                      <button className="text-xs text-pink-600 hover:text-pink-800 font-medium">View</button>
+                      <button className="text-xs text-blue-600 hover:text-blue-800 font-medium">View</button>
                       <button className="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">Cancel</button>
                     </div>
                   </td>
@@ -212,7 +212,7 @@ export default function HolidaysAllBookingsPage() {
           <p className="text-xs text-slate-500 dark:text-slate-400">Showing {filtered.length} of {allBookings.length} packages</p>
           <div className="flex items-center gap-1">
             {[1, 2, 3, "...", 14].map((p, i) => (
-              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-pink-500 text-white" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>{p}</button>
+              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-blue-500 text-white" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>{p}</button>
             ))}
           </div>
         </div>

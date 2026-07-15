@@ -15,7 +15,7 @@ const trafficDays = [
 const trafficMax = 40
 
 const analyticsCards = [
-  { label: "Total Packages", value: "67", change: "+11%", sparkline: [40, 44, 42, 50, 55, 52, 60, 67], color: "#db2777", formatValue: (v: number) => `${v} packages` },
+  { label: "Total Packages", value: "67", change: "+11%", sparkline: [40, 44, 42, 50, 55, 52, 60, 67], color: "#2563eb", formatValue: (v: number) => `${v} packages` },
   { label: "Revenue", value: "₹7.21L", change: "+9%", sparkline: [50, 55, 53, 58, 62, 60, 68, 72], color: "#059669", formatValue: (v: number) => `₹${v}K` },
   { label: "Avg. Package Value", value: "₹1,07,600", change: "+4%", sparkline: [98, 100, 102, 99, 104, 106, 105, 107], color: "#7c3aed", formatValue: (v: number) => `₹${v}00` },
   { label: "Cancellations", value: "4", change: "-2%", bars: [1, 0, 1, 1, 0, 1, 0, 0], color: "bg-red-500", formatValue: (v: number) => `${v} cancelled` },
@@ -24,7 +24,7 @@ const analyticsCards = [
 const miniStats = [
   { label: "Pending Requests", value: "9", href: "/holidays/pending-requests", color: "bg-amber-500", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
   { label: "Confirm Booking", value: "6", href: "/holidays/confirm-booking", color: "bg-emerald-600", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
-  { label: "Amendment Request", value: "4", href: "/holidays/amendment-request", color: "bg-pink-600", icon: "M4 4v6h6M20 20v-6h-6M4.5 15a8 8 0 0014.9 2.5M19.5 9A8 8 0 004.6 6.5" },
+  { label: "Amendment Request", value: "4", href: "/holidays/amendment-request", color: "bg-blue-600", icon: "M4 4v6h6M20 20v-6h-6M4.5 15a8 8 0 0014.9 2.5M19.5 9A8 8 0 004.6 6.5" },
   { label: "Refund Request", value: "3", href: "/holidays/refund-request", color: "bg-violet-600", icon: "M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6M12 1v22" },
 ]
 
@@ -59,8 +59,8 @@ export default function HolidaysDashboardPage() {
       {/* Row 1 — hero + revenue trend + confirmation rate */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
         <div className="relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 lg:col-span-2">
-          <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-pink-50 dark:bg-pink-500/10" />
-          <div className="absolute -right-2 top-10 h-16 w-16 rounded-full bg-rose-50 dark:bg-rose-500/10" />
+          <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-blue-50 dark:bg-blue-500/10" />
+          <div className="absolute -right-2 top-10 h-16 w-16 rounded-full bg-indigo-50 dark:bg-indigo-500/10" />
           <div className="relative flex items-center gap-4">
             <div className="min-w-0 flex-1">
               <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Holidays Overview</h2>
@@ -69,7 +69,7 @@ export default function HolidaysDashboardPage() {
                 <div>
                   <p className="text-xs text-slate-400 dark:text-slate-500">Today&apos;s Bookings</p>
                   <p className="text-lg font-bold text-slate-900 dark:text-slate-100">6 <span className="text-xs font-semibold text-emerald-600">+11%</span></p>
-                  <div className="mt-1.5 h-1.5 w-28 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-700"><div className="h-full w-[68%] rounded-full bg-pink-600" /></div>
+                  <div className="mt-1.5 h-1.5 w-28 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-700"><div className="h-full w-[68%] rounded-full bg-blue-600" /></div>
                 </div>
                 <div>
                   <p className="text-xs text-slate-400 dark:text-slate-500">Confirmation Turnaround</p>
@@ -102,13 +102,13 @@ export default function HolidaysDashboardPage() {
             <AreaSparkline
               points={[50, 55, 53, 58, 62, 60, 68, 72]}
               comparePoints={[45, 48, 47, 52, 56, 54, 60, 64]}
-              color="#db2777"
+              color="#2563eb"
               labels={last8Days}
               formatValue={(v) => `₹${v}K`}
               compareFormatValue={(v) => `₹${v}K`}
             />
             <div className="mt-2 flex items-center gap-3 text-[11px] text-slate-400 dark:text-slate-500">
-              <span className="flex items-center gap-1"><span className="h-0.5 w-3 rounded-full bg-pink-600" /> This period</span>
+              <span className="flex items-center gap-1"><span className="h-0.5 w-3 rounded-full bg-blue-600" /> This period</span>
               <span className="flex items-center gap-1"><span className="h-0.5 w-3 rounded-full border-t border-dashed border-slate-400" /> Last period</span>
             </div>
           </div>
@@ -118,10 +118,10 @@ export default function HolidaysDashboardPage() {
           <p className="mb-2 self-start text-xs font-medium text-slate-500 dark:text-slate-400">Confirmation Rate</p>
           <DonutRing
             pct={79}
-            color="#db2777"
+            color="#2563eb"
             label="Confirmed"
             breakdown={[
-              { label: "Confirmed", value: 53, color: "bg-pink-600" },
+              { label: "Confirmed", value: 53, color: "bg-blue-600" },
               { label: "Pending", value: 10, color: "bg-amber-400" },
               { label: "Cancelled", value: 4, color: "bg-red-400" },
             ]}
@@ -158,7 +158,7 @@ export default function HolidaysDashboardPage() {
       {/* Row 3 — mini icon stats (link to workflow pages) */}
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {miniStats.map((s) => (
-          <Link key={s.label} href={s.href} className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-white p-4 shadow-sm transition-colors hover:border-pink-200 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-pink-500/30">
+          <Link key={s.label} href={s.href} className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-white p-4 shadow-sm transition-colors hover:border-blue-200 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500/30">
             <div className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg ${s.color}`}>
               <svg className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d={s.icon} /></svg>
             </div>
@@ -176,8 +176,8 @@ export default function HolidaysDashboardPage() {
           <div className="mb-4 flex items-center justify-between">
             <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Booking Traffic</h3>
             <div className="flex items-center gap-3 text-[11px] text-slate-500 dark:text-slate-400">
-              <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-sm bg-pink-600" /> Domestic</span>
-              <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-sm bg-rose-300" /> International</span>
+              <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-sm bg-blue-600" /> Domestic</span>
+              <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-sm bg-sky-300" /> International</span>
             </div>
           </div>
           <div className="relative flex h-40 items-end gap-2">
@@ -187,16 +187,16 @@ export default function HolidaysDashboardPage() {
               return (
                 <div key={d.day} className="flex h-full flex-1 flex-col items-center gap-1" onMouseEnter={() => setHoverDay(i)} onMouseLeave={() => setHoverDay(null)}>
                   <div className={`flex w-full flex-1 cursor-pointer flex-col justify-end gap-0.5 transition-opacity ${dimmed ? "opacity-40" : "opacity-100"}`}>
-                    <div className="w-full rounded-t-sm bg-rose-300" style={{ height: `${(d.intl / trafficMax) * 100}%` }} />
-                    <div className="w-full rounded-t-sm bg-pink-600" style={{ height: `${(d.domestic / trafficMax) * 100}%` }} />
+                    <div className="w-full rounded-t-sm bg-sky-300" style={{ height: `${(d.intl / trafficMax) * 100}%` }} />
+                    <div className="w-full rounded-t-sm bg-blue-600" style={{ height: `${(d.domestic / trafficMax) * 100}%` }} />
                   </div>
                   <span className="text-[10px] text-slate-400 dark:text-slate-500">{d.day}</span>
                   {hoverDay === i && (
                     <div className="pointer-events-none absolute z-20" style={{ ...edgeAlign(((i + 0.5) / trafficDays.length) * 100), bottom: `calc(${totalPct}% + 22px)` }}>
                       <TooltipBox>
                         <p className="mb-1 font-semibold text-slate-800 dark:text-slate-100">{d.day}</p>
-                        <div className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-pink-600" /><span className="text-slate-500 dark:text-slate-400">Domestic</span><span className="ml-auto font-semibold text-slate-800 dark:text-slate-100">{d.domestic}</span></div>
-                        <div className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-rose-300" /><span className="text-slate-500 dark:text-slate-400">International</span><span className="ml-auto font-semibold text-slate-800 dark:text-slate-100">{d.intl}</span></div>
+                        <div className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-blue-600" /><span className="text-slate-500 dark:text-slate-400">Domestic</span><span className="ml-auto font-semibold text-slate-800 dark:text-slate-100">{d.domestic}</span></div>
+                        <div className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-sky-300" /><span className="text-slate-500 dark:text-slate-400">International</span><span className="ml-auto font-semibold text-slate-800 dark:text-slate-100">{d.intl}</span></div>
                       </TooltipBox>
                     </div>
                   )}
@@ -216,7 +216,7 @@ export default function HolidaysDashboardPage() {
                   <span className="text-slate-400 dark:text-slate-500">{d.bookings}</span>
                 </div>
                 <div className="h-1.5 w-full cursor-pointer overflow-hidden rounded-full bg-slate-100 dark:bg-slate-700">
-                  <div className={`h-full rounded-full bg-pink-600 transition-opacity ${hoverDest !== null && hoverDest !== i ? "opacity-50" : "opacity-100"}`} style={{ width: `${d.pct}%` }} />
+                  <div className={`h-full rounded-full bg-blue-600 transition-opacity ${hoverDest !== null && hoverDest !== i ? "opacity-50" : "opacity-100"}`} style={{ width: `${d.pct}%` }} />
                 </div>
                 {hoverDest === i && (
                   <div className="pointer-events-none absolute z-20 bottom-full left-1/2 mb-1.5 -translate-x-1/2">
@@ -235,7 +235,7 @@ export default function HolidaysDashboardPage() {
       <div className="rounded-2xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
         <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
           <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Recent Bookings</h3>
-          <Link href="/holidays/all-bookings" className="text-xs font-medium text-pink-600 hover:text-pink-700 dark:text-pink-400">View all bookings →</Link>
+          <Link href="/holidays/all-bookings" className="text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400">View all bookings →</Link>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
@@ -252,7 +252,7 @@ export default function HolidaysDashboardPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {recentBookings.map((b) => (
                 <tr key={b.id} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-pink-700 dark:text-pink-400">{b.id}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{b.id}</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{b.client}</td>
                   <td className="px-6 py-3 text-slate-600 dark:text-slate-300">{b.package}</td>
                   <td className="px-6 py-3">

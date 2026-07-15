@@ -49,7 +49,7 @@ export default function RailwaysPnrUpdatePage() {
       {/* Filter toolbar */}
       <div className="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between dark:border-slate-800 dark:bg-slate-900">
         <div className="flex flex-wrap items-center gap-2">
-          <button className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm">All <span className="ml-0.5 opacity-70">(5)</span></button>
+          <button className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm">All <span className="ml-0.5 opacity-70">(5)</span></button>
           <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">3A <span className="ml-0.5 opacity-70">(1)</span></button>
           <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">SL <span className="ml-0.5 opacity-70">(1)</span></button>
           <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">CC <span className="ml-0.5 opacity-70">(1)</span></button>
@@ -64,10 +64,10 @@ export default function RailwaysPnrUpdatePage() {
 
       {/* Compact stat chips */}
       <div className="flex flex-wrap items-center gap-3">
-        <div className="flex items-center gap-2 rounded-lg border border-green-100 bg-green-50 px-3 py-2 dark:border-green-500/20 dark:bg-green-500/10">
-          <span className="h-2 w-2 rounded-full bg-green-500" />
-          <span className="text-sm font-bold text-green-600 dark:text-green-400">5</span>
-          <span className="text-xs text-green-600/70 dark:text-green-400/70">Confirmed Bookings</span>
+        <div className="flex items-center gap-2 rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 dark:border-blue-500/20 dark:bg-blue-500/10">
+          <span className="h-2 w-2 rounded-full bg-blue-500" />
+          <span className="text-sm font-bold text-blue-600 dark:text-blue-400">5</span>
+          <span className="text-xs text-blue-600/70 dark:text-blue-400/70">Confirmed Bookings</span>
         </div>
         <div className="flex items-center gap-2 rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2 dark:border-emerald-500/20 dark:bg-emerald-500/10">
           <span className="h-2 w-2 rounded-full bg-emerald-500" />
@@ -111,7 +111,7 @@ export default function RailwaysPnrUpdatePage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {/* Row 1 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60 align-top">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">{current1}</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{current1}</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Rajesh Kumar</td>
                 <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12951</p><p className="text-xs text-slate-400">Mumbai Rajdhani</p></td>
                 <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">MMCT</span></td>
@@ -123,7 +123,7 @@ export default function RailwaysPnrUpdatePage() {
                     onChange={(e) => { setPnr1(e.target.value.replace(/\D/g, "")); setError1("") }}
                     placeholder="e.g. 6712349999"
                     maxLength={10}
-                    className={`w-28 rounded-lg border px-2.5 py-1.5 text-xs font-mono outline-none focus:ring-2 ${error1 ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-green-100 focus:border-green-300"}`}
+                    className={`w-28 rounded-lg border px-2.5 py-1.5 text-xs font-mono outline-none focus:ring-2 ${error1 ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-blue-100 focus:border-blue-300"}`}
                   />
                   {error1 && <p className="mt-1 text-[11px] text-red-500">{error1}</p>}
                 </td>
@@ -147,7 +147,7 @@ export default function RailwaysPnrUpdatePage() {
                         })
                         setConfirmAction(() => () => { setCurrent1(pnr1.trim()); setUpdatedAt1("Just now"); setPnr1("") })
                       }}
-                      className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-green-700 transition-colors"
+                      className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700 transition-colors"
                     >
                       Update
                     </button>
@@ -178,7 +178,7 @@ export default function RailwaysPnrUpdatePage() {
 
               {/* Row 2 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60 align-top">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">{current2}</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{current2}</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Priya Sharma</td>
                 <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12301</p><p className="text-xs text-slate-400">Howrah Rajdhani</p></td>
                 <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">HWH</span></td>
@@ -190,7 +190,7 @@ export default function RailwaysPnrUpdatePage() {
                     onChange={(e) => { setPnr2(e.target.value.replace(/\D/g, "")); setError2("") }}
                     placeholder="e.g. 7823459999"
                     maxLength={10}
-                    className={`w-28 rounded-lg border px-2.5 py-1.5 text-xs font-mono outline-none focus:ring-2 ${error2 ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-green-100 focus:border-green-300"}`}
+                    className={`w-28 rounded-lg border px-2.5 py-1.5 text-xs font-mono outline-none focus:ring-2 ${error2 ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-blue-100 focus:border-blue-300"}`}
                   />
                   {error2 && <p className="mt-1 text-[11px] text-red-500">{error2}</p>}
                 </td>
@@ -214,7 +214,7 @@ export default function RailwaysPnrUpdatePage() {
                         })
                         setConfirmAction(() => () => { setCurrent2(pnr2.trim()); setUpdatedAt2("Just now"); setPnr2("") })
                       }}
-                      className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-green-700 transition-colors"
+                      className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700 transition-colors"
                     >
                       Update
                     </button>
@@ -245,7 +245,7 @@ export default function RailwaysPnrUpdatePage() {
 
               {/* Row 3 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60 align-top">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">{current3}</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{current3}</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Amit Singh</td>
                 <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12002</p><p className="text-xs text-slate-400">Bhopal Shatabdi</p></td>
                 <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">BPL</span></td>
@@ -257,7 +257,7 @@ export default function RailwaysPnrUpdatePage() {
                     onChange={(e) => { setPnr3(e.target.value.replace(/\D/g, "")); setError3("") }}
                     placeholder="e.g. 8934569999"
                     maxLength={10}
-                    className={`w-28 rounded-lg border px-2.5 py-1.5 text-xs font-mono outline-none focus:ring-2 ${error3 ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-green-100 focus:border-green-300"}`}
+                    className={`w-28 rounded-lg border px-2.5 py-1.5 text-xs font-mono outline-none focus:ring-2 ${error3 ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-blue-100 focus:border-blue-300"}`}
                   />
                   {error3 && <p className="mt-1 text-[11px] text-red-500">{error3}</p>}
                 </td>
@@ -281,7 +281,7 @@ export default function RailwaysPnrUpdatePage() {
                         })
                         setConfirmAction(() => () => { setCurrent3(pnr3.trim()); setUpdatedAt3("Just now"); setPnr3("") })
                       }}
-                      className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-green-700 transition-colors"
+                      className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700 transition-colors"
                     >
                       Update
                     </button>
@@ -312,7 +312,7 @@ export default function RailwaysPnrUpdatePage() {
 
               {/* Row 4 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60 align-top">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">{current4}</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{current4}</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Sneha Patel</td>
                 <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12009</p><p className="text-xs text-slate-400">Mumbai Shatabdi</p></td>
                 <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">MMCT</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">PUNE</span></td>
@@ -324,7 +324,7 @@ export default function RailwaysPnrUpdatePage() {
                     onChange={(e) => { setPnr4(e.target.value.replace(/\D/g, "")); setError4("") }}
                     placeholder="e.g. 9045679999"
                     maxLength={10}
-                    className={`w-28 rounded-lg border px-2.5 py-1.5 text-xs font-mono outline-none focus:ring-2 ${error4 ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-green-100 focus:border-green-300"}`}
+                    className={`w-28 rounded-lg border px-2.5 py-1.5 text-xs font-mono outline-none focus:ring-2 ${error4 ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-blue-100 focus:border-blue-300"}`}
                   />
                   {error4 && <p className="mt-1 text-[11px] text-red-500">{error4}</p>}
                 </td>
@@ -348,7 +348,7 @@ export default function RailwaysPnrUpdatePage() {
                         })
                         setConfirmAction(() => () => { setCurrent4(pnr4.trim()); setUpdatedAt4("Just now"); setPnr4("") })
                       }}
-                      className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-green-700 transition-colors"
+                      className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700 transition-colors"
                     >
                       Update
                     </button>
@@ -379,7 +379,7 @@ export default function RailwaysPnrUpdatePage() {
 
               {/* Row 5 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60 align-top">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">{current5}</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{current5}</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Vikram Nair</td>
                 <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">22120</p><p className="text-xs text-slate-400">Tejas Express</p></td>
                 <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">CSMT</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">KYNR</span></td>
@@ -391,7 +391,7 @@ export default function RailwaysPnrUpdatePage() {
                     onChange={(e) => { setPnr5(e.target.value.replace(/\D/g, "")); setError5("") }}
                     placeholder="e.g. 1056789999"
                     maxLength={10}
-                    className={`w-28 rounded-lg border px-2.5 py-1.5 text-xs font-mono outline-none focus:ring-2 ${error5 ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-green-100 focus:border-green-300"}`}
+                    className={`w-28 rounded-lg border px-2.5 py-1.5 text-xs font-mono outline-none focus:ring-2 ${error5 ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-blue-100 focus:border-blue-300"}`}
                   />
                   {error5 && <p className="mt-1 text-[11px] text-red-500">{error5}</p>}
                 </td>
@@ -415,7 +415,7 @@ export default function RailwaysPnrUpdatePage() {
                         })
                         setConfirmAction(() => () => { setCurrent5(pnr5.trim()); setUpdatedAt5("Just now"); setPnr5("") })
                       }}
-                      className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-green-700 transition-colors"
+                      className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700 transition-colors"
                     >
                       Update
                     </button>
@@ -450,7 +450,7 @@ export default function RailwaysPnrUpdatePage() {
         <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
           <p className="text-xs text-slate-500 dark:text-slate-400">Showing 5 of 5 confirmed bookings</p>
           <div className="flex items-center gap-1">
-            <button className="h-7 min-w-7 rounded-md bg-green-600 px-2 text-xs font-medium text-white">1</button>
+            <button className="h-7 min-w-7 rounded-md bg-blue-600 px-2 text-xs font-medium text-white">1</button>
           </div>
         </div>
       </div>

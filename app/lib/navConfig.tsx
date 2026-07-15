@@ -26,7 +26,7 @@ export const navItems: NavItem[] = [
     href: "/railways",
     label: "Railways",
     icon: "train",
-    color: "green",
+    color: "blue",
     children: [
       { href: "/railways", label: "Overview", icon: "overview" },
       { href: "/railways/all-bookings", label: "All Bookings", icon: "list" },
@@ -45,7 +45,7 @@ export const navItems: NavItem[] = [
     href: "/holidays",
     label: "Holidays",
     icon: "holiday",
-    color: "pink",
+    color: "blue",
     children: [
       { href: "/holidays", label: "Overview", icon: "overview" },
       { href: "/holidays/all-bookings", label: "All Bookings", icon: "list" },
@@ -64,7 +64,7 @@ export const navItems: NavItem[] = [
     href: "/agents",
     label: "B2B Agents",
     icon: "agents",
-    color: "violet",
+    color: "blue",
     children: [
       { href: "/agents", label: "Overview", icon: "overview" },
       { href: "/agents/all-agents", label: "All Agents", icon: "users" },
@@ -77,7 +77,7 @@ export const navItems: NavItem[] = [
     href: "/reports",
     label: "Reports",
     icon: "reports",
-    color: "indigo",
+    color: "blue",
     children: [
       { href: "/reports", label: "Overview", icon: "overview" },
       { href: "/reports/ledger", label: "Ledger Report", icon: "filetext" },
@@ -87,7 +87,7 @@ export const navItems: NavItem[] = [
     href: "/tools",
     label: "Tools",
     icon: "tools",
-    color: "slate",
+    color: "blue",
     children: [
       { href: "/tools", label: "Overview", icon: "overview" },
       { href: "/tools/email", label: "Email", icon: "mail" },

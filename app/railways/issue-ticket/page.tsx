@@ -40,7 +40,7 @@ export default function RailwaysIssueTicketPage() {
       {/* Filter toolbar */}
       <div className="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between dark:border-slate-800 dark:bg-slate-900">
         <div className="flex flex-wrap items-center gap-2">
-          <button className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm">All <span className="ml-0.5 opacity-70">(5)</span></button>
+          <button className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm">All <span className="ml-0.5 opacity-70">(5)</span></button>
           <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">Awaiting PNR <span className="ml-0.5 opacity-70">({pendingCount})</span></button>
           <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">Issued <span className="ml-0.5 opacity-70">({issuedCount})</span></button>
         </div>
@@ -62,10 +62,10 @@ export default function RailwaysIssueTicketPage() {
           <span className="text-sm font-bold text-emerald-600 dark:text-emerald-400">{issuedCount}</span>
           <span className="text-xs text-emerald-600/70 dark:text-emerald-400/70">Issued Today</span>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-green-100 bg-green-50 px-3 py-2 dark:border-green-500/20 dark:bg-green-500/10">
-          <span className="h-2 w-2 rounded-full bg-green-500" />
-          <span className="text-sm font-bold text-green-600 dark:text-green-400">12</span>
-          <span className="text-xs text-green-600/70 dark:text-green-400/70">Total Pax</span>
+        <div className="flex items-center gap-2 rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 dark:border-blue-500/20 dark:bg-blue-500/10">
+          <span className="h-2 w-2 rounded-full bg-blue-500" />
+          <span className="text-sm font-bold text-blue-600 dark:text-blue-400">12</span>
+          <span className="text-xs text-blue-600/70 dark:text-blue-400/70">Total Pax</span>
         </div>
         <div className="flex items-center gap-2 rounded-lg border border-violet-100 bg-violet-50 px-3 py-2 dark:border-violet-500/20 dark:bg-violet-500/10">
           <span className="h-2 w-2 rounded-full bg-violet-500" />
@@ -98,7 +98,7 @@ export default function RailwaysIssueTicketPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {/* RRQ-2101 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60 align-top">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RRQ-2101</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">RRQ-2101</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Rajesh Kumar</td>
                 <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12951</p><p className="text-xs text-slate-400">Mumbai Rajdhani</p></td>
                 <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">MMCT</span></td>
@@ -114,7 +114,7 @@ export default function RailwaysIssueTicketPage() {
                         onChange={(e) => { setPnr1(e.target.value.replace(/\D/g, "")); setError1("") }}
                         placeholder="e.g. 6712349001"
                         maxLength={10}
-                        className={`w-28 rounded-lg border px-2.5 py-1.5 text-xs font-mono outline-none focus:ring-2 ${error1 ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-green-100 focus:border-green-300"}`}
+                        className={`w-28 rounded-lg border px-2.5 py-1.5 text-xs font-mono outline-none focus:ring-2 ${error1 ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-blue-100 focus:border-blue-300"}`}
                       />
                       {error1 && <p className="mt-1 text-[11px] text-red-500">{error1}</p>}
                     </>
@@ -126,7 +126,7 @@ export default function RailwaysIssueTicketPage() {
                   ) : (
                     <button
                       onClick={() => { isValidPnr(pnr1) ? setIssued1({ pnr: pnr1.trim(), issuedAt: "Just now" }) : setError1("Enter a valid 10-digit PNR") }}
-                      className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-green-700 transition-colors"
+                      className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700 transition-colors"
                     >
                       Issue Ticket
                     </button>
@@ -136,7 +136,7 @@ export default function RailwaysIssueTicketPage() {
 
               {/* RRQ-2102 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60 align-top">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RRQ-2102</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">RRQ-2102</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Priya Sharma</td>
                 <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12301</p><p className="text-xs text-slate-400">Howrah Rajdhani</p></td>
                 <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">HWH</span></td>
@@ -152,7 +152,7 @@ export default function RailwaysIssueTicketPage() {
                         onChange={(e) => { setPnr2(e.target.value.replace(/\D/g, "")); setError2("") }}
                         placeholder="e.g. 2345678901"
                         maxLength={10}
-                        className={`w-28 rounded-lg border px-2.5 py-1.5 text-xs font-mono outline-none focus:ring-2 ${error2 ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-green-100 focus:border-green-300"}`}
+                        className={`w-28 rounded-lg border px-2.5 py-1.5 text-xs font-mono outline-none focus:ring-2 ${error2 ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-blue-100 focus:border-blue-300"}`}
                       />
                       {error2 && <p className="mt-1 text-[11px] text-red-500">{error2}</p>}
                     </>
@@ -164,7 +164,7 @@ export default function RailwaysIssueTicketPage() {
                   ) : (
                     <button
                       onClick={() => { isValidPnr(pnr2) ? setIssued2({ pnr: pnr2.trim(), issuedAt: "Just now" }) : setError2("Enter a valid 10-digit PNR") }}
-                      className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-green-700 transition-colors"
+                      className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700 transition-colors"
                     >
                       Issue Ticket
                     </button>
@@ -174,7 +174,7 @@ export default function RailwaysIssueTicketPage() {
 
               {/* RRQ-2103 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60 align-top">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RRQ-2103</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">RRQ-2103</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Amit Singh</td>
                 <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12002</p><p className="text-xs text-slate-400">Bhopal Shatabdi</p></td>
                 <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">BPL</span></td>
@@ -190,7 +190,7 @@ export default function RailwaysIssueTicketPage() {
                         onChange={(e) => { setPnr3(e.target.value.replace(/\D/g, "")); setError3("") }}
                         placeholder="e.g. 3456789012"
                         maxLength={10}
-                        className={`w-28 rounded-lg border px-2.5 py-1.5 text-xs font-mono outline-none focus:ring-2 ${error3 ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-green-100 focus:border-green-300"}`}
+                        className={`w-28 rounded-lg border px-2.5 py-1.5 text-xs font-mono outline-none focus:ring-2 ${error3 ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-blue-100 focus:border-blue-300"}`}
                       />
                       {error3 && <p className="mt-1 text-[11px] text-red-500">{error3}</p>}
                     </>
@@ -202,7 +202,7 @@ export default function RailwaysIssueTicketPage() {
                   ) : (
                     <button
                       onClick={() => { isValidPnr(pnr3) ? setIssued3({ pnr: pnr3.trim(), issuedAt: "Just now" }) : setError3("Enter a valid 10-digit PNR") }}
-                      className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-green-700 transition-colors"
+                      className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700 transition-colors"
                     >
                       Issue Ticket
                     </button>
@@ -212,7 +212,7 @@ export default function RailwaysIssueTicketPage() {
 
               {/* RRQ-2104 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60 align-top">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RRQ-2104</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">RRQ-2104</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Sneha Patel</td>
                 <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12009</p><p className="text-xs text-slate-400">Mumbai Shatabdi</p></td>
                 <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">MMCT</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">PUNE</span></td>
@@ -228,7 +228,7 @@ export default function RailwaysIssueTicketPage() {
                         onChange={(e) => { setPnr4(e.target.value.replace(/\D/g, "")); setError4("") }}
                         placeholder="e.g. 4567890123"
                         maxLength={10}
-                        className={`w-28 rounded-lg border px-2.5 py-1.5 text-xs font-mono outline-none focus:ring-2 ${error4 ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-green-100 focus:border-green-300"}`}
+                        className={`w-28 rounded-lg border px-2.5 py-1.5 text-xs font-mono outline-none focus:ring-2 ${error4 ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-blue-100 focus:border-blue-300"}`}
                       />
                       {error4 && <p className="mt-1 text-[11px] text-red-500">{error4}</p>}
                     </>
@@ -240,7 +240,7 @@ export default function RailwaysIssueTicketPage() {
                   ) : (
                     <button
                       onClick={() => { isValidPnr(pnr4) ? setIssued4({ pnr: pnr4.trim(), issuedAt: "Just now" }) : setError4("Enter a valid 10-digit PNR") }}
-                      className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-green-700 transition-colors"
+                      className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700 transition-colors"
                     >
                       Issue Ticket
                     </button>
@@ -250,7 +250,7 @@ export default function RailwaysIssueTicketPage() {
 
               {/* RRQ-2105 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60 align-top">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RRQ-2105</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">RRQ-2105</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Deepa Menon</td>
                 <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12625</p><p className="text-xs text-slate-400">Kerala Express</p></td>
                 <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">TVC</span></td>
@@ -266,7 +266,7 @@ export default function RailwaysIssueTicketPage() {
                         onChange={(e) => { setPnr5(e.target.value.replace(/\D/g, "")); setError5("") }}
                         placeholder="e.g. 5678901234"
                         maxLength={10}
-                        className={`w-28 rounded-lg border px-2.5 py-1.5 text-xs font-mono outline-none focus:ring-2 ${error5 ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-green-100 focus:border-green-300"}`}
+                        className={`w-28 rounded-lg border px-2.5 py-1.5 text-xs font-mono outline-none focus:ring-2 ${error5 ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-blue-100 focus:border-blue-300"}`}
                       />
                       {error5 && <p className="mt-1 text-[11px] text-red-500">{error5}</p>}
                     </>
@@ -278,7 +278,7 @@ export default function RailwaysIssueTicketPage() {
                   ) : (
                     <button
                       onClick={() => { isValidPnr(pnr5) ? setIssued5({ pnr: pnr5.trim(), issuedAt: "Just now" }) : setError5("Enter a valid 10-digit PNR") }}
-                      className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-green-700 transition-colors"
+                      className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-700 transition-colors"
                     >
                       Issue Ticket
                     </button>
@@ -312,7 +312,7 @@ export default function RailwaysIssueTicketPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {issued1 && (
                 <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">{issued1.pnr}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{issued1.pnr}</td>
                   <td className="px-6 py-3 text-xs text-slate-400">RRQ-2101</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Rajesh Kumar</td>
                   <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">MMCT</span></td>
@@ -323,7 +323,7 @@ export default function RailwaysIssueTicketPage() {
               )}
               {issued2 && (
                 <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">{issued2.pnr}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{issued2.pnr}</td>
                   <td className="px-6 py-3 text-xs text-slate-400">RRQ-2102</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Priya Sharma</td>
                   <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">HWH</span></td>
@@ -334,7 +334,7 @@ export default function RailwaysIssueTicketPage() {
               )}
               {issued3 && (
                 <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">{issued3.pnr}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{issued3.pnr}</td>
                   <td className="px-6 py-3 text-xs text-slate-400">RRQ-2103</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Amit Singh</td>
                   <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">BPL</span></td>
@@ -345,7 +345,7 @@ export default function RailwaysIssueTicketPage() {
               )}
               {issued4 && (
                 <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">{issued4.pnr}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{issued4.pnr}</td>
                   <td className="px-6 py-3 text-xs text-slate-400">RRQ-2104</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Sneha Patel</td>
                   <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">MMCT</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">PUNE</span></td>
@@ -356,7 +356,7 @@ export default function RailwaysIssueTicketPage() {
               )}
               {issued5 && (
                 <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">{issued5.pnr}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{issued5.pnr}</td>
                   <td className="px-6 py-3 text-xs text-slate-400">RRQ-2105</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Deepa Menon</td>
                   <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">TVC</span></td>

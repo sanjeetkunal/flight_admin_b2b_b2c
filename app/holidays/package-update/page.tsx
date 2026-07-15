@@ -79,7 +79,7 @@ export default function HolidaysPackageUpdatePage() {
       {/* Filter toolbar */}
       <div className="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between dark:border-slate-800 dark:bg-slate-900">
         <div className="flex flex-wrap items-center gap-2">
-          <button className="rounded-lg bg-pink-500 px-3 py-1.5 text-xs font-medium text-white shadow-sm">All <span className="ml-0.5 opacity-70">({rows.length})</span></button>
+          <button className="rounded-lg bg-blue-500 px-3 py-1.5 text-xs font-medium text-white shadow-sm">All <span className="ml-0.5 opacity-70">({rows.length})</span></button>
           <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">Domestic <span className="ml-0.5 opacity-70">(4)</span></button>
           <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">International <span className="ml-0.5 opacity-70">(1)</span></button>
           <span className="mx-1 h-4 w-px bg-slate-200" />
@@ -93,10 +93,10 @@ export default function HolidaysPackageUpdatePage() {
 
       {/* Compact stat chips */}
       <div className="flex flex-wrap items-center gap-3">
-        <div className="flex items-center gap-2 rounded-lg border border-pink-100 bg-pink-50 px-3 py-2">
-          <span className="h-2 w-2 rounded-full bg-pink-500" />
-          <span className="text-sm font-bold text-pink-600">{rows.length}</span>
-          <span className="text-xs text-pink-600/70">Confirmed Bookings</span>
+        <div className="flex items-center gap-2 rounded-lg border border-blue-100 bg-blue-50 px-3 py-2">
+          <span className="h-2 w-2 rounded-full bg-blue-500" />
+          <span className="text-sm font-bold text-blue-600">{rows.length}</span>
+          <span className="text-xs text-blue-600/70">Confirmed Bookings</span>
         </div>
         <div className="flex items-center gap-2 rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2">
           <span className="h-2 w-2 rounded-full bg-emerald-500" />
@@ -140,7 +140,7 @@ export default function HolidaysPackageUpdatePage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {rows.map((r) => (
                 <tr key={r.client} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60 align-top">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-pink-700 dark:text-pink-400">{r.current}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{r.current}</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{r.client}</td>
                   <td className="px-6 py-3 text-slate-600 dark:text-slate-300">{r.package}</td>
                   <td className="px-6 py-3 text-slate-600 dark:text-slate-300">{r.destination}</td>
@@ -152,7 +152,7 @@ export default function HolidaysPackageUpdatePage() {
                       onChange={(e) => setInput(r.current, e.target.value)}
                       placeholder="e.g. HOL09931"
                       maxLength={10}
-                      className={`w-32 rounded-lg border px-2.5 py-1.5 text-xs font-mono uppercase outline-none focus:ring-2 ${errors[r.current] ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-pink-100 focus:border-pink-300"}`}
+                      className={`w-32 rounded-lg border px-2.5 py-1.5 text-xs font-mono uppercase outline-none focus:ring-2 ${errors[r.current] ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-blue-100 focus:border-blue-300"}`}
                     />
                     {errors[r.current] && <p className="mt-1 text-[11px] text-red-500">{errors[r.current]}</p>}
                   </td>
@@ -161,7 +161,7 @@ export default function HolidaysPackageUpdatePage() {
                     <div className="flex items-center gap-2">
                       <button
                         onClick={() => requestUpdate(r)}
-                        className="rounded-lg bg-pink-500 px-3 py-1.5 text-xs font-medium text-white hover:bg-pink-600 transition-colors"
+                        className="rounded-lg bg-blue-500 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-600 transition-colors"
                       >
                         Update
                       </button>
@@ -179,7 +179,7 @@ export default function HolidaysPackageUpdatePage() {
         <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
           <p className="text-xs text-slate-500 dark:text-slate-400">Showing {rows.length} of {rows.length} confirmed bookings</p>
           <div className="flex items-center gap-1">
-            <button className="h-7 min-w-7 rounded-md bg-pink-500 px-2 text-xs font-medium text-white">1</button>
+            <button className="h-7 min-w-7 rounded-md bg-blue-500 px-2 text-xs font-medium text-white">1</button>
           </div>
         </div>
       </div>

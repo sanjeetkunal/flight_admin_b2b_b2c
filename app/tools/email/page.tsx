@@ -52,7 +52,7 @@ const inboxEmails = [
   },
   {
     initial: "S",
-    avatar: "from-indigo-400 to-blue-700",
+    avatar: "from-blue-400 to-blue-700",
     name: "Sarah Brown",
     subject: "Re: Feedback on Proposal",
     time: "27 Jun 2026",
@@ -107,7 +107,7 @@ function EmailRow({ email }: { email: (typeof pinnedEmails)[number] }) {
     <div
       className={`flex gap-3 px-4 py-3 cursor-pointer border-l-2 ${
         email.active
-          ? "border-indigo-500 bg-slate-50 dark:bg-slate-800"
+          ? "border-blue-500 bg-slate-50 dark:bg-slate-800"
           : "border-transparent hover:bg-slate-50 dark:hover:bg-slate-800/60"
       }`}
     >
@@ -156,7 +156,7 @@ export default function EmailPage() {
           <p className="text-xs text-slate-400 dark:text-slate-500">hello@arhamkhnz.com</p>
         </div>
 
-        <button className="mb-5 flex items-center justify-center gap-2 rounded-full bg-indigo-600 py-2.5 text-sm font-medium text-white transition-colors hover:bg-indigo-700">
+        <button className="mb-5 flex items-center justify-center gap-2 rounded-full bg-blue-600 py-2.5 text-sm font-medium text-white transition-colors hover:bg-blue-700">
           <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <path d="M17 3a2.85 2.83 0 114 4L7.5 20.5 2 22l1.5-5.5z" />
           </svg>
@@ -430,7 +430,7 @@ export default function EmailPage() {
                 <path d="M21.44 11.05l-9.19 9.19a6 6 0 01-8.49-8.49l9.19-9.19a4 4 0 015.66 5.66l-9.2 9.19a2 2 0 01-2.83-2.83l8.49-8.48" />
               </svg>
             </button>
-            <button className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-indigo-600 text-white hover:bg-indigo-700">
+            <button className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-white hover:bg-blue-700">
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
               </svg>

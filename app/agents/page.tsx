@@ -8,22 +8,22 @@ import { Sparkline, AreaSparkline, MiniBars, DonutRing, TooltipBox, edgeAlign } 
 const last8Days = ["07 Jul", "08 Jul", "09 Jul", "10 Jul", "11 Jul", "12 Jul", "13 Jul", "14 Jul"]
 
 const analyticsCards = [
-  { label: "Total Agents", value: "342", change: "+3", sparkline: [318, 322, 325, 328, 330, 335, 338, 342], color: "#7c3aed", formatValue: (v: number) => `${v} agents` },
-  { label: "Active Agents", value: "318", change: "+2%", sparkline: [298, 302, 305, 308, 310, 312, 315, 318], color: "#2563eb", formatValue: (v: number) => `${v} active` },
+  { label: "Total Agents", value: "342", change: "+3", sparkline: [318, 322, 325, 328, 330, 335, 338, 342], color: "#2563eb", formatValue: (v: number) => `${v} agents` },
+  { label: "Active Agents", value: "318", change: "+2%", sparkline: [298, 302, 305, 308, 310, 312, 315, 318], color: "#7c3aed", formatValue: (v: number) => `${v} active` },
   { label: "New Agents (7 days)", value: "12", change: "+3", sparkline: [2, 1, 3, 2, 4, 3, 5, 4], color: "#059669", formatValue: (v: number) => `${v} new agents` },
   { label: "Pending Approvals", value: "6", change: "-2", bars: [3, 2, 3, 1, 2, 1, 2, 1], color: "bg-amber-500", formatValue: (v: number) => `${v} pending` },
 ]
 
 const quickLinks = [
-  { label: "All Agents", value: "342", href: "/agents/all-agents", color: "bg-violet-600", icon: "M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8z" },
-  { label: "Emulate Agent", value: "", href: "/agents/emulate", color: "bg-blue-600", icon: "M15 10l5 5-5 5M4 4v7a4 4 0 004 4h12" },
+  { label: "All Agents", value: "342", href: "/agents/all-agents", color: "bg-blue-600", icon: "M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8z" },
+  { label: "Emulate Agent", value: "", href: "/agents/emulate", color: "bg-violet-600", icon: "M15 10l5 5-5 5M4 4v7a4 4 0 004 4h12" },
   { label: "Credit Upload", value: "", href: "/agents/credit-upload", color: "bg-emerald-600", icon: "M12 4v12m0 0l-4-4m4 4l4-4M4 18v1a2 2 0 002 2h12a2 2 0 002-2v-1" },
   { label: "Credit Management", value: "6 pending", href: "/agents/credit", color: "bg-amber-500", icon: "M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6M12 1v22" },
 ]
 
 const topAgents = [
-  { name: "Royal Wings Pvt Ltd", initials: "RW", bookings: 2341, tier: "Platinum", color: "bg-violet-500" },
-  { name: "TravelBox Pvt Ltd", initials: "TB", bookings: 1247, tier: "Gold", color: "bg-blue-500" },
+  { name: "Royal Wings Pvt Ltd", initials: "RW", bookings: 2341, tier: "Platinum", color: "bg-blue-500" },
+  { name: "TravelBox Pvt Ltd", initials: "TB", bookings: 1247, tier: "Gold", color: "bg-violet-500" },
   { name: "Horizon Holidays", initials: "HH", bookings: 1089, tier: "Gold", color: "bg-emerald-500" },
   { name: "FlyDeal Travel Agency", initials: "FD", bookings: 842, tier: "Silver", color: "bg-orange-500" },
   { name: "StarTravel Solutions", initials: "ST", bookings: 634, tier: "Silver", color: "bg-pink-500" },
@@ -31,8 +31,8 @@ const topAgents = [
 
 const creditTotalCr = 1.24
 const creditBreakdown = [
-  { label: "Used", value: 62, color: "bg-violet-600" },
-  { label: "Reserved", value: 16, color: "bg-blue-400" },
+  { label: "Used", value: 62, color: "bg-blue-600" },
+  { label: "Reserved", value: 16, color: "bg-violet-400" },
   { label: "Available", value: 22, color: "bg-slate-200 dark:bg-slate-700" },
 ]
 let creditCursor = 0
@@ -43,10 +43,10 @@ const creditSegments = creditBreakdown.map((b) => {
 })
 
 const activityFeed = [
-  { text: "Rahul Mehta (TravelBox) requested a credit limit increase to ₹5,00,000", time: "12 min ago", dot: "bg-blue-500" },
+  { text: "Rahul Mehta (TravelBox) requested a credit limit increase to ₹5,00,000", time: "12 min ago", dot: "bg-violet-500" },
   { text: "New agent onboarded: Disha Travels (Jaipur)", time: "4 hr ago", dot: "bg-amber-500" },
   { text: "Agent Global Yatra Agency suspended — credit balance breached", time: "6 hr ago", dot: "bg-red-500" },
-  { text: "Horizon Holidays upgraded to Gold tier", time: "1 day ago", dot: "bg-violet-500" },
+  { text: "Horizon Holidays upgraded to Gold tier", time: "1 day ago", dot: "bg-blue-500" },
   { text: "StarTravel Solutions KYC verified", time: "2 days ago", dot: "bg-emerald-500" },
 ]
 
@@ -58,7 +58,7 @@ export default function AgentsDashboardPage() {
       {/* Row 1 — hero + credit issued trend + active agents donut */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
         <div className="relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 lg:col-span-2">
-          <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-violet-50 dark:bg-violet-500/10" />
+          <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-blue-50 dark:bg-blue-500/10" />
           <div className="absolute -right-2 top-10 h-16 w-16 rounded-full bg-indigo-50 dark:bg-indigo-500/10" />
           <div className="relative flex items-center gap-4">
             <div className="min-w-0 flex-1">
@@ -68,7 +68,7 @@ export default function AgentsDashboardPage() {
                 <div>
                   <p className="text-xs text-slate-400 dark:text-slate-500">Active Agents</p>
                   <p className="text-lg font-bold text-slate-900 dark:text-slate-100">318 <span className="text-xs font-semibold text-emerald-600">93%</span></p>
-                  <div className="mt-1.5 h-1.5 w-28 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-700"><div className="h-full w-[93%] rounded-full bg-violet-600" /></div>
+                  <div className="mt-1.5 h-1.5 w-28 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-700"><div className="h-full w-[93%] rounded-full bg-blue-600" /></div>
                 </div>
                 <div>
                   <p className="text-xs text-slate-400 dark:text-slate-500">Credit Utilization</p>
@@ -101,13 +101,13 @@ export default function AgentsDashboardPage() {
             <AreaSparkline
               points={[280, 295, 300, 310, 305, 320, 330, 342]}
               comparePoints={[260, 268, 272, 278, 284, 290, 298, 305]}
-              color="#7c3aed"
+              color="#2563eb"
               labels={last8Days}
               formatValue={(v) => `${v} agents`}
               compareFormatValue={(v) => `${v} agents`}
             />
             <div className="mt-2 flex items-center gap-3 text-[11px] text-slate-400 dark:text-slate-500">
-              <span className="flex items-center gap-1"><span className="h-0.5 w-3 rounded-full bg-violet-600" /> This period</span>
+              <span className="flex items-center gap-1"><span className="h-0.5 w-3 rounded-full bg-blue-600" /> This period</span>
               <span className="flex items-center gap-1"><span className="h-0.5 w-3 rounded-full border-t border-dashed border-slate-400" /> Last period</span>
             </div>
           </div>
@@ -117,10 +117,10 @@ export default function AgentsDashboardPage() {
           <p className="mb-2 self-start text-xs font-medium text-slate-500 dark:text-slate-400">Active Agents</p>
           <DonutRing
             pct={93}
-            color="#7c3aed"
+            color="#2563eb"
             label="318 active"
             breakdown={[
-              { label: "Active", value: 318, color: "bg-violet-600" },
+              { label: "Active", value: 318, color: "bg-blue-600" },
               { label: "Inactive", value: 24, color: "bg-slate-300" },
             ]}
           />
@@ -156,7 +156,7 @@ export default function AgentsDashboardPage() {
       {/* Row 3 — quick link tiles */}
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {quickLinks.map((s) => (
-          <Link key={s.label} href={s.href} className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-white p-4 shadow-sm transition-colors hover:border-violet-200 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-violet-500/30">
+          <Link key={s.label} href={s.href} className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-white p-4 shadow-sm transition-colors hover:border-blue-200 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500/30">
             <div className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg ${s.color}`}>
               <svg className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d={s.icon} /></svg>
             </div>
@@ -224,7 +224,7 @@ export default function AgentsDashboardPage() {
       <div className="rounded-2xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
         <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
           <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Top Agents</h3>
-          <Link href="/agents/all-agents" className="text-xs font-medium text-violet-600 hover:text-violet-700 dark:text-violet-400">View all agents →</Link>
+          <Link href="/agents/all-agents" className="text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400">View all agents →</Link>
         </div>
         <div className="divide-y divide-slate-50 px-6 dark:divide-slate-800">
           {topAgents.map((a) => (

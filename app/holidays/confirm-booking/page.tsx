@@ -43,7 +43,7 @@ export default function HolidaysConfirmBookingPage() {
       {/* Filter toolbar */}
       <div className="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between dark:border-slate-800 dark:bg-slate-900">
         <div className="flex flex-wrap items-center gap-2">
-          <button className="rounded-lg bg-pink-500 px-3 py-1.5 text-xs font-medium text-white shadow-sm">All <span className="ml-0.5 opacity-70">({rows.length})</span></button>
+          <button className="rounded-lg bg-blue-500 px-3 py-1.5 text-xs font-medium text-white shadow-sm">All <span className="ml-0.5 opacity-70">({rows.length})</span></button>
           <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">Awaiting Confirmation <span className="ml-0.5 opacity-70">({pendingCount})</span></button>
           <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">Confirmed <span className="ml-0.5 opacity-70">({confirmedCount})</span></button>
         </div>
@@ -103,7 +103,7 @@ export default function HolidaysConfirmBookingPage() {
                 const isConfirmed = confirmed[r.ref]
                 return (
                   <tr key={r.ref} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60 align-top">
-                    <td className="px-6 py-3 font-mono text-xs font-semibold text-pink-700 dark:text-pink-400">{r.ref}</td>
+                    <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{r.ref}</td>
                     <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{r.client}</td>
                     <td className="px-6 py-3 text-slate-600 dark:text-slate-300">{r.package}</td>
                     <td className="px-6 py-3 text-slate-600 dark:text-slate-300">{r.destination}</td>
@@ -119,7 +119,7 @@ export default function HolidaysConfirmBookingPage() {
                             onChange={(e) => setInput(r.ref, e.target.value)}
                             placeholder="e.g. HOL08830"
                             maxLength={10}
-                            className={`w-32 rounded-lg border px-2.5 py-1.5 text-xs font-mono uppercase outline-none focus:ring-2 ${errors[r.ref] ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-pink-100 focus:border-pink-300"}`}
+                            className={`w-32 rounded-lg border px-2.5 py-1.5 text-xs font-mono uppercase outline-none focus:ring-2 ${errors[r.ref] ? "border-red-300 focus:ring-red-100" : "border-slate-200 focus:ring-blue-100 focus:border-blue-300"}`}
                           />
                           {errors[r.ref] && <p className="mt-1 text-[11px] text-red-500">{errors[r.ref]}</p>}
                         </>
@@ -131,7 +131,7 @@ export default function HolidaysConfirmBookingPage() {
                       ) : (
                         <button
                           onClick={() => confirmRow(r.ref)}
-                          className="rounded-lg bg-pink-500 px-3 py-1.5 text-xs font-medium text-white hover:bg-pink-600 transition-colors"
+                          className="rounded-lg bg-blue-500 px-3 py-1.5 text-xs font-medium text-white hover:bg-blue-600 transition-colors"
                         >
                           Confirm Booking
                         </button>
@@ -167,7 +167,7 @@ export default function HolidaysConfirmBookingPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {rows.filter((r) => confirmed[r.ref]).map((r) => (
                 <tr key={r.ref} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-pink-700 dark:text-pink-400">{confirmed[r.ref].id}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{confirmed[r.ref].id}</td>
                   <td className="px-6 py-3 text-xs text-slate-400">{r.ref}</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{r.client}</td>
                   <td className="px-6 py-3 text-slate-600 dark:text-slate-300">{r.destination}</td>

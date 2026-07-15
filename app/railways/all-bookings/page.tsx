@@ -21,7 +21,7 @@ const statusColors: Record<string, string> = {
 
 const classColors: Record<string, string> = {
   "1A": "bg-yellow-100 text-yellow-800 dark:bg-yellow-500/10 dark:text-yellow-400",
-  "2A": "bg-blue-100 text-blue-800 dark:bg-blue-500/10 dark:text-blue-400",
+  "2A": "bg-cyan-100 text-cyan-800 dark:bg-cyan-500/10 dark:text-cyan-400",
   "3A": "bg-indigo-100 text-indigo-800 dark:bg-indigo-500/10 dark:text-indigo-400",
   "SL": "bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300",
   "CC": "bg-purple-100 text-purple-800 dark:bg-purple-500/10 dark:text-purple-400",
@@ -70,7 +70,7 @@ export default function RailwaysPage() {
     <div className="space-y-5">
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {[
-          { label: "Total Bookings", value: "324", sub: "today", color: "text-green-600 bg-green-50 border-green-100" },
+          { label: "Total Bookings", value: "324", sub: "today", color: "text-blue-600 bg-blue-50 border-blue-100" },
           { label: "Revenue", value: "₹4,12,800", sub: "today", color: "text-emerald-600 bg-emerald-50 border-emerald-100" },
           { label: "Tatkal Bookings", value: "48", sub: "today", color: "text-orange-600 bg-orange-50 border-orange-100" },
           { label: "Waitlisted", value: "7", sub: "pending confirmation", color: "text-amber-600 bg-amber-50 border-amber-100" },
@@ -87,7 +87,7 @@ export default function RailwaysPage() {
         <div className="flex flex-col gap-3 border-b border-slate-100 px-6 py-4 sm:flex-row sm:items-center sm:justify-between dark:border-slate-800">
           <div className="flex items-center gap-2">
             {["All", "Confirmed", "Pending", "Cancelled"].map((s) => (
-              <button key={s} onClick={() => setStatusFilter(s)} className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${statusFilter === s ? "bg-green-600 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>
+              <button key={s} onClick={() => setStatusFilter(s)} className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${statusFilter === s ? "bg-blue-600 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>
                 {s} <span className="ml-0.5 opacity-70">({counts[s as keyof typeof counts]})</span>
               </button>
             ))}
@@ -101,15 +101,15 @@ export default function RailwaysPage() {
               onClick={() => setShowFilters((v) => !v)}
               className={`flex items-center gap-1.5 rounded-lg border px-3 py-2 text-xs font-medium transition-colors ${
                 showFilters || activeFilterCount > 0
-                  ? "border-green-200 bg-green-50 text-green-700 dark:border-green-500/30 dark:bg-green-500/10 dark:text-green-400"
+                  ? "border-blue-200 bg-blue-50 text-blue-700 dark:border-blue-500/30 dark:bg-blue-500/10 dark:text-blue-400"
                   : "border-slate-200 text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800"
               }`}
             >
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" /></svg>
               Filters
-              {activeFilterCount > 0 && <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-green-600 px-1 text-[10px] text-white">{activeFilterCount}</span>}
+              {activeFilterCount > 0 && <span className="flex h-4 min-w-4 items-center justify-center rounded-full bg-blue-600 px-1 text-[10px] text-white">{activeFilterCount}</span>}
             </button>
-            <button className="flex items-center gap-1.5 rounded-lg bg-green-600 px-3 py-2 text-xs font-medium text-white hover:bg-green-700 transition-colors">
+            <button className="flex items-center gap-1.5 rounded-lg bg-blue-600 px-3 py-2 text-xs font-medium text-white hover:bg-blue-700 transition-colors">
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
               New Booking
             </button>
@@ -148,7 +148,7 @@ export default function RailwaysPage() {
               </div>
             </div>
             {activeFilterCount > 0 && (
-              <button onClick={clearFilters} className="mt-3 text-xs font-medium text-green-600 hover:text-green-700 dark:text-green-400">Clear all filters</button>
+              <button onClick={clearFilters} className="mt-3 text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400">Clear all filters</button>
             )}
           </div>
         )}
@@ -174,7 +174,7 @@ export default function RailwaysPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {filtered.map((b) => (
                 <tr key={b.pnr} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">{b.pnr}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{b.pnr}</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{b.passenger}</td>
                   <td className="px-6 py-3">
                     <p className="font-semibold text-slate-800 dark:text-slate-100">{b.train}</p>
@@ -215,7 +215,7 @@ export default function RailwaysPage() {
           <p className="text-xs text-slate-500 dark:text-slate-400">Showing {filtered.length} of {allBookings.length} bookings</p>
           <div className="flex items-center gap-1">
             {[1, 2, 3, "...", 18].map((p, i) => (
-              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-green-600 text-white" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>{p}</button>
+              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-blue-600 text-white" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}>{p}</button>
             ))}
           </div>
         </div>

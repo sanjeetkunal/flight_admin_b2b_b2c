@@ -134,7 +134,7 @@ export default function CreditUploadPage() {
             <button
               key={s}
               onClick={() => setStatusFilter(s)}
-              className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${statusFilter === s ? "bg-violet-600 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}
+              className={`rounded-lg px-3 py-1.5 text-xs font-medium transition-all ${statusFilter === s ? "bg-blue-600 text-white shadow-sm" : "text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800"}`}
             >
               {s} <span className="ml-0.5 opacity-70">({counts[s]})</span>
             </button>
@@ -197,7 +197,7 @@ export default function CreditUploadPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {filtered.map((r) => (
                 <tr key={r.id} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-violet-700 dark:text-violet-400">{r.requestId}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{r.requestId}</td>
                   <td className="px-6 py-3">
                     <p className="font-medium text-slate-800 dark:text-slate-100">{r.agentName}</p>
                     <p className="font-mono text-xs text-slate-400">{r.agentId}</p>
@@ -212,7 +212,7 @@ export default function CreditUploadPage() {
                   <td className="px-6 py-3">
                     <div className="flex items-center gap-2">
                       {r.status === "New Request" && (
-                        <button onClick={() => handleVerify(r)} className="text-xs text-blue-600 hover:text-blue-800 font-medium">Verify</button>
+                        <button onClick={() => handleVerify(r)} className="text-xs text-violet-600 hover:text-violet-800 font-medium">Verify</button>
                       )}
                       {r.status === "Verified" && (
                         <>
@@ -240,7 +240,7 @@ export default function CreditUploadPage() {
         <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
           <p className="text-xs text-slate-500 dark:text-slate-400">Showing {filtered.length} of {requests.length} requests</p>
           <div className="flex items-center gap-1">
-            <button className="h-7 min-w-7 rounded-md bg-violet-600 px-2 text-xs font-medium text-white">1</button>
+            <button className="h-7 min-w-7 rounded-md bg-blue-600 px-2 text-xs font-medium text-white">1</button>
           </div>
         </div>
       </div>

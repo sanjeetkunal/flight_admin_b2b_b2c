@@ -23,7 +23,7 @@ export default function HolidaysRefundInProcessPage() {
       {/* Filter toolbar */}
       <div className="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between dark:border-slate-800 dark:bg-slate-900">
         <div className="flex flex-wrap items-center gap-2">
-          <button className="rounded-lg bg-pink-500 px-3 py-1.5 text-xs font-medium text-white shadow-sm">All <span className="ml-0.5 opacity-70">({rows.length})</span></button>
+          <button className="rounded-lg bg-blue-500 px-3 py-1.5 text-xs font-medium text-white shadow-sm">All <span className="ml-0.5 opacity-70">({rows.length})</span></button>
           <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">In Process <span className="ml-0.5 opacity-70">({inProcessCount})</span></button>
           <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">Awaiting Bank <span className="ml-0.5 opacity-70">({awaitingCount})</span></button>
           <span className="mx-1 h-4 w-px bg-slate-200" />
@@ -87,7 +87,7 @@ export default function HolidaysRefundInProcessPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {rows.map((r) => (
                 <tr key={r.bookingId} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-pink-700 dark:text-pink-400">{r.bookingId}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{r.bookingId}</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{r.client}</td>
                   <td className="px-6 py-3 text-slate-600 dark:text-slate-300">{r.package}</td>
                   <td className="px-6 py-3 text-slate-700 dark:text-slate-200">{r.cancelledOn}</td>
@@ -110,7 +110,7 @@ export default function HolidaysRefundInProcessPage() {
         <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
           <p className="text-xs text-slate-500 dark:text-slate-400">Showing {rows.length} of {rows.length} refunds in process</p>
           <div className="flex items-center gap-1">
-            <button className="h-7 min-w-7 rounded-md bg-pink-500 px-2 text-xs font-medium text-white">1</button>
+            <button className="h-7 min-w-7 rounded-md bg-blue-500 px-2 text-xs font-medium text-white">1</button>
           </div>
         </div>
       </div>

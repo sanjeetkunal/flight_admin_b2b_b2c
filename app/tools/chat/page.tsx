@@ -136,7 +136,7 @@ function ConversationRow({ conv }: { conv: (typeof pinnedConversations)[number] 
           <path d="M5 17h14l-1.4-7.2A4 4 0 0013.7 6.5V4a1.7 1.7 0 00-3.4 0v2.5A4 4 0 006.4 9.8z" />
         </svg>
         {conv.badge && (
-          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-indigo-600 text-[10px] font-semibold text-white">
+          <span className="flex h-5 w-5 items-center justify-center rounded-full bg-blue-600 text-[10px] font-semibold text-white">
             {conv.badge}
           </span>
         )}
@@ -252,7 +252,7 @@ export default function ChatPage() {
                   <div
                     className={`rounded-2xl px-4 py-2.5 text-sm ${
                       m.from === "me"
-                        ? "rounded-br-md bg-indigo-600 text-white"
+                        ? "rounded-br-md bg-blue-600 text-white"
                         : "rounded-bl-md bg-slate-100 text-slate-800 dark:bg-slate-800 dark:text-slate-100"
                     }`}
                   >
@@ -316,7 +316,7 @@ export default function ChatPage() {
                 </svg>
               </button>
             </div>
-            <button className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-indigo-600 text-white hover:bg-indigo-700">
+            <button className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-white hover:bg-blue-700">
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
               </svg>

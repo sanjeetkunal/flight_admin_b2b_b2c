@@ -11,7 +11,7 @@ export default function RailwaysReissuePage() {
       {/* Filter toolbar */}
       <div className="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between dark:border-slate-800 dark:bg-slate-900">
         <div className="flex flex-wrap items-center gap-2">
-          <button className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm">All <span className="ml-0.5 opacity-70">(5)</span></button>
+          <button className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm">All <span className="ml-0.5 opacity-70">(5)</span></button>
           <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">New Request <span className="ml-0.5 opacity-70">(3)</span></button>
           <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">Reissued <span className="ml-0.5 opacity-70">(1)</span></button>
           <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">Rejected <span className="ml-0.5 opacity-70">(1)</span></button>
@@ -31,10 +31,10 @@ export default function RailwaysReissuePage() {
           <span className="text-sm font-bold text-amber-600 dark:text-amber-400">3</span>
           <span className="text-xs text-amber-600/70 dark:text-amber-400/70">New Requests</span>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-green-100 bg-green-50 px-3 py-2 dark:border-green-500/20 dark:bg-green-500/10">
-          <span className="h-2 w-2 rounded-full bg-green-500" />
-          <span className="text-sm font-bold text-green-600 dark:text-green-400">₹1,670</span>
-          <span className="text-xs text-green-600/70 dark:text-green-400/70">Fare Difference Due</span>
+        <div className="flex items-center gap-2 rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 dark:border-blue-500/20 dark:bg-blue-500/10">
+          <span className="h-2 w-2 rounded-full bg-blue-500" />
+          <span className="text-sm font-bold text-blue-600 dark:text-blue-400">₹1,670</span>
+          <span className="text-xs text-blue-600/70 dark:text-blue-400/70">Fare Difference Due</span>
         </div>
         <div className="flex items-center gap-2 rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2 dark:border-emerald-500/20 dark:bg-emerald-500/10">
           <span className="h-2 w-2 rounded-full bg-emerald-500" />
@@ -78,7 +78,7 @@ export default function RailwaysReissuePage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {/* RIS-4001 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RIS-4001</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">RIS-4001</td>
                 <td className="px-6 py-3 font-mono text-xs text-slate-500 dark:text-slate-400">6712345890</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Rajesh Kumar</td>
                 <td className="px-6 py-3 text-slate-600 dark:text-slate-300">12951 Mumbai Rajdhani</td>
@@ -152,7 +152,7 @@ export default function RailwaysReissuePage() {
 
               {/* RIS-4002 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RIS-4002</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">RIS-4002</td>
                 <td className="px-6 py-3 font-mono text-xs text-slate-500 dark:text-slate-400">9045678123</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Sneha Patel</td>
                 <td className="px-6 py-3 text-slate-600 dark:text-slate-300">12009 Mumbai Shatabdi</td>
@@ -226,7 +226,7 @@ export default function RailwaysReissuePage() {
 
               {/* RIS-4003 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RIS-4003</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">RIS-4003</td>
                 <td className="px-6 py-3 font-mono text-xs text-slate-500 dark:text-slate-400">2109876543</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Sunita Rao</td>
                 <td className="px-6 py-3 text-slate-600 dark:text-slate-300">12002 Bhopal Shatabdi</td>
@@ -300,7 +300,7 @@ export default function RailwaysReissuePage() {
 
               {/* RIS-3998 — already reissued, view only */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RIS-3998</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">RIS-3998</td>
                 <td className="px-6 py-3 font-mono text-xs text-slate-500 dark:text-slate-400">8934567012</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Amit Singh</td>
                 <td className="px-6 py-3 text-slate-600 dark:text-slate-300">22120 Tejas Express</td>
@@ -341,7 +341,7 @@ export default function RailwaysReissuePage() {
 
               {/* RIS-3991 — rejected, view only */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RIS-3991</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">RIS-3991</td>
                 <td className="px-6 py-3 font-mono text-xs text-slate-500 dark:text-slate-400">1056789234</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Vikram Nair</td>
                 <td className="px-6 py-3 text-slate-600 dark:text-slate-300">12625 Kerala Express</td>
@@ -386,7 +386,7 @@ export default function RailwaysReissuePage() {
         <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
           <p className="text-xs text-slate-500 dark:text-slate-400">Showing 5 of 5 reissue requests</p>
           <div className="flex items-center gap-1">
-            <button className="h-7 min-w-7 rounded-md bg-green-600 px-2 text-xs font-medium text-white">1</button>
+            <button className="h-7 min-w-7 rounded-md bg-blue-600 px-2 text-xs font-medium text-white">1</button>
           </div>
         </div>
       </div>

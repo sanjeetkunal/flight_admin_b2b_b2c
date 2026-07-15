@@ -42,7 +42,7 @@ export default function HolidaysPendingRequestsPage() {
       {/* Filter toolbar */}
       <div className="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between dark:border-slate-800 dark:bg-slate-900">
         <div className="flex flex-wrap items-center gap-2">
-          <button className="rounded-lg bg-pink-500 px-3 py-1.5 text-xs font-medium text-white shadow-sm">All <span className="ml-0.5 opacity-70">({requests.length})</span></button>
+          <button className="rounded-lg bg-blue-500 px-3 py-1.5 text-xs font-medium text-white shadow-sm">All <span className="ml-0.5 opacity-70">({requests.length})</span></button>
           <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">Domestic <span className="ml-0.5 opacity-70">(6)</span></button>
           <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">International <span className="ml-0.5 opacity-70">(1)</span></button>
           <span className="mx-1 h-4 w-px bg-slate-200" />
@@ -107,7 +107,7 @@ export default function HolidaysPendingRequestsPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {requests.map((r) => (
                 <tr key={r.ref} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-pink-700 dark:text-pink-400">{r.ref}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{r.ref}</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{r.client}</td>
                   <td className="px-6 py-3 text-slate-600 dark:text-slate-300">{r.package}</td>
                   <td className="px-6 py-3 text-slate-600 dark:text-slate-300">{r.destination}</td>
@@ -147,7 +147,7 @@ export default function HolidaysPendingRequestsPage() {
         <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
           <p className="text-xs text-slate-500 dark:text-slate-400">Showing {requests.length} of {requests.length} pending requests</p>
           <div className="flex items-center gap-1">
-            <button className="h-7 min-w-7 rounded-md bg-pink-500 px-2 text-xs font-medium text-white">1</button>
+            <button className="h-7 min-w-7 rounded-md bg-blue-500 px-2 text-xs font-medium text-white">1</button>
           </div>
         </div>
       </div>

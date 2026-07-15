@@ -15,7 +15,7 @@ const trafficDays = [
 const trafficMax = 70
 
 const analyticsCards = [
-  { label: "Total Bookings", value: "324", change: "+6%", sparkline: [40, 44, 42, 48, 50, 46, 52, 58], color: "#16a34a", formatValue: (v: number) => `${v} bookings` },
+  { label: "Total Bookings", value: "324", change: "+6%", sparkline: [40, 44, 42, 48, 50, 46, 52, 58], color: "#2563eb", formatValue: (v: number) => `${v} bookings` },
   { label: "Revenue", value: "₹4.13L", change: "+7%", sparkline: [34, 38, 36, 40, 44, 42, 48, 52], color: "#059669", formatValue: (v: number) => `₹${v}K` },
   { label: "Tatkal Bookings", value: "48", change: "+12%", sparkline: [4, 5, 4, 6, 7, 6, 8, 9], color: "#ea580c", formatValue: (v: number) => `${v} tatkal` },
   { label: "Waitlisted", value: "7", change: "-2%", bars: [2, 1, 2, 1, 1, 0, 1, 1], color: "bg-amber-500", formatValue: (v: number) => `${v} waitlisted` },
@@ -24,7 +24,7 @@ const analyticsCards = [
 const miniStats = [
   { label: "Pending PNR Requests", value: "11", href: "/railways/pending-pnr", color: "bg-amber-500", icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" },
   { label: "Issue Ticket", value: "16", href: "/railways/issue-ticket", color: "bg-emerald-600", icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" },
-  { label: "Reissue Requests", value: "5", href: "/railways/reissue", color: "bg-green-600", icon: "M4 4v6h6M20 20v-6h-6M4.5 15a8 8 0 0014.9 2.5M19.5 9A8 8 0 004.6 6.5" },
+  { label: "Reissue Requests", value: "5", href: "/railways/reissue", color: "bg-blue-600", icon: "M4 4v6h6M20 20v-6h-6M4.5 15a8 8 0 0014.9 2.5M19.5 9A8 8 0 004.6 6.5" },
   { label: "Refund Requests", value: "4", href: "/railways/refund-request", color: "bg-violet-600", icon: "M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6M12 1v22" },
 ]
 
@@ -59,8 +59,8 @@ export default function RailwaysDashboardPage() {
       {/* Row 1 — hero + revenue trend + confirmation rate */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-4">
         <div className="relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-6 shadow-sm dark:border-slate-800 dark:bg-slate-900 lg:col-span-2">
-          <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-green-50 dark:bg-green-500/10" />
-          <div className="absolute -right-2 top-10 h-16 w-16 rounded-full bg-emerald-50 dark:bg-emerald-500/10" />
+          <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-blue-50 dark:bg-blue-500/10" />
+          <div className="absolute -right-2 top-10 h-16 w-16 rounded-full bg-indigo-50 dark:bg-indigo-500/10" />
           <div className="relative flex items-center gap-4">
             <div className="min-w-0 flex-1">
               <h2 className="text-lg font-semibold text-slate-900 dark:text-slate-100">Railways Overview</h2>
@@ -69,7 +69,7 @@ export default function RailwaysDashboardPage() {
                 <div>
                   <p className="text-xs text-slate-400 dark:text-slate-500">Today&apos;s Bookings</p>
                   <p className="text-lg font-bold text-slate-900 dark:text-slate-100">28 <span className="text-xs font-semibold text-emerald-600">+6%</span></p>
-                  <div className="mt-1.5 h-1.5 w-28 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-700"><div className="h-full w-[64%] rounded-full bg-green-600" /></div>
+                  <div className="mt-1.5 h-1.5 w-28 overflow-hidden rounded-full bg-slate-100 dark:bg-slate-700"><div className="h-full w-[64%] rounded-full bg-blue-600" /></div>
                 </div>
                 <div>
                   <p className="text-xs text-slate-400 dark:text-slate-500">Tatkal Success Rate</p>
@@ -102,13 +102,13 @@ export default function RailwaysDashboardPage() {
             <AreaSparkline
               points={[34, 38, 36, 40, 44, 42, 48, 52]}
               comparePoints={[30, 33, 32, 35, 38, 37, 41, 45]}
-              color="#16a34a"
+              color="#2563eb"
               labels={last8Days}
               formatValue={(v) => `₹${v}K`}
               compareFormatValue={(v) => `₹${v}K`}
             />
             <div className="mt-2 flex items-center gap-3 text-[11px] text-slate-400 dark:text-slate-500">
-              <span className="flex items-center gap-1"><span className="h-0.5 w-3 rounded-full bg-green-600" /> This period</span>
+              <span className="flex items-center gap-1"><span className="h-0.5 w-3 rounded-full bg-blue-600" /> This period</span>
               <span className="flex items-center gap-1"><span className="h-0.5 w-3 rounded-full border-t border-dashed border-slate-400" /> Last period</span>
             </div>
           </div>
@@ -118,10 +118,10 @@ export default function RailwaysDashboardPage() {
           <p className="mb-2 self-start text-xs font-medium text-slate-500 dark:text-slate-400">Confirmation Rate</p>
           <DonutRing
             pct={78}
-            color="#16a34a"
+            color="#2563eb"
             label="Confirmed"
             breakdown={[
-              { label: "Confirmed", value: 253, color: "bg-green-600" },
+              { label: "Confirmed", value: 253, color: "bg-blue-600" },
               { label: "Waitlisted", value: 64, color: "bg-amber-400" },
               { label: "Cancelled", value: 7, color: "bg-red-400" },
             ]}
@@ -158,7 +158,7 @@ export default function RailwaysDashboardPage() {
       {/* Row 3 — mini icon stats (link to workflow pages) */}
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {miniStats.map((s) => (
-          <Link key={s.label} href={s.href} className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-white p-4 shadow-sm transition-colors hover:border-green-200 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-green-500/30">
+          <Link key={s.label} href={s.href} className="flex items-center gap-3 rounded-2xl border border-slate-100 bg-white p-4 shadow-sm transition-colors hover:border-blue-200 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-blue-500/30">
             <div className={`flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg ${s.color}`}>
               <svg className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d={s.icon} /></svg>
             </div>
@@ -176,8 +176,8 @@ export default function RailwaysDashboardPage() {
           <div className="mb-4 flex items-center justify-between">
             <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Booking Traffic</h3>
             <div className="flex items-center gap-3 text-[11px] text-slate-500 dark:text-slate-400">
-              <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-sm bg-green-600" /> General</span>
-              <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-sm bg-orange-300" /> Tatkal</span>
+              <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-sm bg-blue-600" /> General</span>
+              <span className="flex items-center gap-1"><span className="h-2 w-2 rounded-sm bg-sky-300" /> Tatkal</span>
             </div>
           </div>
           <div className="relative flex h-40 items-end gap-2">
@@ -187,16 +187,16 @@ export default function RailwaysDashboardPage() {
               return (
                 <div key={d.day} className="flex h-full flex-1 flex-col items-center gap-1" onMouseEnter={() => setHoverDay(i)} onMouseLeave={() => setHoverDay(null)}>
                   <div className={`flex w-full flex-1 cursor-pointer flex-col justify-end gap-0.5 transition-opacity ${dimmed ? "opacity-40" : "opacity-100"}`}>
-                    <div className="w-full rounded-t-sm bg-orange-300" style={{ height: `${(d.tatkal / trafficMax) * 100}%` }} />
-                    <div className="w-full rounded-t-sm bg-green-600" style={{ height: `${(d.general / trafficMax) * 100}%` }} />
+                    <div className="w-full rounded-t-sm bg-sky-300" style={{ height: `${(d.tatkal / trafficMax) * 100}%` }} />
+                    <div className="w-full rounded-t-sm bg-blue-600" style={{ height: `${(d.general / trafficMax) * 100}%` }} />
                   </div>
                   <span className="text-[10px] text-slate-400 dark:text-slate-500">{d.day}</span>
                   {hoverDay === i && (
                     <div className="pointer-events-none absolute z-20" style={{ ...edgeAlign(((i + 0.5) / trafficDays.length) * 100), bottom: `calc(${totalPct}% + 22px)` }}>
                       <TooltipBox>
                         <p className="mb-1 font-semibold text-slate-800 dark:text-slate-100">{d.day}</p>
-                        <div className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-green-600" /><span className="text-slate-500 dark:text-slate-400">General</span><span className="ml-auto font-semibold text-slate-800 dark:text-slate-100">{d.general}</span></div>
-                        <div className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-orange-300" /><span className="text-slate-500 dark:text-slate-400">Tatkal</span><span className="ml-auto font-semibold text-slate-800 dark:text-slate-100">{d.tatkal}</span></div>
+                        <div className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-blue-600" /><span className="text-slate-500 dark:text-slate-400">General</span><span className="ml-auto font-semibold text-slate-800 dark:text-slate-100">{d.general}</span></div>
+                        <div className="flex items-center gap-1.5"><span className="h-1.5 w-1.5 rounded-full bg-sky-300" /><span className="text-slate-500 dark:text-slate-400">Tatkal</span><span className="ml-auto font-semibold text-slate-800 dark:text-slate-100">{d.tatkal}</span></div>
                       </TooltipBox>
                     </div>
                   )}
@@ -216,7 +216,7 @@ export default function RailwaysDashboardPage() {
                   <span className="text-slate-400 dark:text-slate-500">{t.bookings}</span>
                 </div>
                 <div className="h-1.5 w-full cursor-pointer overflow-hidden rounded-full bg-slate-100 dark:bg-slate-700">
-                  <div className={`h-full rounded-full bg-green-600 transition-opacity ${hoverTrain !== null && hoverTrain !== i ? "opacity-50" : "opacity-100"}`} style={{ width: `${t.pct}%` }} />
+                  <div className={`h-full rounded-full bg-blue-600 transition-opacity ${hoverTrain !== null && hoverTrain !== i ? "opacity-50" : "opacity-100"}`} style={{ width: `${t.pct}%` }} />
                 </div>
                 {hoverTrain === i && (
                   <div className="pointer-events-none absolute z-20 bottom-full left-1/2 mb-1.5 -translate-x-1/2">
@@ -235,7 +235,7 @@ export default function RailwaysDashboardPage() {
       <div className="rounded-2xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
         <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
           <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Recent Bookings</h3>
-          <Link href="/railways/all-bookings" className="text-xs font-medium text-green-600 hover:text-green-700 dark:text-green-400">View all bookings →</Link>
+          <Link href="/railways/all-bookings" className="text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400">View all bookings →</Link>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
@@ -251,7 +251,7 @@ export default function RailwaysDashboardPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {recentBookings.map((b) => (
                 <tr key={b.pnr} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                  <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">{b.pnr}</td>
+                  <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{b.pnr}</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{b.passenger}</td>
                   <td className="px-6 py-3">
                     <span className="font-semibold text-slate-800 dark:text-slate-100">{b.from}</span>

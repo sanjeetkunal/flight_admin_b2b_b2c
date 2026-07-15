@@ -11,7 +11,7 @@ export default function RailwaysPendingPnrPage() {
       {/* Filter toolbar */}
       <div className="flex flex-col gap-3 rounded-xl border border-slate-100 bg-white px-4 py-3 shadow-sm sm:flex-row sm:items-center sm:justify-between dark:border-slate-800 dark:bg-slate-900">
         <div className="flex flex-wrap items-center gap-2">
-          <button className="rounded-lg bg-green-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm">All <span className="ml-0.5 opacity-70">(7)</span></button>
+          <button className="rounded-lg bg-blue-600 px-3 py-1.5 text-xs font-medium text-white shadow-sm">All <span className="ml-0.5 opacity-70">(7)</span></button>
           <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">SL <span className="ml-0.5 opacity-70">(4)</span></button>
           <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">3A <span className="ml-0.5 opacity-70">(2)</span></button>
           <button className="rounded-lg px-3 py-1.5 text-xs font-medium text-slate-500 hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-800">2A <span className="ml-0.5 opacity-70">(1)</span></button>
@@ -31,10 +31,10 @@ export default function RailwaysPendingPnrPage() {
           <span className="text-sm font-bold text-amber-600 dark:text-amber-400">7</span>
           <span className="text-xs text-amber-600/70 dark:text-amber-400/70">Pending</span>
         </div>
-        <div className="flex items-center gap-2 rounded-lg border border-green-100 bg-green-50 px-3 py-2 dark:border-green-500/20 dark:bg-green-500/10">
-          <span className="h-2 w-2 rounded-full bg-green-500" />
-          <span className="text-sm font-bold text-green-600 dark:text-green-400">15</span>
-          <span className="text-xs text-green-600/70 dark:text-green-400/70">Total Pax</span>
+        <div className="flex items-center gap-2 rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 dark:border-blue-500/20 dark:bg-blue-500/10">
+          <span className="h-2 w-2 rounded-full bg-blue-500" />
+          <span className="text-sm font-bold text-blue-600 dark:text-blue-400">15</span>
+          <span className="text-xs text-blue-600/70 dark:text-blue-400/70">Total Pax</span>
         </div>
         <div className="flex items-center gap-2 rounded-lg border border-violet-100 bg-violet-50 px-3 py-2 dark:border-violet-500/20 dark:bg-violet-500/10">
           <span className="h-2 w-2 rounded-full bg-violet-500" />
@@ -78,7 +78,7 @@ export default function RailwaysPendingPnrPage() {
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {/* RRQ-2031 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RRQ-2031</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">RRQ-2031</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Rajesh Kumar</td>
                 <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12951</p><p className="text-xs text-slate-400">Mumbai Rajdhani</p></td>
                 <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">MMCT</span></td>
@@ -152,7 +152,7 @@ export default function RailwaysPendingPnrPage() {
 
               {/* RRQ-2032 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RRQ-2032</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">RRQ-2032</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Priya Sharma</td>
                 <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12301</p><p className="text-xs text-slate-400">Howrah Rajdhani</p></td>
                 <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">HWH</span></td>
@@ -226,7 +226,7 @@ export default function RailwaysPendingPnrPage() {
 
               {/* RRQ-2033 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RRQ-2033</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">RRQ-2033</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Amit Singh</td>
                 <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12002</p><p className="text-xs text-slate-400">Bhopal Shatabdi</p></td>
                 <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">BPL</span></td>
@@ -300,7 +300,7 @@ export default function RailwaysPendingPnrPage() {
 
               {/* RRQ-2034 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RRQ-2034</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">RRQ-2034</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Sneha Patel</td>
                 <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12009</p><p className="text-xs text-slate-400">Mumbai Shatabdi</p></td>
                 <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">MMCT</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">PUNE</span></td>
@@ -374,7 +374,7 @@ export default function RailwaysPendingPnrPage() {
 
               {/* RRQ-2035 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RRQ-2035</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">RRQ-2035</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Deepa Menon</td>
                 <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12625</p><p className="text-xs text-slate-400">Kerala Express</p></td>
                 <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">TVC</span></td>
@@ -448,7 +448,7 @@ export default function RailwaysPendingPnrPage() {
 
               {/* RRQ-2036 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RRQ-2036</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">RRQ-2036</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Vikram Nair</td>
                 <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">22120</p><p className="text-xs text-slate-400">Tejas Express</p></td>
                 <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">CSMT</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">KYNR</span></td>
@@ -522,7 +522,7 @@ export default function RailwaysPendingPnrPage() {
 
               {/* RRQ-2037 */}
               <tr className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
-                <td className="px-6 py-3 font-mono text-xs font-semibold text-green-700 dark:text-green-400">RRQ-2037</td>
+                <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">RRQ-2037</td>
                 <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">Ravi Gupta</td>
                 <td className="px-6 py-3"><p className="font-semibold text-slate-800 dark:text-slate-100">12953</p><p className="text-xs text-slate-400">August Kranti Raj</p></td>
                 <td className="px-6 py-3"><span className="font-semibold text-slate-800 dark:text-slate-100">NDLS</span><span className="mx-1 text-slate-400">→</span><span className="font-semibold text-slate-800 dark:text-slate-100">MMCT</span></td>
@@ -600,7 +600,7 @@ export default function RailwaysPendingPnrPage() {
         <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
           <p className="text-xs text-slate-500 dark:text-slate-400">Showing 7 of 7 pending requests</p>
           <div className="flex items-center gap-1">
-            <button className="h-7 min-w-7 rounded-md bg-green-600 px-2 text-xs font-medium text-white">1</button>
+            <button className="h-7 min-w-7 rounded-md bg-blue-600 px-2 text-xs font-medium text-white">1</button>
           </div>
         </div>
       </div>

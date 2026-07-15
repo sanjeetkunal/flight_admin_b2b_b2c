@@ -159,7 +159,7 @@ export default function RailwaysCommissionMasterPage() {
   const removeRow = (id: number) => setRows((prev) => prev.filter((r) => r.id !== id))
 
   const labelCls = "mb-1.5 block text-xs font-medium text-slate-500 dark:text-slate-400"
-  const inputCls = "w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-green-100 focus:border-green-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+  const inputCls = "w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-blue-100 focus:border-blue-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
   const selectCls = inputCls + " bg-white"
 
   return (
@@ -173,7 +173,7 @@ export default function RailwaysCommissionMasterPage() {
         <div className="flex items-center gap-2">
           <button className="rounded-lg border border-slate-200 px-4 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800">Export</button>
           <button className="rounded-lg border border-slate-200 px-4 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800">Search</button>
-          <button onClick={() => setFormOpen(true)} className="flex items-center gap-1.5 rounded-lg bg-green-600 px-4 py-2 text-xs font-medium text-white hover:bg-green-700 transition-colors">
+          <button onClick={() => setFormOpen(true)} className="flex items-center gap-1.5 rounded-lg bg-blue-600 px-4 py-2 text-xs font-medium text-white hover:bg-blue-700 transition-colors">
             <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" /></svg>
             Add New
           </button>
@@ -188,7 +188,7 @@ export default function RailwaysCommissionMasterPage() {
         footer={
           <>
             <button onClick={() => setFormOpen(false)} className="rounded-lg border border-slate-200 px-4 py-2 text-xs font-medium text-slate-600 hover:bg-slate-50 dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800">Cancel</button>
-            <button onClick={handleSubmit} className="rounded-lg bg-green-600 px-4 py-2 text-xs font-medium text-white hover:bg-green-700 transition-colors">Submit</button>
+            <button onClick={handleSubmit} className="rounded-lg bg-blue-600 px-4 py-2 text-xs font-medium text-white hover:bg-blue-700 transition-colors">Submit</button>
           </>
         }
       >
@@ -342,17 +342,17 @@ export default function RailwaysCommissionMasterPage() {
           )}
         </div>
 
-        <button onClick={() => setShowMoreFilters((v) => !v)} className="mt-4 text-xs font-medium text-green-600 hover:text-green-800 underline underline-offset-2">
+        <button onClick={() => setShowMoreFilters((v) => !v)} className="mt-4 text-xs font-medium text-blue-600 hover:text-blue-800 underline underline-offset-2">
           {showMoreFilters ? "Hide extra filters" : "Click here for more filter show/hide"}
         </button>
       </FormDialog>
 
       {/* Compact stat chips */}
       <div className="flex flex-wrap items-center gap-3">
-        <div className="flex items-center gap-2 rounded-lg border border-green-100 bg-green-50 px-3 py-2 dark:border-green-500/20 dark:bg-green-500/10">
-          <span className="h-2 w-2 rounded-full bg-green-500" />
-          <span className="text-sm font-bold text-green-600 dark:text-green-400">{rows.length}</span>
-          <span className="text-xs text-green-600/70 dark:text-green-400/70">Commission Rules</span>
+        <div className="flex items-center gap-2 rounded-lg border border-blue-100 bg-blue-50 px-3 py-2 dark:border-blue-500/20 dark:bg-blue-500/10">
+          <span className="h-2 w-2 rounded-full bg-blue-500" />
+          <span className="text-sm font-bold text-blue-600 dark:text-blue-400">{rows.length}</span>
+          <span className="text-xs text-blue-600/70 dark:text-blue-400/70">Commission Rules</span>
         </div>
         <div className="flex items-center gap-2 rounded-lg border border-emerald-100 bg-emerald-50 px-3 py-2 dark:border-emerald-500/20 dark:bg-emerald-500/10">
           <span className="h-2 w-2 rounded-full bg-emerald-500" />
@@ -370,7 +370,7 @@ export default function RailwaysCommissionMasterPage() {
       <div className="rounded-xl border border-slate-100 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900">
         <div className="flex items-center justify-between border-b border-slate-100 px-6 py-4 dark:border-slate-800">
           <h2 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Commission Rules</h2>
-          <span className="rounded-full bg-green-100 px-2.5 py-0.5 text-xs font-medium text-green-700 dark:bg-green-500/10 dark:text-green-400">{rows.length} rules</span>
+          <span className="rounded-full bg-blue-100 px-2.5 py-0.5 text-xs font-medium text-blue-700 dark:bg-blue-500/10 dark:text-blue-400">{rows.length} rules</span>
         </div>
         <div className="overflow-x-auto">
           <table className="w-full text-sm">
@@ -397,7 +397,7 @@ export default function RailwaysCommissionMasterPage() {
               {rows.map((r) => (
                 <tr key={r.id} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
                   <td className="px-4 py-3 whitespace-nowrap">
-                    <button onClick={() => viewRow(r)} className="font-medium text-green-700 hover:text-green-900 hover:underline dark:text-green-400">{r.groupType}</button>
+                    <button onClick={() => viewRow(r)} className="font-medium text-blue-700 hover:text-blue-900 hover:underline dark:text-blue-400">{r.groupType}</button>
                   </td>
                   <td className="px-4 py-3 whitespace-nowrap text-slate-700 dark:text-slate-200">{r.trainClass}</td>
                   <td className="px-4 py-3 whitespace-nowrap text-slate-600 dark:text-slate-300">{r.trainType}</td>

@@ -41,7 +41,7 @@ export default function ReportsPage() {
       {/* KPI row */}
       <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
         {[
-          { label: "Total Bookings (Today)", value: totalBookings.toLocaleString(), sub: "+12.5% vs yesterday", color: "text-indigo-600 bg-indigo-50 border-indigo-100" },
+          { label: "Total Bookings (Today)", value: totalBookings.toLocaleString(), sub: "+12.5% vs yesterday", color: "text-blue-600 bg-blue-50 border-blue-100" },
           { label: "Total Revenue (Today)", value: `₹${(totalRevenue / 100000).toFixed(2)} L`, sub: "+8.2% vs yesterday", color: "text-emerald-600 bg-emerald-50 border-emerald-100" },
           { label: "Active Agents (MTD)", value: "318", sub: "out of 342 total", color: "text-violet-600 bg-violet-50 border-violet-100" },
           { label: "Avg. Booking Value", value: `₹${Math.round(totalRevenue / totalBookings).toLocaleString()}`, sub: "per transaction", color: "text-blue-600 bg-blue-50 border-blue-100" },
@@ -62,14 +62,14 @@ export default function ReportsPage() {
               <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Monthly Revenue Trend</h3>
               <p className="text-xs text-slate-400">Jan – Jun 2026 (₹ Lakhs)</p>
             </div>
-            <span className="rounded-full bg-indigo-50 px-3 py-1 text-xs font-medium text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400">Last 6 months</span>
+            <span className="rounded-full bg-blue-50 px-3 py-1 text-xs font-medium text-blue-600 dark:bg-blue-500/10 dark:text-blue-400">Last 6 months</span>
           </div>
           {/* Bar chart */}
           <div className="flex items-end justify-between gap-3 h-48">
             {monthlyData.map((d) => (
               <div key={d.month} className="flex flex-1 flex-col items-center gap-2">
                 <span className="text-xs font-semibold text-slate-600 dark:text-slate-300">₹{d.revenue}L</span>
-                <div className="w-full rounded-t-md bg-indigo-500 transition-all" style={{ height: `${(d.revenue / maxRevenue) * 160}px` }} />
+                <div className="w-full rounded-t-md bg-blue-500 transition-all" style={{ height: `${(d.revenue / maxRevenue) * 160}px` }} />
                 <span className="text-xs text-slate-500 dark:text-slate-400">{d.month}</span>
               </div>
             ))}
@@ -180,7 +180,7 @@ export default function ReportsPage() {
             { label: "Cancelled Bookings", fmt: "CSV" },
             { label: "Ledger Statement", fmt: "PDF" },
           ].map((r) => (
-            <button key={r.label} className="flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-2.5 text-xs font-medium text-slate-600 hover:border-indigo-300 hover:bg-indigo-50 hover:text-indigo-700 transition-all dark:border-slate-700 dark:text-slate-300 dark:hover:border-indigo-500/40 dark:hover:bg-indigo-500/10 dark:hover:text-indigo-400">
+            <button key={r.label} className="flex items-center gap-2 rounded-lg border border-slate-200 px-4 py-2.5 text-xs font-medium text-slate-600 hover:border-blue-300 hover:bg-blue-50 hover:text-blue-700 transition-all dark:border-slate-700 dark:text-slate-300 dark:hover:border-blue-500/40 dark:hover:bg-blue-500/10 dark:hover:text-blue-400">
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3" />
               </svg>
