@@ -55,7 +55,7 @@ export default function TopNav() {
   ]
 
   return (
-    <div ref={navRef} className="sticky top-0 z-30 border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+    <div ref={navRef} className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/80 shadow-sm backdrop-blur-md dark:border-slate-800/80 dark:bg-slate-900/80">
       {/* Utility bar */}
       <div className="flex h-14 items-center gap-2 px-3 sm:gap-4 sm:px-6">
         <button
@@ -76,7 +76,7 @@ export default function TopNav() {
         </button>
 
         <Link href="/" className="flex items-center gap-2.5 flex-shrink-0">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-indigo-600">
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-indigo-500 to-indigo-700 shadow-sm shadow-indigo-500/30">
             <svg className="h-4 w-4 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
             </svg>
@@ -89,11 +89,12 @@ export default function TopNav() {
 
         <div className="flex-1" />
 
-        <div className="hidden md:flex items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 w-64 dark:border-slate-700 dark:bg-slate-800">
+        <div className="hidden md:flex items-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-3.5 py-2 w-64 transition-colors focus-within:border-indigo-300 focus-within:bg-white focus-within:ring-2 focus-within:ring-indigo-100 dark:border-slate-700 dark:bg-slate-800 dark:focus-within:border-indigo-500/50 dark:focus-within:bg-slate-800 dark:focus-within:ring-indigo-500/20">
           <svg className="h-4 w-4 text-slate-400 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
           </svg>
           <input type="text" placeholder="Search bookings, agents..." className="bg-transparent text-sm text-slate-600 placeholder-slate-400 outline-none w-full dark:text-slate-300" />
+          <kbd className="flex-shrink-0 rounded border border-slate-200 bg-white px-1.5 py-0.5 text-[10px] font-medium text-slate-400 dark:border-slate-600 dark:bg-slate-700 dark:text-slate-400">⌘K</kbd>
         </div>
 
         {/* Theme toggle */}
@@ -126,10 +127,13 @@ export default function TopNav() {
             <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9" /><path d="M13.73 21a2 2 0 01-3.46 0" />
             </svg>
-            <span className="absolute top-1.5 right-1.5 h-2 w-2 rounded-full bg-red-500 ring-1 ring-white dark:ring-slate-900" />
+            <span className="absolute top-1.5 right-1.5 flex h-2 w-2">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-red-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-red-500 ring-1 ring-white dark:ring-slate-900" />
+            </span>
           </button>
           {notifOpen && (
-            <div className="absolute right-0 top-full mt-2 w-80 rounded-xl border border-slate-200 bg-white shadow-lg shadow-slate-200/60 dark:border-slate-700 dark:bg-slate-800 dark:shadow-black/40">
+            <div className="animate-dropdown absolute right-0 top-full mt-2 w-80 rounded-xl border border-slate-200 bg-white shadow-xl shadow-slate-200/60 ring-1 ring-black/5 dark:border-slate-700 dark:bg-slate-800 dark:shadow-black/40">
               <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3 dark:border-slate-700">
                 <p className="text-sm font-semibold text-slate-800 dark:text-slate-100">Notifications</p>
                 <span className="rounded-full bg-red-100 px-2 py-0.5 text-xs font-medium text-red-600">4 new</span>
@@ -158,7 +162,7 @@ export default function TopNav() {
             onClick={() => { setProfileOpen(!profileOpen); setNotifOpen(false) }}
             className="flex items-center gap-2.5 rounded-lg px-2 py-1.5 hover:bg-slate-100 transition-colors dark:hover:bg-slate-800"
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 text-xs font-bold text-white">PR</div>
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-indigo-700 text-xs font-bold text-white shadow-sm shadow-indigo-500/30">PR</div>
             <div className="hidden md:block text-left">
               <p className="text-xs font-semibold text-slate-800 dark:text-slate-100">Admin</p>
               <p className="text-xs text-slate-400">Super Admin</p>
@@ -168,7 +172,7 @@ export default function TopNav() {
             </svg>
           </button>
           {profileOpen && (
-            <div className="absolute right-0 top-full mt-2 w-48 rounded-xl border border-slate-200 bg-white shadow-lg shadow-slate-200/60 dark:border-slate-700 dark:bg-slate-800 dark:shadow-black/40">
+            <div className="animate-dropdown absolute right-0 top-full mt-2 w-48 rounded-xl border border-slate-200 bg-white shadow-xl shadow-slate-200/60 ring-1 ring-black/5 dark:border-slate-700 dark:bg-slate-800 dark:shadow-black/40">
               <div className="border-b border-slate-100 px-4 py-3 dark:border-slate-700">
                 <p className="text-sm font-semibold text-slate-800 dark:text-slate-100">Primer Route</p>
                 <p className="text-xs text-slate-400 truncate">info@primerouteholidays.com</p>
@@ -187,15 +191,17 @@ export default function TopNav() {
       </div>
 
       {/* Menu bar (desktop) */}
-      <nav className="hidden md:flex items-center gap-1 border-t border-slate-100 px-6 dark:border-slate-800">
+      <nav className="hidden md:flex items-center gap-1 border-t border-slate-100 px-4 py-2 dark:border-slate-800">
         {navItems.map((item) => {
           const active = isActive(item)
           return (
             <Link
               key={item.href}
               href={item.href}
-              className={`flex flex-shrink-0 items-center gap-1.5 border-b-2 px-3 py-3 text-sm font-medium whitespace-nowrap transition-colors ${
-                active ? "border-indigo-600 text-indigo-600 dark:border-indigo-400 dark:text-indigo-400" : "border-transparent text-slate-600 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-100"
+              className={`flex flex-shrink-0 items-center gap-1.5 rounded-lg px-3 py-2 text-sm font-medium whitespace-nowrap transition-colors ${
+                active
+                  ? "bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400"
+                  : "text-slate-600 hover:bg-slate-100 hover:text-slate-900 dark:text-slate-400 dark:hover:bg-slate-800 dark:hover:text-slate-100"
               }`}
             >
               <NavIcon type={item.icon} />
@@ -218,7 +224,7 @@ export default function TopNav() {
                   <Link
                     href={item.href}
                     className={`flex flex-1 items-center gap-2.5 px-4 py-3 text-sm font-medium transition-colors ${
-                      active ? "text-indigo-600 dark:text-indigo-400" : "text-slate-600 dark:text-slate-300"
+                      active ? "bg-indigo-50 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-400" : "text-slate-600 dark:text-slate-300"
                     }`}
                   >
                     <NavIcon type={item.icon} />
@@ -243,10 +249,11 @@ export default function TopNav() {
                       <Link
                         key={child.href}
                         href={child.href}
-                        className={`block py-2 pl-12 pr-4 text-sm transition-colors ${
+                        className={`flex items-center gap-2.5 py-2 pl-12 pr-4 text-sm transition-colors ${
                           pathname === child.href ? "font-medium text-indigo-600 dark:text-indigo-400" : "text-slate-600 dark:text-slate-300"
                         }`}
                       >
+                        <NavIcon type={child.icon} />
                         {child.label}
                       </Link>
                     ))}
