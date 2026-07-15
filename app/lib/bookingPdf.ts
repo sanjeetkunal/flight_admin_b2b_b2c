@@ -1,8 +1,8 @@
 import { jsPDF } from "jspdf"
 import type { FlightBooking } from "./flightBookings"
 
-const BRAND = "Primer Route Holidays"
-const BRAND_EMAIL = "info@primerouteholidays.com"
+const BRAND = "VirtualToActual"
+const BRAND_EMAIL = "info@virtualtoactual.com"
 const INK: [number, number, number] = [30, 41, 59]
 const MUTED: [number, number, number] = [100, 116, 139]
 const ACCENT: [number, number, number] = [37, 99, 235]

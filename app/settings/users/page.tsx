@@ -117,10 +117,10 @@ type UserRow = {
 }
 
 const initialUsers: UserRow[] = [
-  { id: "U001", name: "Admin", email: "info@primerouteholidays.com", roleId: "super-admin", status: "Active", lastLogin: "30 Jun, 14:22" },
-  { id: "U002", name: "Rahul Mehta", email: "rahul@primerouteholidays.com", roleId: "operations", status: "Active", lastLogin: "30 Jun, 12:10" },
-  { id: "U003", name: "Pooja Sharma", email: "pooja@primerouteholidays.com", roleId: "sales", status: "Active", lastLogin: "29 Jun, 18:45" },
-  { id: "U004", name: "Sanjay Kumar", email: "sanjay@primerouteholidays.com", roleId: "accounts", status: "Inactive", lastLogin: "28 Jun, 09:30" },
+  { id: "U001", name: "Admin", email: "info@virtualtoactual.com", roleId: "super-admin", status: "Active", lastLogin: "30 Jun, 14:22" },
+  { id: "U002", name: "Rahul Mehta", email: "rahul@virtualtoactual.com", roleId: "operations", status: "Active", lastLogin: "30 Jun, 12:10" },
+  { id: "U003", name: "Pooja Sharma", email: "pooja@virtualtoactual.com", roleId: "sales", status: "Active", lastLogin: "29 Jun, 18:45" },
+  { id: "U004", name: "Sanjay Kumar", email: "sanjay@virtualtoactual.com", roleId: "accounts", status: "Inactive", lastLogin: "28 Jun, 09:30" },
 ]
 
 const inputCls = "w-full rounded-lg border border-slate-200 px-3 py-2 text-sm text-slate-700 outline-none focus:ring-2 focus:ring-indigo-100 focus:border-indigo-300 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"

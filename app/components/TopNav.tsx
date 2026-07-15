@@ -82,7 +82,7 @@ export default function TopNav() {
             </svg>
           </div>
           <div className="hidden sm:block leading-tight">
-            <p className="text-sm font-semibold text-slate-800 dark:text-slate-100">Primer Route</p>
+            <p className="text-sm font-semibold text-slate-800 dark:text-slate-100">VirtualToActual</p>
             <p className="text-[11px] text-slate-400 dark:text-slate-500">B2B Admin Portal</p>
           </div>
         </Link>
@@ -162,7 +162,7 @@ export default function TopNav() {
             onClick={() => { setProfileOpen(!profileOpen); setNotifOpen(false) }}
             className="flex items-center gap-2.5 rounded-lg px-2 py-1.5 hover:bg-slate-100 transition-colors dark:hover:bg-slate-800"
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-indigo-700 text-xs font-bold text-white shadow-sm shadow-indigo-500/30">PR</div>
+            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-br from-indigo-500 to-indigo-700 text-xs font-bold text-white shadow-sm shadow-indigo-500/30">VA</div>
             <div className="hidden md:block text-left">
               <p className="text-xs font-semibold text-slate-800 dark:text-slate-100">Admin</p>
               <p className="text-xs text-slate-400">Super Admin</p>
@@ -174,8 +174,8 @@ export default function TopNav() {
           {profileOpen && (
             <div className="animate-dropdown absolute right-0 top-full mt-2 w-48 rounded-xl border border-slate-200 bg-white shadow-xl shadow-slate-200/60 ring-1 ring-black/5 dark:border-slate-700 dark:bg-slate-800 dark:shadow-black/40">
               <div className="border-b border-slate-100 px-4 py-3 dark:border-slate-700">
-                <p className="text-sm font-semibold text-slate-800 dark:text-slate-100">Primer Route</p>
-                <p className="text-xs text-slate-400 truncate">info@primerouteholidays.com</p>
+                <p className="text-sm font-semibold text-slate-800 dark:text-slate-100">VirtualToActual</p>
+                <p className="text-xs text-slate-400 truncate">info@virtualtoactual.com</p>
               </div>
               <div className="py-1">
                 {["My Profile", "Account Settings", "API Keys", "Help & Support"].map((item) => (

@@ -25,12 +25,12 @@ export default function SettingsPage() {
           <div className="rounded-xl border border-slate-100 bg-white p-6 shadow-sm space-y-5 dark:border-slate-800 dark:bg-slate-900">
             <h3 className="text-sm font-semibold text-slate-800 dark:text-slate-100">Company Information</h3>
             {[
-              { label: "Company Name", value: "Primer Route Holidays Pvt Ltd" },
+              { label: "Company Name", value: "VirtualToActual Pvt Ltd" },
               { label: "GSTIN", value: "27AACP1234Q1Z5" },
               { label: "PAN Number", value: "AACP1234Q" },
               { label: "IATA / TAAI Code", value: "PR-1234" },
               { label: "Phone Number", value: "+91 98765 43210" },
-              { label: "Website", value: "www.primerouteholidays.com" },
+              { label: "Website", value: "www.virtualtoactual.com" },
             ].map((f) => (
               <div key={f.label}>
                 <label className="mb-1.5 block text-xs font-medium text-slate-600 dark:text-slate-300">{f.label}</label>
@@ -244,10 +244,10 @@ export default function SettingsPage() {
             </thead>
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
               {[
-                { name: "Admin", email: "info@primerouteholidays.com", role: "Super Admin", modules: "All", lastLogin: "30 Jun, 14:22", status: "Active" },
-                { name: "Rahul Mehta", email: "rahul@primerouteholidays.com", role: "Operations", modules: "Flight, Railway, Bus", lastLogin: "30 Jun, 12:10", status: "Active" },
-                { name: "Pooja Sharma", email: "pooja@primerouteholidays.com", role: "Sales", modules: "Hotel, Holiday", lastLogin: "29 Jun, 18:45", status: "Active" },
-                { name: "Sanjay Kumar", email: "sanjay@primerouteholidays.com", role: "Accounts", modules: "Reports, Utility", lastLogin: "28 Jun, 09:30", status: "Inactive" },
+                { name: "Admin", email: "info@virtualtoactual.com", role: "Super Admin", modules: "All", lastLogin: "30 Jun, 14:22", status: "Active" },
+                { name: "Rahul Mehta", email: "rahul@virtualtoactual.com", role: "Operations", modules: "Flight, Railway, Bus", lastLogin: "30 Jun, 12:10", status: "Active" },
+                { name: "Pooja Sharma", email: "pooja@virtualtoactual.com", role: "Sales", modules: "Hotel, Holiday", lastLogin: "29 Jun, 18:45", status: "Active" },
+                { name: "Sanjay Kumar", email: "sanjay@virtualtoactual.com", role: "Accounts", modules: "Reports, Utility", lastLogin: "28 Jun, 09:30", status: "Inactive" },
               ].map((u) => (
                 <tr key={u.email} className="hover:bg-slate-50/60 dark:hover:bg-slate-800/60">
                   <td className="px-6 py-3">

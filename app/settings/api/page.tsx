@@ -85,7 +85,7 @@ const initialModuleApis: Record<string, ApiEntry[]> = {
     { id: "hotel-1", provider: "TBO Hotel API", baseUrl: "https://api.tboholidays.com/hotel/v2", apiKey: "TBO-9K21-KJ71-7712", apiSecret: "tbo_sec_k29dj182", environment: "Live", enabled: true },
   ],
   holiday: [
-    { id: "holiday-1", provider: "Internal Package Engine", baseUrl: "https://api.primerouteholidays.com/packages/v1", apiKey: "PRH-PKG-4471-2091", apiSecret: "prh_sec_88ak02mz", environment: "Live", enabled: true },
+    { id: "holiday-1", provider: "Internal Package Engine", baseUrl: "https://api.virtualtoactual.com/packages/v1", apiKey: "VTA-PKG-4471-2091", apiSecret: "vta_sec_88ak02mz", environment: "Live", enabled: true },
   ],
   utility: [
     { id: "utility-1", provider: "BBPS Bharat BillPay", baseUrl: "", apiKey: "", apiSecret: "", environment: "Test", enabled: false },
@@ -101,7 +101,7 @@ type OtherIntegration = {
 }
 
 const initialOthers: OtherIntegration[] = [
-  { id: "razorpay", name: "Razorpay Payment Gateway", apiKey: "rzp_live_a91k2882jd91", webhookUrl: "https://api.primerouteholidays.com/webhooks/razorpay", enabled: true },
+  { id: "razorpay", name: "Razorpay Payment Gateway", apiKey: "rzp_live_a91k2882jd91", webhookUrl: "https://api.virtualtoactual.com/webhooks/razorpay", enabled: true },
   { id: "msg91", name: "SMS Gateway (MSG91)", apiKey: "MSG91-2A61-KD91-5642", webhookUrl: "", enabled: true },
 ]
 

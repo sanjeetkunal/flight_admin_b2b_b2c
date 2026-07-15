@@ -10,8 +10,8 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "Primer Route Admin | B2B Travel Portal",
-  description: "B2B Travel Admin Panel — Primer Route Holidays",
+  title: "VirtualToActual Admin | B2B Travel Portal",
+  description: "B2B Travel Admin Panel — VirtualToActual",
 };
 
 export default function RootLayout({

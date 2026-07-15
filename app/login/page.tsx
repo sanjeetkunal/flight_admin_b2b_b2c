@@ -2,11 +2,12 @@
 
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import { DotLottieReact } from "@lottiefiles/dotlottie-react"
 
 const DEMO_CREDENTIALS = [
-  { role: "Super Admin", email: "admin@primerouteholidays.com", password: "Admin@123" },
-  { role: "Operations", email: "rahul@primerouteholidays.com", password: "Ops@2026" },
-  { role: "Sales", email: "pooja@primerouteholidays.com", password: "Sales@2026" },
+  { role: "Super Admin", email: "admin@virtualtoactual.com", password: "Admin@123" },
+  { role: "Operations", email: "rahul@virtualtoactual.com", password: "Ops@2026" },
+  { role: "Sales", email: "pooja@virtualtoactual.com", password: "Sales@2026" },
 ]
 
 const features = [
@@ -58,25 +59,36 @@ export default function LoginPage() {
       {/* ── Left branding panel ── */}
       <div className="relative hidden w-[45%] flex-col justify-between overflow-hidden bg-slate-900 p-10 lg:flex">
         {/* Gradient blobs */}
-        <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-indigo-600/20 blur-3xl" />
+        <div className="absolute -top-24 -left-24 h-96 w-96 rounded-full bg-blue-600/20 blur-3xl" />
         <div className="absolute -bottom-32 -right-16 h-80 w-80 rounded-full bg-violet-600/20 blur-3xl" />
-        <div className="absolute top-1/2 left-1/3 h-64 w-64 rounded-full bg-blue-500/10 blur-3xl" />
+        <div className="absolute top-1/2 left-1/3 h-64 w-64 rounded-full bg-sky-500/10 blur-3xl" />
 
         {/* Logo */}
         <div className="relative z-10 flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600 shadow-lg shadow-indigo-900/40">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-700 shadow-lg shadow-blue-900/40">
             <svg className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
             </svg>
           </div>
           <div>
-            <p className="text-base font-bold text-white">Primer Route</p>
+            <p className="text-base font-bold text-white">VirtualToActual</p>
             <p className="text-xs text-slate-400">B2B Travel Admin Portal</p>
           </div>
         </div>
 
         {/* Center content */}
-        <div className="relative z-10 space-y-8">
+        <div className="relative z-10 space-y-6">
+          <div className="-ml-4 -mt-2 h-36 w-36">
+            <DotLottieReact
+              src="https://lottie.host/7a351cb3-8dd0-403b-95c5-9e2c54953aec/W43yMcYZXg.lottie"
+              loop
+              autoplay
+              width={272}
+              height={272}
+              style={{ width: "100%", height: "100%" }}
+            />
+          </div>
+
           <div>
             <h2 className="text-3xl font-bold leading-tight text-white">
               Your complete B2B<br />travel management<br />platform
@@ -89,8 +101,8 @@ export default function LoginPage() {
           <div className="grid grid-cols-2 gap-3">
             {features.map((f) => (
               <div key={f.label} className="flex items-center gap-2.5 rounded-lg bg-slate-800/60 px-3 py-2.5 backdrop-blur-sm">
-                <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md bg-indigo-600/30">
-                  <svg className="h-3.5 w-3.5 text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <div className="flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-md bg-blue-600/30">
+                  <svg className="h-3.5 w-3.5 text-blue-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d={f.icon} />
                   </svg>
                 </div>
@@ -104,51 +116,51 @@ export default function LoginPage() {
         <div className="relative z-10">
           <div className="flex items-center gap-3 rounded-xl bg-slate-800/60 p-4 backdrop-blur-sm">
             <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-emerald-600/20 text-sm font-bold text-emerald-400">
-              PR
+              VA
             </div>
             <div className="min-w-0">
-              <p className="text-sm font-semibold text-white">Primer Route Holidays</p>
-              <p className="truncate text-xs text-slate-400">info@primerouteholidays.com</p>
+              <p className="text-sm font-semibold text-white">VirtualToActual</p>
+              <p className="truncate text-xs text-slate-400">info@virtualtoactual.com</p>
             </div>
             <div className="ml-auto flex-shrink-0 rounded-full bg-emerald-500/20 px-2 py-0.5 text-xs font-medium text-emerald-400">
               Active
             </div>
           </div>
           <p className="mt-4 text-xs text-slate-600">
-            © 2026 Primer Route Holidays Pvt Ltd. All rights reserved.
+            © 2026 VirtualToActual Pvt Ltd. All rights reserved.
           </p>
         </div>
       </div>
 
       {/* ── Right login form ── */}
-      <div className="flex flex-1 flex-col items-center justify-center bg-white px-6 py-12">
+      <div className="flex flex-1 flex-col items-center justify-center bg-white px-6 py-12 dark:bg-slate-950">
         {/* Mobile logo */}
         <div className="mb-8 flex items-center gap-3 lg:hidden">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-indigo-600">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-blue-700">
             <svg className="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
             </svg>
           </div>
           <div>
-            <p className="text-base font-bold text-slate-900">Primer Route</p>
-            <p className="text-xs text-slate-500">B2B Admin Portal</p>
+            <p className="text-base font-bold text-slate-900 dark:text-slate-100">VirtualToActual</p>
+            <p className="text-xs text-slate-500 dark:text-slate-400">B2B Admin Portal</p>
           </div>
         </div>
 
         <div className="w-full max-w-sm">
           {/* Heading */}
           <div className="mb-8">
-            <h1 className="text-2xl font-bold text-slate-900">Welcome back</h1>
-            <p className="mt-1 text-sm text-slate-500">Sign in to your admin account</p>
+            <h1 className="text-2xl font-bold text-slate-900 dark:text-slate-100">Welcome back</h1>
+            <p className="mt-1 text-sm text-slate-500 dark:text-slate-400">Sign in to your admin account</p>
           </div>
 
           {/* Error */}
           {error && (
-            <div className="mb-5 flex items-start gap-2.5 rounded-lg border border-red-200 bg-red-50 px-4 py-3">
+            <div className="mb-5 flex items-start gap-2.5 rounded-lg border border-red-200 bg-red-50 px-4 py-3 dark:border-red-500/20 dark:bg-red-500/10">
               <svg className="mt-0.5 h-4 w-4 flex-shrink-0 text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <circle cx="12" cy="12" r="10" /><line x1="12" y1="8" x2="12" y2="12" /><line x1="12" y1="16" x2="12.01" y2="16" />
               </svg>
-              <p className="text-xs text-red-700">{error}</p>
+              <p className="text-xs text-red-700 dark:text-red-400">{error}</p>
             </div>
           )}
 
@@ -156,12 +168,12 @@ export default function LoginPage() {
           <form onSubmit={handleLogin} className="space-y-5">
             {/* Email */}
             <div>
-              <label className="mb-1.5 block text-xs font-semibold text-slate-700">
+              <label className="mb-1.5 block text-xs font-semibold text-slate-700 dark:text-slate-300">
                 Email Address
               </label>
               <div className="relative">
                 <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
-                  <svg className="h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg className="h-4 w-4 text-slate-400 dark:text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                     <polyline points="22,6 12,13 2,6" />
                   </svg>
@@ -171,8 +183,8 @@ export default function LoginPage() {
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@primerouteholidays.com"
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-3 pl-10 pr-4 text-sm text-slate-900 placeholder-slate-400 outline-none transition focus:border-indigo-400 focus:bg-white focus:ring-3 focus:ring-indigo-100"
+                  placeholder="you@virtualtoactual.com"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-3 pl-10 pr-4 text-sm text-slate-900 placeholder-slate-400 outline-none transition focus:border-blue-400 focus:bg-white focus:ring-3 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:border-blue-500 dark:focus:bg-slate-900 dark:focus:ring-blue-500/20"
                 />
               </div>
             </div>
@@ -180,14 +192,14 @@ export default function LoginPage() {
             {/* Password */}
             <div>
               <div className="mb-1.5 flex items-center justify-between">
-                <label className="text-xs font-semibold text-slate-700">Password</label>
-                <button type="button" className="text-xs font-medium text-indigo-600 hover:text-indigo-700">
+                <label className="text-xs font-semibold text-slate-700 dark:text-slate-300">Password</label>
+                <button type="button" className="text-xs font-medium text-blue-600 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300">
                   Forgot password?
                 </button>
               </div>
               <div className="relative">
                 <div className="pointer-events-none absolute inset-y-0 left-3 flex items-center">
-                  <svg className="h-4 w-4 text-slate-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <svg className="h-4 w-4 text-slate-400 dark:text-slate-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
                     <path d="M7 11V7a5 5 0 0110 0v4" />
                   </svg>
@@ -198,12 +210,12 @@ export default function LoginPage() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
-                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-3 pl-10 pr-11 text-sm text-slate-900 placeholder-slate-400 outline-none transition focus:border-indigo-400 focus:bg-white focus:ring-3 focus:ring-indigo-100"
+                  className="w-full rounded-xl border border-slate-200 bg-slate-50 py-3 pl-10 pr-11 text-sm text-slate-900 placeholder-slate-400 outline-none transition focus:border-blue-400 focus:bg-white focus:ring-3 focus:ring-blue-100 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100 dark:placeholder-slate-500 dark:focus:border-blue-500 dark:focus:bg-slate-900 dark:focus:ring-blue-500/20"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPass(!showPass)}
-                  className="absolute inset-y-0 right-3 flex items-center text-slate-400 hover:text-slate-600"
+                  className="absolute inset-y-0 right-3 flex items-center text-slate-400 hover:text-slate-600 dark:text-slate-500 dark:hover:text-slate-300"
                 >
                   {showPass ? (
                     <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -226,16 +238,16 @@ export default function LoginPage() {
                 type="checkbox"
                 checked={remember}
                 onChange={(e) => setRemember(e.target.checked)}
-                className="h-4 w-4 rounded border-slate-300 accent-indigo-600"
+                className="h-4 w-4 rounded border-slate-300 accent-blue-600 dark:border-slate-600"
               />
-              <span className="text-xs text-slate-600">Remember me for 30 days</span>
+              <span className="text-xs text-slate-600 dark:text-slate-400">Remember me for 30 days</span>
             </label>
 
             {/* Submit */}
             <button
               type="submit"
               disabled={loading}
-              className="flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 py-3 text-sm font-semibold text-white shadow-sm shadow-indigo-200 transition hover:bg-indigo-700 active:scale-[0.98] disabled:opacity-70"
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 py-3 text-sm font-semibold text-white shadow-sm shadow-blue-200 transition hover:bg-blue-700 active:scale-[0.98] disabled:opacity-70 dark:shadow-none"
             >
               {loading ? (
                 <>
@@ -256,13 +268,13 @@ export default function LoginPage() {
           </form>
 
           {/* Demo credentials */}
-          <div className="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-4">
+          <div className="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-4 dark:border-amber-500/20 dark:bg-amber-500/10">
             <div className="mb-3 flex items-center gap-2">
-              <svg className="h-4 w-4 text-amber-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <svg className="h-4 w-4 text-amber-600 dark:text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
               </svg>
-              <p className="text-xs font-semibold text-amber-800">Demo Credentials</p>
-              <span className="ml-auto rounded bg-amber-200 px-1.5 py-0.5 text-xs font-medium text-amber-700">Click to fill</span>
+              <p className="text-xs font-semibold text-amber-800 dark:text-amber-300">Demo Credentials</p>
+              <span className="ml-auto rounded bg-amber-200 px-1.5 py-0.5 text-xs font-medium text-amber-700 dark:bg-amber-500/20 dark:text-amber-300">Click to fill</span>
             </div>
             <div className="space-y-2">
               {DEMO_CREDENTIALS.map((cred) => (
@@ -270,15 +282,15 @@ export default function LoginPage() {
                   key={cred.email}
                   type="button"
                   onClick={() => fillCredential(cred)}
-                  className="w-full rounded-lg border border-amber-200 bg-white px-3 py-2.5 text-left transition hover:border-amber-300 hover:bg-amber-50 active:scale-[0.99]"
+                  className="w-full rounded-lg border border-amber-200 bg-white px-3 py-2.5 text-left transition hover:border-amber-300 hover:bg-amber-50 active:scale-[0.99] dark:border-amber-500/20 dark:bg-slate-900 dark:hover:border-amber-500/40 dark:hover:bg-amber-500/10"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="rounded-md bg-amber-100 px-1.5 py-0.5 text-xs font-semibold text-amber-700">
+                    <span className="rounded-md bg-amber-100 px-1.5 py-0.5 text-xs font-semibold text-amber-700 dark:bg-amber-500/10 dark:text-amber-400">
                       {cred.role}
                     </span>
                   </div>
-                  <p className="mt-1.5 font-mono text-xs text-slate-700">{cred.email}</p>
-                  <p className="font-mono text-xs text-slate-500">Password: {cred.password}</p>
+                  <p className="mt-1.5 font-mono text-xs text-slate-700 dark:text-slate-300">{cred.email}</p>
+                  <p className="font-mono text-xs text-slate-500 dark:text-slate-500">Password: {cred.password}</p>
                 </button>
               ))}
             </div>
