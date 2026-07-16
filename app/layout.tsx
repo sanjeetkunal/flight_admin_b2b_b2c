@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Golos_Text } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import ConditionalLayout from "./components/ConditionalLayout";
 
-const geist = Geist({
-  variable: "--font-geist-sans",
+const golosText = Golos_Text({
+  variable: "--font-golos-text",
   subsets: ["latin"],
 });
 
@@ -20,7 +20,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${geist.variable} h-full antialiased`} suppressHydrationWarning>
+    <html lang="en" className={`${golosText.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="h-full">
         <Script id="theme-init" strategy="beforeInteractive">
           {`(function(){try{var t=localStorage.getItem('theme');if(t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches)){document.documentElement.classList.add('dark')}}catch(e){}})()`}

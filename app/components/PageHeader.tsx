@@ -6,6 +6,7 @@ import { navItems, NavIcon } from "../lib/navConfig"
 
 const pageTitles: Record<string, string> = {
   "/": "Dashboard",
+  "/calendar": "Travel Calendar",
   "/flights": "Flights Dashboard",
   "/flights/all-bookings": "Flight Bookings",
   "/flights/pending-pnr": "Pending PNR Requests",
@@ -54,6 +55,7 @@ const pageTitles: Record<string, string> = {
 
 function categoryFor(pathname: string) {
   if (pathname === "/") return "Overview"
+  if (pathname.startsWith("/calendar")) return "Bookings"
   if (pathname.startsWith("/flights")) return "Bookings"
   if (pathname.startsWith("/railways")) return "Bookings"
   if (pathname.startsWith("/holidays")) return "Bookings"

@@ -5,6 +5,7 @@ export type NavItem = { href: string; label: string; icon: string; color?: strin
 
 export const navItems: NavItem[] = [
   { href: "/", label: "Dashboard", icon: "dashboard" },
+ 
   {
     href: "/flights",
     label: "Flights",
@@ -83,6 +84,7 @@ export const navItems: NavItem[] = [
       { href: "/reports/ledger", label: "Ledger Report", icon: "filetext" },
     ],
   },
+   { href: "/calendar", label: "Travel Calendar", icon: "calendar" },
   {
     href: "/tools",
     label: "Tools",
@@ -153,6 +155,12 @@ export function NavIcon({ type }: { type: string }) {
     overview: (
       <svg className={cls} viewBox="0 0 24 24" {...base}>
         <path d="M3 3v18h18" /><path d="M7 15l4-5 3 3 5-7" />
+      </svg>
+    ),
+    calendar: (
+      <svg className={cls} viewBox="0 0 24 24" {...base}>
+        <rect x="3" y="4" width="18" height="18" rx="2" />
+        <line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
       </svg>
     ),
     list: (
