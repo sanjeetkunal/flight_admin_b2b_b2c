@@ -2,6 +2,9 @@
 
 import { useState } from "react"
 import RecordDialog, { DialogState } from "../../components/RecordDialog"
+import Pagination from "../../components/Pagination"
+
+const PAGE_SIZE = 5
 
 type Request = { ref: string; client: string; package: string; destination: string; travel: string; pax: string; agent: string; requestedOn: string }
 
@@ -17,6 +20,8 @@ const requests: Request[] = [
 
 export default function HolidaysPendingRequestsPage() {
   const [dialog, setDialog] = useState<DialogState>(null)
+  const [page, setPage] = useState(1)
+  const pagedRequests = requests.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
   const summary = (r: Request) => [
     { label: "Package", value: r.package },
@@ -105,7 +110,7 @@ export default function HolidaysPendingRequestsPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
-              {requests.map((r) => (
+              {pagedRequests.map((r) => (
                 <tr key={r.ref} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
                   <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{r.ref}</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{r.client}</td>
@@ -144,12 +149,7 @@ export default function HolidaysPendingRequestsPage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
-          <p className="text-xs text-slate-500 dark:text-slate-400">Showing {requests.length} of {requests.length} pending requests</p>
-          <div className="flex items-center gap-1">
-            <button className="h-7 min-w-7 rounded-md bg-blue-500 px-2 text-xs font-medium text-white">1</button>
-          </div>
-        </div>
+        <Pagination page={page} pageSize={PAGE_SIZE} totalItems={requests.length} onPageChange={setPage} itemLabel="pending requests" />
       </div>
 
       <RecordDialog state={dialog} onClose={() => setDialog(null)} onConfirm={() => setDialog(null)} />

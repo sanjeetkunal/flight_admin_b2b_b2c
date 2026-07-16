@@ -1,6 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import Pagination from "../../components/Pagination"
+
+const PAGE_SIZE = 5
 
 const allBookings = [
   { pnr: "1234567890", passenger: "Rajesh Kumar", train: "12951", trainName: "Mumbai Rajdhani", from: "NDLS", to: "MMCT", date: "01 Jul 2026", depart: "16:55", arrive: "08:35+1", class: "3A", pax: 2, amount: "₹2,145", status: "Confirmed", agent: "TravelBox", quota: "General" },
@@ -41,6 +44,7 @@ export default function RailwaysPage() {
   const [agentFilter, setAgentFilter] = useState("All")
   const [dateFrom, setDateFrom] = useState("")
   const [dateTo, setDateTo] = useState("")
+  const [page, setPage] = useState(1)
 
   const activeFilterCount = [trainFilter, classFilter, agentFilter].filter((f) => f !== "All").length + (dateFrom ? 1 : 0) + (dateTo ? 1 : 0)
 
@@ -63,6 +67,9 @@ export default function RailwaysPage() {
     const matchTo = !dateTo || bookingDate <= new Date(dateTo)
     return matchSearch && matchStatus && matchTrain && matchClass && matchAgent && matchFrom && matchTo
   })
+
+  useEffect(() => setPage(1), [search, statusFilter, trainFilter, classFilter, agentFilter, dateFrom, dateTo])
+  const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
   const counts = { All: allBookings.length, Confirmed: allBookings.filter(b => b.status === "Confirmed").length, Pending: allBookings.filter(b => b.status === "Pending").length, Cancelled: allBookings.filter(b => b.status === "Cancelled").length }
 
@@ -172,7 +179,7 @@ export default function RailwaysPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
-              {filtered.map((b) => (
+              {paginated.map((b) => (
                 <tr key={b.pnr} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
                   <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{b.pnr}</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{b.passenger}</td>
@@ -211,14 +218,7 @@ export default function RailwaysPage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
-          <p className="text-xs text-slate-500 dark:text-slate-400">Showing {filtered.length} of {allBookings.length} bookings</p>
-          <div className="flex items-center gap-1">
-            {[1, 2, 3, "...", 18].map((p, i) => (
-              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-blue-600 text-white" : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"}`}>{p}</button>
-            ))}
-          </div>
-        </div>
+        <Pagination page={page} pageSize={PAGE_SIZE} totalItems={filtered.length} onPageChange={setPage} itemLabel="bookings" />
       </div>
     </div>
   )

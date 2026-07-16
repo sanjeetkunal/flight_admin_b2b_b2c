@@ -1,6 +1,9 @@
 "use client"
 
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
+import Pagination from "../../components/Pagination"
+
+const PAGE_SIZE = 5
 
 type RawEntry = {
   id: number
@@ -73,6 +76,7 @@ export default function LedgerReportPage() {
   const [dateFrom, setDateFrom] = useState("")
   const [dateTo, setDateTo] = useState("")
   const [search, setSearch] = useState("")
+  const [page, setPage] = useState(1)
 
   // Compute running balance per agent in true chronological order (independent of filters)
   const ledgerWithBalance = useMemo<LedgerEntry[]>(() => {
@@ -115,6 +119,9 @@ export default function LedgerReportPage() {
       })
       .sort((a, b) => b.date.localeCompare(a.date) || b.id - a.id)
   }, [ledgerWithBalance, agentFilter, typeFilter, dateFrom, dateTo, search])
+
+  useEffect(() => setPage(1), [agentFilter, typeFilter, dateFrom, dateTo, search])
+  const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
   const totalDebit = filtered.filter((e) => e.type === "Debit").reduce((s, e) => s + e.amount, 0)
   const totalCredit = filtered.filter((e) => e.type === "Credit").reduce((s, e) => s + e.amount, 0)
@@ -233,7 +240,7 @@ export default function LedgerReportPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
-              {filtered.map((e) => (
+              {paginated.map((e) => (
                 <tr key={e.id} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
                   <td className="px-6 py-3 text-xs text-slate-500 whitespace-nowrap dark:text-slate-400">{formatDisplayDate(e.date)}</td>
                   <td className="px-6 py-3 font-medium text-slate-800 whitespace-nowrap dark:text-slate-100">{e.agentName}</td>
@@ -256,9 +263,7 @@ export default function LedgerReportPage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
-          <p className="text-xs text-slate-500 dark:text-slate-400">Showing {filtered.length} of {ledgerWithBalance.length} entries</p>
-        </div>
+        <Pagination page={page} pageSize={PAGE_SIZE} totalItems={filtered.length} onPageChange={setPage} itemLabel="entries" />
       </div>
     </div>
   )

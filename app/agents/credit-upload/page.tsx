@@ -1,7 +1,10 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import RecordDialog, { DialogState } from "../../components/RecordDialog"
+import Pagination from "../../components/Pagination"
+
+const PAGE_SIZE = 5
 
 type RequestStatus = "New Request" | "Verified" | "Approved" | "Rejected"
 
@@ -39,11 +42,15 @@ export default function CreditUploadPage() {
   const [statusFilter, setStatusFilter] = useState("All")
   const [dialog, setDialog] = useState<DialogState>(null)
   const [confirmAction, setConfirmAction] = useState<(() => void) | null>(null)
+  const [page, setPage] = useState(1)
 
   const closeDialog = () => { setDialog(null); setConfirmAction(null) }
   const runConfirm = () => { confirmAction?.(); closeDialog() }
 
   const filtered = requests.filter((r) => statusFilter === "All" || r.status === statusFilter)
+
+  useEffect(() => setPage(1), [statusFilter])
+  const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
   const counts = {
     All: requests.length,
@@ -195,7 +202,7 @@ export default function CreditUploadPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
-              {filtered.map((r) => (
+              {paginated.map((r) => (
                 <tr key={r.id} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
                   <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{r.requestId}</td>
                   <td className="px-6 py-3">
@@ -237,12 +244,7 @@ export default function CreditUploadPage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
-          <p className="text-xs text-slate-500 dark:text-slate-400">Showing {filtered.length} of {requests.length} requests</p>
-          <div className="flex items-center gap-1">
-            <button className="h-7 min-w-7 rounded-md bg-blue-600 px-2 text-xs font-medium text-white">1</button>
-          </div>
-        </div>
+        <Pagination page={page} pageSize={PAGE_SIZE} totalItems={filtered.length} onPageChange={setPage} itemLabel="requests" />
       </div>
 
       <RecordDialog state={dialog} onClose={closeDialog} onConfirm={runConfirm} />

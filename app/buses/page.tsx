@@ -1,6 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import Pagination from "../components/Pagination"
+
+const PAGE_SIZE = 5
 
 const allBookings = [
   { id: "BUS7721", passenger: "Vikram Nair", operator: "RedBus", from: "Mumbai", to: "Pune", date: "30 Jun 2026", depart: "07:00", arrive: "10:30", type: "AC Sleeper", seats: "A1, A2", pax: 2, amount: "₹1,700", status: "Confirmed", agent: "TravelBox" },
@@ -19,12 +22,16 @@ const typeColors: Record<string, string> = { "AC Sleeper": "bg-blue-100 text-blu
 export default function BusesPage() {
   const [search, setSearch] = useState("")
   const [statusFilter, setStatusFilter] = useState("All")
+  const [page, setPage] = useState(1)
 
   const filtered = allBookings.filter((b) => {
     const matchSearch = search === "" || b.passenger.toLowerCase().includes(search.toLowerCase()) || b.id.toLowerCase().includes(search.toLowerCase()) || b.operator.toLowerCase().includes(search.toLowerCase())
     const matchStatus = statusFilter === "All" || b.status === statusFilter
     return matchSearch && matchStatus
   })
+
+  useEffect(() => setPage(1), [search, statusFilter])
+  const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
   const counts = { All: allBookings.length, Confirmed: allBookings.filter(b => b.status === "Confirmed").length, Pending: allBookings.filter(b => b.status === "Pending").length, Cancelled: allBookings.filter(b => b.status === "Cancelled").length }
 
@@ -84,7 +91,7 @@ export default function BusesPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
-              {filtered.map((b) => (
+              {paginated.map((b) => (
                 <tr key={b.id} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
                   <td className="px-6 py-3 font-mono text-xs font-semibold text-orange-600 dark:text-orange-400">{b.id}</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{b.passenger}</td>
@@ -119,14 +126,7 @@ export default function BusesPage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
-          <p className="text-xs text-slate-500 dark:text-slate-400">Showing {filtered.length} of {allBookings.length} bookings</p>
-          <div className="flex items-center gap-1">
-            {[1, 2, 3, "...", 12].map((p, i) => (
-              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-orange-500 text-white" : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"}`}>{p}</button>
-            ))}
-          </div>
-        </div>
+        <Pagination page={page} pageSize={PAGE_SIZE} totalItems={filtered.length} onPageChange={setPage} itemLabel="bookings" />
       </div>
     </div>
   )

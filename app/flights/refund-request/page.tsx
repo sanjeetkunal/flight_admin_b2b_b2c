@@ -2,6 +2,9 @@
 
 import { useState } from "react"
 import RecordDialog, { DialogState } from "../../components/RecordDialog"
+import Pagination from "../../components/Pagination"
+
+const PAGE_SIZE = 5
 
 type NewRequest = { ref: string; pnr: string; passenger: string; airline: string; from: string; to: string; amount: string; reason: string; agent: string; requestedOn: string; status: "New Request" | "Rejected" }
 type InProcess = { pnr: string; passenger: string; airline: string; from: string; to: string; cancelledOn: string; amount: string; reason: string; agent: string; status: "In Process" | "Awaiting Bank" | "Overdue" | "Refunded" }
@@ -37,6 +40,11 @@ export default function FlightsRefundRequestPage() {
   const [requests, setRequests] = useState(initialRequests)
   const [inProcess, setInProcess] = useState(initialInProcess)
   const [dialog, setDialog] = useState<DialogState>(null)
+  const [reqPage, setReqPage] = useState(1)
+  const [procPage, setProcPage] = useState(1)
+
+  const pagedRequests = requests.slice((reqPage - 1) * PAGE_SIZE, reqPage * PAGE_SIZE)
+  const pagedInProcess = inProcess.slice((procPage - 1) * PAGE_SIZE, procPage * PAGE_SIZE)
 
   const newCount = requests.filter((r) => r.status === "New Request").length
   const rejectedCount = requests.filter((r) => r.status === "Rejected").length
@@ -128,7 +136,7 @@ export default function FlightsRefundRequestPage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
-                  {requests.map((r) => (
+                  {pagedRequests.map((r) => (
                     <tr key={r.ref} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
                       <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{r.ref}</td>
                       <td className="px-6 py-3 font-mono text-xs text-slate-500 dark:text-slate-400">{r.pnr}</td>
@@ -196,12 +204,7 @@ export default function FlightsRefundRequestPage() {
               </table>
             </div>
 
-            <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
-              <p className="text-xs text-slate-500 dark:text-slate-400">Showing {requests.length} of {requests.length} refund requests</p>
-              <div className="flex items-center gap-1">
-                <button className="h-7 min-w-7 rounded-md bg-blue-600 px-2 text-xs font-medium text-white">1</button>
-              </div>
-            </div>
+            <Pagination page={reqPage} pageSize={PAGE_SIZE} totalItems={requests.length} onPageChange={setReqPage} itemLabel="refund requests" />
           </div>
         </>
       ) : (
@@ -257,7 +260,7 @@ export default function FlightsRefundRequestPage() {
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
-                  {inProcess.map((r) => (
+                  {pagedInProcess.map((r) => (
                     <tr key={r.pnr} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
                       <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{r.pnr}</td>
                       <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{r.passenger}</td>
@@ -304,12 +307,7 @@ export default function FlightsRefundRequestPage() {
               </table>
             </div>
 
-            <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
-              <p className="text-xs text-slate-500 dark:text-slate-400">Showing {inProcess.length} of {inProcess.length} refunds in process</p>
-              <div className="flex items-center gap-1">
-                <button className="h-7 min-w-7 rounded-md bg-blue-600 px-2 text-xs font-medium text-white">1</button>
-              </div>
-            </div>
+            <Pagination page={procPage} pageSize={PAGE_SIZE} totalItems={inProcess.length} onPageChange={setProcPage} itemLabel="refunds in process" />
           </div>
         </>
       )}

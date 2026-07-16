@@ -4,6 +4,9 @@ import { useState } from "react"
 import Link from "next/link"
 import { DotLottieReact } from "@lottiefiles/dotlottie-react"
 import { TooltipBox, edgeAlign, Sparkline, AreaSparkline, MiniBars, DonutRing } from "./components/charts"
+import Pagination from "./components/Pagination"
+
+const PAGE_SIZE = 5
 
 const days12 = ["24 Jun", "25 Jun", "26 Jun", "27 Jun", "28 Jun", "29 Jun", "30 Jun", "01 Jul", "02 Jul", "03 Jul", "04 Jul", "05 Jul"]
 const last8Days = days12.slice(-8)
@@ -112,6 +115,8 @@ export default function DashboardPage() {
   const [hoverSegment, setHoverSegment] = useState<number | null>(null)
   const [hoverCity, setHoverCity] = useState<number | null>(null)
   const [hoverChannel, setHoverChannel] = useState<number | null>(null)
+  const [invoicePage, setInvoicePage] = useState(1)
+  const paginatedInvoices = invoices.slice((invoicePage - 1) * PAGE_SIZE, invoicePage * PAGE_SIZE)
 
   return (
     <div className="space-y-5">
@@ -537,7 +542,7 @@ export default function DashboardPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
-              {invoices.map((inv) => (
+              {paginatedInvoices.map((inv) => (
                 <tr key={inv.no} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
                   <td className="px-6 py-3 font-mono text-xs font-semibold text-indigo-700">{inv.no}</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{inv.agent}</td>
@@ -552,14 +557,7 @@ export default function DashboardPage() {
             </tbody>
           </table>
         </div>
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
-          <p className="text-xs text-slate-500 dark:text-slate-400">Showing 1 to {invoices.length} of 16 entries</p>
-          <div className="flex items-center gap-1">
-            {[1, 2, 3, "...", 5].map((p, i) => (
-              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-blue-600 text-white" : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"}`}>{p}</button>
-            ))}
-          </div>
-        </div>
+        <Pagination page={invoicePage} pageSize={PAGE_SIZE} totalItems={invoices.length} onPageChange={setInvoicePage} itemLabel="entries" />
       </div>
     </div>
   )

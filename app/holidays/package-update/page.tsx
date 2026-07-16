@@ -2,6 +2,9 @@
 
 import { useState } from "react"
 import RecordDialog, { DialogState } from "../../components/RecordDialog"
+import Pagination from "../../components/Pagination"
+
+const PAGE_SIZE = 5
 
 type Row = { client: string; package: string; destination: string; travel: string; agent: string; current: string; updatedAt: string; category: string }
 
@@ -23,6 +26,8 @@ export default function HolidaysPackageUpdatePage() {
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [dialog, setDialog] = useState<DialogState>(null)
   const [confirmAction, setConfirmAction] = useState<(() => void) | null>(null)
+  const [page, setPage] = useState(1)
+  const pagedRows = rows.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
   const closeDialog = () => { setDialog(null); setConfirmAction(null) }
   const runConfirm = () => { confirmAction?.(); closeDialog() }
@@ -138,7 +143,7 @@ export default function HolidaysPackageUpdatePage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
-              {rows.map((r) => (
+              {pagedRows.map((r) => (
                 <tr key={r.client} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60 align-top">
                   <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{r.current}</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{r.client}</td>
@@ -176,12 +181,7 @@ export default function HolidaysPackageUpdatePage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
-          <p className="text-xs text-slate-500 dark:text-slate-400">Showing {rows.length} of {rows.length} confirmed bookings</p>
-          <div className="flex items-center gap-1">
-            <button className="h-7 min-w-7 rounded-md bg-blue-500 px-2 text-xs font-medium text-white">1</button>
-          </div>
-        </div>
+        <Pagination page={page} pageSize={PAGE_SIZE} totalItems={rows.length} onPageChange={setPage} itemLabel="confirmed bookings" />
       </div>
 
       <RecordDialog state={dialog} onClose={closeDialog} onConfirm={runConfirm} />

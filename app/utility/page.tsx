@@ -1,6 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import Pagination from "../components/Pagination"
+
+const PAGE_SIZE = 5
 
 const transactions = [
   { id: "UT00341", type: "Electricity", provider: "BSES Delhi", consumer: "1234567890", amount: "₹2,340", charges: "₹12", total: "₹2,352", status: "Success", agent: "TravelBox", time: "30 Jun, 09:14", mobile: "9876543210" },
@@ -31,6 +34,7 @@ export default function UtilityPage() {
   const [search, setSearch] = useState("")
   const [typeFilter, setTypeFilter] = useState("All")
   const [statusFilter, setStatusFilter] = useState("All")
+  const [page, setPage] = useState(1)
 
   const types = ["All", "Electricity", "Mobile Recharge", "Gas", "DTH Recharge", "Water", "Broadband", "Insurance", "Credit Card"]
 
@@ -40,6 +44,9 @@ export default function UtilityPage() {
     const matchStatus = statusFilter === "All" || t.status === statusFilter
     return matchSearch && matchType && matchStatus
   })
+
+  useEffect(() => setPage(1), [search, typeFilter, statusFilter])
+  const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
   return (
     <div className="space-y-5">
@@ -106,7 +113,7 @@ export default function UtilityPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
-              {filtered.map((t) => (
+              {paginated.map((t) => (
                 <tr key={t.id} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
                   <td className="px-6 py-3 font-mono text-xs font-semibold text-teal-700 dark:text-teal-400">{t.id}</td>
                   <td className="px-6 py-3">
@@ -129,14 +136,7 @@ export default function UtilityPage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
-          <p className="text-xs text-slate-500 dark:text-slate-400">Showing {filtered.length} of {transactions.length} transactions</p>
-          <div className="flex items-center gap-1">
-            {[1, 2, 3, "...", 14].map((p, i) => (
-              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-teal-600 text-white" : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"}`}>{p}</button>
-            ))}
-          </div>
-        </div>
+        <Pagination page={page} pageSize={PAGE_SIZE} totalItems={filtered.length} onPageChange={setPage} itemLabel="transactions" />
       </div>
     </div>
   )

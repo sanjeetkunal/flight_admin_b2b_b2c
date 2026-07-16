@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import RecordDialog, { DialogState } from "../../components/RecordDialog"
+import Pagination from "../../components/Pagination"
 
 function isValidPnr(value: string) {
   return /^\d{10}$/.test(value.trim())
@@ -447,12 +448,7 @@ export default function RailwaysPnrUpdatePage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
-          <p className="text-xs text-slate-500 dark:text-slate-400">Showing 5 of 5 confirmed bookings</p>
-          <div className="flex items-center gap-1">
-            <button className="h-7 min-w-7 rounded-md bg-blue-600 px-2 text-xs font-medium text-white">1</button>
-          </div>
-        </div>
+        <Pagination page={1} pageSize={10} totalItems={5} onPageChange={() => {}} itemLabel="confirmed bookings" />
       </div>
 
       <RecordDialog state={dialog} onClose={closeDialog} onConfirm={runConfirm} />

@@ -2,6 +2,9 @@
 
 import { useState } from "react"
 import RecordDialog, { DialogState } from "../../components/RecordDialog"
+import Pagination from "../../components/Pagination"
+
+const PAGE_SIZE = 5
 
 type Refund = { ref: string; bookingId: string; client: string; package: string; destination: string; amount: string; reason: string; agent: string; requestedOn: string; status: "New Request" | "Approved" | "Rejected" }
 
@@ -22,6 +25,8 @@ const statusColors: Record<string, string> = {
 export default function HolidaysRefundRequestPage() {
   const [refunds, setRefunds] = useState(initialRefunds)
   const [dialog, setDialog] = useState<DialogState>(null)
+  const [page, setPage] = useState(1)
+  const pagedRefunds = refunds.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
   const newCount = refunds.filter((r) => r.status === "New Request").length
   const approvedCount = refunds.filter((r) => r.status === "Approved").length
@@ -118,7 +123,7 @@ export default function HolidaysRefundRequestPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
-              {refunds.map((r) => (
+              {pagedRefunds.map((r) => (
                 <tr key={r.ref} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
                   <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{r.ref}</td>
                   <td className="px-6 py-3 font-mono text-xs text-slate-500 dark:text-slate-400">{r.bookingId}</td>
@@ -163,12 +168,7 @@ export default function HolidaysRefundRequestPage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
-          <p className="text-xs text-slate-500 dark:text-slate-400">Showing {refunds.length} of {refunds.length} refund requests</p>
-          <div className="flex items-center gap-1">
-            <button className="h-7 min-w-7 rounded-md bg-blue-500 px-2 text-xs font-medium text-white">1</button>
-          </div>
-        </div>
+        <Pagination page={page} pageSize={PAGE_SIZE} totalItems={refunds.length} onPageChange={setPage} itemLabel="refund requests" />
       </div>
 
       <RecordDialog

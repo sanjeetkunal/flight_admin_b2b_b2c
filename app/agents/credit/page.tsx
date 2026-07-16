@@ -1,7 +1,10 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import RecordDialog, { DialogState } from "../../components/RecordDialog"
+import Pagination from "../../components/Pagination"
+
+const PAGE_SIZE = 5
 
 type AgentCredit = {
   id: string
@@ -48,6 +51,7 @@ export default function CreditManagementPage() {
 
   const [dialog, setDialog] = useState<DialogState>(null)
   const [confirmAction, setConfirmAction] = useState<(() => void) | null>(null)
+  const [page, setPage] = useState(1)
 
   const closeDialog = () => { setDialog(null); setConfirmAction(null) }
   const runConfirm = () => { confirmAction?.(); closeDialog() }
@@ -55,6 +59,9 @@ export default function CreditManagementPage() {
   const filtered = agents.filter((a) =>
     search === "" || a.name.toLowerCase().includes(search.toLowerCase()) || a.id.toLowerCase().includes(search.toLowerCase())
   )
+
+  useEffect(() => setPage(1), [search])
+  const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
   const totalIssued = agents.reduce((sum, a) => sum + a.currentLimit, 0)
   const nearLimit = agents.filter((a) => a.currentLimit - a.used < a.currentLimit * 0.1).length
@@ -156,7 +163,7 @@ export default function CreditManagementPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
-              {filtered.map((a) => {
+              {paginated.map((a) => {
                 const balance = a.currentLimit - a.used
                 return (
                   <tr key={a.id} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60 align-top">
@@ -210,9 +217,7 @@ export default function CreditManagementPage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
-          <p className="text-xs text-slate-500 dark:text-slate-400">Showing {filtered.length} of {agents.length} agents</p>
-        </div>
+        <Pagination page={page} pageSize={PAGE_SIZE} totalItems={filtered.length} onPageChange={setPage} itemLabel="agents" />
       </div>
 
       <RecordDialog state={dialog} onClose={closeDialog} onConfirm={runConfirm} />

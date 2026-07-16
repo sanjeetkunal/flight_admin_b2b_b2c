@@ -1,6 +1,9 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import Pagination from "../../components/Pagination"
+
+const PAGE_SIZE = 5
 
 const allBookings = [
   { id: "HOL08821", client: "Sneha Patel", package: "Goa Beach Escape", duration: "4N/5D", destination: "Goa", category: "Beach", travel: "05 Jul 2026", return: "10 Jul 2026", pax: "2A 2C", inclusions: ["Flight", "Hotel", "Transfers", "Sightseeing"], amount: "₹84,000", status: "Confirmed", agent: "TravelBox", markup: "₹8,400", booked: "30 Jun, 09:14" },
@@ -26,6 +29,7 @@ export default function HolidaysAllBookingsPage() {
   const [agentFilter, setAgentFilter] = useState("All")
   const [dateFrom, setDateFrom] = useState("")
   const [dateTo, setDateTo] = useState("")
+  const [page, setPage] = useState(1)
 
   const activeFilterCount = [categoryFilter, agentFilter].filter((f) => f !== "All").length + (dateFrom ? 1 : 0) + (dateTo ? 1 : 0)
 
@@ -46,6 +50,9 @@ export default function HolidaysAllBookingsPage() {
     const matchTo = !dateTo || travelDate <= new Date(dateTo)
     return matchSearch && matchStatus && matchCategory && matchAgent && matchFrom && matchTo
   })
+
+  useEffect(() => setPage(1), [search, statusFilter, categoryFilter, agentFilter, dateFrom, dateTo])
+  const paginated = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
   const counts = {
     All: allBookings.length,
@@ -164,7 +171,7 @@ export default function HolidaysAllBookingsPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
-              {filtered.map((p) => (
+              {paginated.map((p) => (
                 <tr key={p.id} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
                   <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-600 dark:text-blue-400">{p.id}</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{p.client}</td>
@@ -207,15 +214,7 @@ export default function HolidaysAllBookingsPage() {
           </table>
         </div>
 
-        {/* Pagination */}
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
-          <p className="text-xs text-slate-500 dark:text-slate-400">Showing {filtered.length} of {allBookings.length} packages</p>
-          <div className="flex items-center gap-1">
-            {[1, 2, 3, "...", 14].map((p, i) => (
-              <button key={i} className={`h-7 min-w-7 rounded-md px-2 text-xs font-medium ${p === 1 ? "bg-blue-500 text-white" : "text-slate-700 hover:bg-slate-100 dark:text-slate-300 dark:hover:bg-slate-800"}`}>{p}</button>
-            ))}
-          </div>
-        </div>
+        <Pagination page={page} pageSize={PAGE_SIZE} totalItems={filtered.length} onPageChange={setPage} itemLabel="packages" />
       </div>
     </div>
   )

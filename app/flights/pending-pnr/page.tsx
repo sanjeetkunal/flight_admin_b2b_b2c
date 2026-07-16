@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import RecordDialog, { DialogState } from "../../components/RecordDialog"
+import Pagination from "../../components/Pagination"
 
 export default function PendingPnrPage() {
   const [dialog, setDialog] = useState<DialogState>(null)
@@ -597,12 +598,7 @@ export default function PendingPnrPage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
-          <p className="text-xs text-slate-500 dark:text-slate-400">Showing 7 of 7 pending requests</p>
-          <div className="flex items-center gap-1">
-            <button className="h-7 min-w-7 rounded-md bg-blue-600 px-2 text-xs font-medium text-white">1</button>
-          </div>
-        </div>
+        <Pagination page={1} pageSize={10} totalItems={7} onPageChange={() => {}} itemLabel="pending requests" />
       </div>
 
       <RecordDialog state={dialog} onClose={() => setDialog(null)} onConfirm={() => setDialog(null)} />

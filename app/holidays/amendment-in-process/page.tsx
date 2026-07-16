@@ -1,3 +1,10 @@
+"use client"
+
+import { useState } from "react"
+import Pagination from "../../components/Pagination"
+
+const PAGE_SIZE = 5
+
 type Row = { bookingId: string; client: string; package: string; originalDate: string; newDate: string; priceDiff: string; amendFee: string; agent: string; status: "In Process" | "Awaiting Operator" | "Overdue" }
 
 const rows: Row[] = [
@@ -17,6 +24,8 @@ const statusColors: Record<string, string> = {
 export default function HolidaysAmendmentInProcessPage() {
   const inProcessCount = rows.filter((r) => r.status === "In Process").length
   const awaitingCount = rows.filter((r) => r.status === "Awaiting Operator").length
+  const [page, setPage] = useState(1)
+  const pagedRows = rows.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE)
 
   return (
     <div className="space-y-4">
@@ -86,7 +95,7 @@ export default function HolidaysAmendmentInProcessPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-slate-50 dark:divide-slate-800">
-              {rows.map((r) => (
+              {pagedRows.map((r) => (
                 <tr key={r.bookingId} className="hover:bg-slate-50/60 transition-colors dark:hover:bg-slate-800/60">
                   <td className="px-6 py-3 font-mono text-xs font-semibold text-blue-700 dark:text-blue-400">{r.bookingId}</td>
                   <td className="px-6 py-3 font-medium text-slate-800 dark:text-slate-100">{r.client}</td>
@@ -109,12 +118,7 @@ export default function HolidaysAmendmentInProcessPage() {
           </table>
         </div>
 
-        <div className="flex items-center justify-between border-t border-slate-100 px-6 py-4 dark:border-slate-800">
-          <p className="text-xs text-slate-500 dark:text-slate-400">Showing {rows.length} of {rows.length} amendments in process</p>
-          <div className="flex items-center gap-1">
-            <button className="h-7 min-w-7 rounded-md bg-blue-500 px-2 text-xs font-medium text-white">1</button>
-          </div>
-        </div>
+        <Pagination page={page} pageSize={PAGE_SIZE} totalItems={rows.length} onPageChange={setPage} itemLabel="amendments in process" />
       </div>
     </div>
   )
